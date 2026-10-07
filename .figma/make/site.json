@@ -1,0 +1,10 @@
+{
+  "description": "This corporate website showcases Al-Rafaya Engineering & Contracting Company, highlighting their services, projects, and expertise in engineering and construction.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
