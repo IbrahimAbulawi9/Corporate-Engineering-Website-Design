@@ -31,9 +31,21 @@ img { display: block; width: 100%; }
 .container { width: min(1280px, calc(100% - 96px)); margin-inline: auto; }
 .section { padding: 120px 0; }
 .topbar { height: 34px; background: var(--forest-deep); color: #dce5e1; font-size: 11px; }
-.topbar-inner { height: 100%; display: flex; align-items: center; gap: 28px; }
+.topbar-inner { 
+  height: 100%; 
+  display: flex; 
+  align-items: center; 
+  gap: 28px; 
+  direction: ltr;   /* يثبّت الترتيب في اللغتين */
+}
+
+/* العنصر الأول (ساعات العمل) → يروح لليسار */
+.topbar-inner > span:first-child { 
+  margin-right: auto;   /* ✅ السر هنا — يدفع نفسه لليسار */
+  letter-spacing: .04em;
+}
 .topbar-inner span { display: flex; align-items: center; gap: 7px; }
-.topbar-end { margin-inline-start: auto; letter-spacing: .04em; }
+
 .navbar { height: 82px; background: rgba(255,255,255,.97); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #e8e9e6; }
 .nav-inner { height: 100%; display: flex; align-items: center; }
 .logo { border: 0; background: transparent; display: flex; align-items: center; gap: 11px; padding: 0; color: var(--forest); text-align: start; }
@@ -185,3 +197,69 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
   .nav-actions{gap:4px}.lang{font-size:10px}.hero h1{font-size:46px}.hero-cred span:last-child{display:none}.principles{grid-template-columns:1fr}.values-grid{grid-template-columns:1fr}.quality-list>div{grid-template-columns:30px 1fr}.quality-list p{grid-column:2;margin-top:10px}.cert-grid{grid-template-columns:1fr}.cert{min-height:180px}.final-cta div>span{flex-direction:column;align-items:stretch}.page-hero h1{font-size:42px}.timeline-grid{grid-template-columns:1fr}.service-list article{grid-template-columns:30px 1fr}.service-icon{display:none}.project-facts>.container{grid-template-columns:1fr 1fr}.project-facts div div{padding:5px 10px}.team-grid{grid-template-columns:1fr}.jobs article{grid-template-columns:1fr}.jobs article>button{grid-column:1;grid-row:auto}.downloads>.container>div:last-child{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:1}.form-layout form{padding:18px}.form-submit{align-items:stretch;flex-direction:column;gap:20px}.footer-top{grid-template-columns:1fr 1fr;gap:25px}.footer-bottom{align-items:start;flex-direction:column}
 }
 @media (prefers-reduced-motion: reduce) { html{scroll-behavior:auto}*{transition:none!important} }
+
+
+
+
+
+/* ===== Navbar ===== */
+.navbar {
+  min-height: 90px; /* ليتناسب مع حجم اللوقو الجديد */
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+/* اللوقو دائماً على اليسار حتى مع RTL */
+.nav-inner .logo {
+  flex-shrink: 0;
+  margin-inline-end: auto; /* يدفع باقي العناصر لليمين */
+}
+
+.logo img {
+  height: 75px !important;
+  width: auto !important;
+  max-width: none !important;
+  display: block;
+}
+
+/* الموبايل - تصغير اللوقو قليلاً */
+@media (max-width: 768px) {
+  .logo img {
+    height: 55px !important;
+  }
+  .navbar {
+    min-height: 70px;
+  }
+}
+
+/* ===== الموبايل مينو ===== */
+.mobile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ===== تدرج الـ Hero حسب اللغة ===== */
+/* عربي - RTL: الجهة الغامقة على اليمين */
+[dir="rtl"] .hero-overlay {
+  background: linear-gradient(270deg, rgba(8,31,25,.92) 0%, rgba(12,35,29,.72) 43%, rgba(12,25,21,.16) 78%),
+              linear-gradient(0deg, rgba(8,26,21,.35), transparent 40%);
+}
+
+/* إنجليزي - LTR: الجهة الغامقة على اليسار */
+[dir="ltr"] .hero-overlay {
+  background: linear-gradient(90deg, rgba(8,31,25,.92) 0%, rgba(12,35,29,.72) 43%, rgba(12,25,21,.16) 78%),
+              linear-gradient(0deg, rgba(8,26,21,.35), transparent 40%);
+}
+
+
+
+
+
+
