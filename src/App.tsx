@@ -30,7 +30,7 @@ const dictionary = {
     sectors: "Sectors", company: "Company", news: "News", careers: "Careers",
     contact: "Contact", quote: "Request a Quote",
     // Topbar
-    workingHours: "Sunday – Thursday    8:00 AM – 5:00 PM",
+    workingHours: "Saturday – Thursday    8:00 AM – 5:00 PM",
     // Hero
     heroEyebrow: "Engineering excellence, built to last",
     heroTitle: "Building Today. Shaping Tomorrow.",
@@ -263,7 +263,7 @@ const dictionary = {
     sectors: "القطاعات", company: "الشركة", news: "الأخبار", careers: "الوظائف",
     contact: "اتصل بنا", quote: "اطلب عرض سعر",
     // Topbar
-    workingHours: "الأحد – الخميس    ٨:٠٠ ص – ٥:٠٠ م",
+    workingHours: "السبت – الخميس    ٨:٠٠ ص – ٥:٠٠ م",
     // Hero
     heroEyebrow: "تميّز هندسي مبني ليدوم",
     heroTitle: "نبني اليوم. لنصنع الغد.",
@@ -641,8 +641,8 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
     <>
       <div className="topbar"><div className="container topbar-inner">
   <span className="topbar-end">{t.workingHours}</span>
-  <span><Icon name="mail" size={15} /> info@alrafaya.com.sa</span>
-  <span><Icon name="phone" size={15} /> +966 11 245 8800</span>
+  <span><Icon name="mail" size={15} /> Alrafaiah_co@hotmail.com</span>
+  <span><Icon name="phone" size={15} /> +962 079 5287728</span>
 </div></div>
       <header className="navbar">
         <div className="container nav-inner" style={{ direction: "ltr" }}>
@@ -1011,8 +1011,8 @@ function FormSection({ type }: { type: "quote" | "contact" | "career" }) {
       <h2>{type === "career" ? t.joinTeam : isQuote ? t.tellUsProject : t.howCanHelp}</h2>
       <p>{t.formIntro}</p>
       <div className="contact-block">
-        <span><Icon name="phone" /><b>{t.callUs}</b><small>+966 11 245 8800</small></span>
-        <span><Icon name="mail" /><b>{t.emailUs}</b><small>info@alrafaya.com.sa</small></span>
+        <span><Icon name="phone" /><b>{t.callUs}</b><small>+962 079 5287728</small></span>
+        <span><Icon name="mail" /><b>{t.emailUs}</b><small>Alrafaiah_co@hotmail.com</small></span>
         <span><Icon name="map" /><b>{t.headOffice}</b><small>{t.headOfficeAddress}</small></span>
       </div>
     </div>
@@ -1021,7 +1021,7 @@ function FormSection({ type }: { type: "quote" | "contact" | "career" }) {
       <label>{t.fullName} *<input required placeholder={t.yourFullName} /></label>
       <label>{type === "career" ? `${t.emailAddress} *` : t.company}<input required={type === "career"} placeholder={type === "career" ? "name@email.com" : t.companyName} /></label>
       <label>{t.emailAddress} *<input required type="email" placeholder="name@company.com" /></label>
-      <label>{t.phoneNumber} *<input required type="tel" placeholder="+966" /></label>
+      <label>{t.phoneNumber} *<input required type="tel" placeholder="+962 079 5287728" /></label>
       {isQuote && <>
         <label>{t.projectType}<select required defaultValue=""><option value="" disabled>{t.selectProjectType}</option><option>{t.construction}</option><option>{t.infrastructure}</option><option>{t.mep}</option><option>{t.fitOut}</option></select></label>
         <label>{t.projectLocation}<input placeholder={t.cityRegion} /></label>
@@ -1062,7 +1062,7 @@ function Footer() {
   return <footer><div className="container footer-top">
     <div className="footer-brand"><Logo light /><p>{t.footerTagline1}<br />{t.footerTagline2}</p><div className="socials"><button>in</button><button>ig</button><button>f</button></div></div>
     {cols.map(([title, links]) => <div className="footer-col" key={title}><b>{title}</b>{links.map(x => <button key={x} onClick={() => go(linkTo(title, x))}>{x}</button>)}</div>)}
-    <div className="footer-contact"><b>{t.footerContact}</b><p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p><a href="tel:+966112458800">+966 11 245 8800</a><a href="mailto:info@alrafaya.com.sa">info@alrafaya.com.sa</a></div>
+    <div className="footer-contact"><b>{t.footerContact}</b><p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p><a href="tel:+962 079 5287728">+962 079 5287728</a><a href="mailto:Alrafaiah_co@hotmail.com">Alrafaiah_co@hotmail.com</a></div>
   </div><div className="container footer-bottom"><span>{t.copyright}</span><div><button>{t.privacyPolicy}</button><button>{t.termsConditions}</button></div><span>{t.madeForProgress}</span></div></footer>;
 }
 
