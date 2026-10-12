@@ -214,7 +214,7 @@ const dictionary = {
     thankYouText: "Your request has been received. Our team will be in touch shortly.",
     sendAnother: "Send Another Request",
     fullName: "Full Name", yourFullName: "Your full name",
-    emailAddress: "Email Address", company: "Company", companyName: "Company name",
+    emailAddress: "Email Address", companyName: "Company name",
     phoneNumber: "Phone Number", projectType: "Project Type", selectProjectType: "Select project type",
     projectLocation: "Project Location", cityRegion: "City, region",
     estimatedArea: "Estimated Area", squareMeters: "Square meters",
@@ -447,7 +447,8 @@ const dictionary = {
     thankYouText: "تم استلام طلبك. سيتواصل معك فريقنا قريباً.",
     sendAnother: "إرسال طلب آخر",
     fullName: "الاسم الكامل", yourFullName: "اسمك الكامل",
-    emailAddress: "البريد الإلكتروني", company: "الشركة", companyName: "اسم الشركة",
+    emailAddress: "البريد الإلكتروني",
+    companyName: "اسم الشركة",
     phoneNumber: "رقم الجوال", projectType: "نوع المشروع", selectProjectType: "اختر نوع المشروع",
     projectLocation: "موقع المشروع", cityRegion: "المدينة، المنطقة",
     estimatedArea: "المساحة التقديرية", squareMeters: "متر مربع",
@@ -999,7 +1000,8 @@ function DownloadsPage() {
 
 // ========== FORM ==========
 function FormSection({ type }: { type: "quote" | "contact" | "career" }) {
-  const t = dictionary[useLang()];
+  const lang = useLang();
+  const t = dictionary[lang];
   const [sent, setSent] = useState(false);
   const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
   const isQuote = type === "quote";
