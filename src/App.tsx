@@ -569,9 +569,29 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 // ========== LOGO ==========
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <button className={`logo ${light ? "logo-light" : ""}`} onClick={() => go("home")} aria-label="Al-Rafaya home">
-      <img src={logoImg} alt="شركة الرفايعة للهندسة والمقاولات"
-        style={{ height: "75px", width: "auto", objectFit: "contain", display: "block" }} />
+    <button 
+      className={`logo ${light ? "logo-light" : ""}`} 
+      onClick={() => go("home")} 
+      aria-label="Al-Rafaya home"
+      style={{
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        padding: 0,
+        display: "flex",
+        alignItems: "center"
+      }}
+    >
+      <img 
+        src={logoImg} 
+        alt="شركة الرفايعة للهندسة والمقاولات"
+        style={{ 
+          height: "45px", 
+          width: "auto", 
+          objectFit: "contain", 
+          display: "block" 
+        }} 
+      />
     </button>
   );
 }
