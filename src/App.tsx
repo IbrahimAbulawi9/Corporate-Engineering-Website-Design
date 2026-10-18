@@ -1,11 +1,11 @@
-import { FormEvent, ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { FormEvent, ReactNode, createContext, useContext, useEffect, useState, useRef } from "react";
 import logoImg from "./images/logo-new.jpeg";
 
 type Lang = "en" | "ar";
 type IconName =
   | "arrow" | "building" | "check" | "chevron" | "close" | "crane" | "download"
   | "engineering" | "hardhat" | "mail" | "map" | "menu" | "phone" | "play"
-  | "search" | "shield" | "tools" | "users";
+  | "search" | "shield" | "tools" | "users" | "facebook" | "whatsapp" | "linkedin";
 
 const LangContext = createContext<Lang>("ar");
 const useLang = () => useContext(LangContext);
@@ -269,7 +269,7 @@ const dictionary = {
     heroTitle: "نبني اليوم. لنصنع الغد.",
     heroText: "حلول متكاملة في الهندسة والإنشاء وإدارة المشاريع، ترتكز على الدقة والمسؤولية والالتزام الراسخ بالجودة.",
     explore: "استكشف مشاريعنا", trusted: "شريككم الهندسي الموثوق",
-    since: "تأسست عام 1998", scroll: "اكتشف أعمالنا",
+    since: "تأسست عام 2002", scroll: "اكتشف أعمالنا",
     heroSide1: "الرفايعة", heroSide2: "للهندسة والمقاولات",
     // Stats
     statYears: "سنة من الخبرة", statCompleted: "مشروع مكتمل",
@@ -277,7 +277,7 @@ const dictionary = {
     statSectors: "قطاعات نخدمها",
     // About (home)
     aboutEyebrow: "من نحن", aboutTitle: "بُنيت على الثقة. تقودها الهندسة.",
-    aboutLead: "الرفايعة شركة سعودية للهندسة والمقاولات، تنفذ مشاريع معقدة وعالية القيمة في جميع أنحاء المملكة.",
+    aboutLead: "الرفايعة شركة أردنية للهندسة والمقاولات، تنفذ مشاريع معقدة وعالية القيمة في جميع أنحاء المملكة.",
     aboutP: "منذ عام 1998، اكتسبنا ثقة عملائنا من القطاعين العام والخاص من خلال الجمع بين العمق التقني والتنفيذ المنضبط والفهم المحلي العميق. من الفكرة الأولى حتى التسليم النهائي، يُدار كل مشروع بوضوح وعناية.",
     principle1Title: "جودة بلا تنازلات", principle1Text: "أنظمة متوافقة مع ISO في كل مرحلة",
     principle2Title: "فرق خبيرة", principle2Text: "أكثر من 320 متخصصاً ماهراً",
@@ -299,7 +299,7 @@ const dictionary = {
     sectorsText: "خبرتنا القطاعية تساعد العملاء على تجاوز التعقيدات وتحقيق أثر دائم.",
     exploreAllSectors: "استكشف جميع القطاعات",
     // Why section
-    whyEyebrow: "معيار الرفايعة", whyTitle: "لماذا يختارنا العملاء.",
+    whyEyebrow: "معيار شركة الرفايعة", whyTitle: "لماذا يختارنا العملاء.",
     whyText: "ثقافة تنفيذ قوامها المسؤولية والخبرة والالتزام بإتقان كل تفصيلة.",
     why1Big: "+26 سنة", why1Title: "خبرة موثوقة", why1Text: "عقود من التنفيذ الناجح عبر مشاريع متنوعة ومتطلبة.",
     why2Big: "صفر تنازلات", why2Title: "السلامة أولاً", why2Text: "إدارة استباقية للمخاطر تحمي أفرادنا وشركاءنا ومجتمعاتنا.",
@@ -310,7 +310,7 @@ const dictionary = {
     processSteps: ["الاستشارة","التخطيط","التصميم والهندسة","المشتريات","الإنشاء","الجودة والسلامة","التسليم"],
     // Quality
     qualityImageTitle: "كل قرار. كل تفصيلة.", qualityImageText: "تُقاس وفق أعلى المعايير.",
-    qualityEyebrow: "التزاماتنا", qualityTitle: "الجودة والسلامة والمسؤولية مدمجة في كل شيء.",
+    qualityEyebrow: "التزاماتنا", qualityTitle: "الجودة والسلامة مسؤولية مدمجة في كل شيء.",
     quality1Title: "الجودة", quality1Text: "أنظمة تفتيش واختبار وضمان صارمة مدمجة في جميع مراحل التنفيذ.",
     quality2Title: "السلامة", quality2Text: "ثقافة الوقاية أولاً، مدعومة بالتدريب والقيادة والمساءلة الواضحة.",
     quality3Title: "الاستدامة", quality3Text: "مواد مسؤولة، وأساليب فعّالة، وتقليل الأثر البيئي.",
@@ -322,9 +322,9 @@ const dictionary = {
     cert3: "الإدارة البيئية", cert4: "تصنيف المقاولين",
     trustedBy: "موثوقون من قِبل كبرى المؤسسات",
     // News
-    newsEyebrow: "الأخبار والرؤى", newsTitle: "ما يحدث في الرفايعة.",
+    newsEyebrow: "الأخبار والرؤى", newsTitle: "ما يحدث في شركة الرفايعة.",
     viewAllNews: "عرض جميع الأخبار", readStory: "اقرأ القصة",
-    news1Cat: "أخبار الشركة", news1Date: "١٨ نوفمبر ٢٠٢٥", news1Title: "الرفايعة تفوز بعقد بنية تحتية رئيسي في الرياض",
+    news1Cat: "أخبار الشركة", news1Date: "١٨ نوفمبر ٢٠٢٥", news1Title: "الرفايعة تفوز بعقد بنية تحتية رئيسي في عمان",
     news2Cat: "إنجاز مشروع", news2Date: "٠٢ أكتوبر ٢٠٢٥", news2Title: "إتمام الأعمال الإنشائية في حي الواحة التجاري",
     news3Cat: "الاستدامة", news3Date: "١٤ سبتمبر ٢٠٢٥", news3Title: "نعزز البناء المسؤول في جميع عملياتنا",
     // Final CTA
@@ -335,8 +335,8 @@ const dictionary = {
     // About page
     aboutPageEyebrow: "عن الرفايعة", aboutPageTitle: "تقدم هندسي. بناء ثقة.",
     aboutPageText: "منذ أكثر من 26 عاماً، نساهم في تشكيل البيئة العمرانية في المملكة من خلال تنفيذ مسؤول ودقيق وموثوق.",
-    storyEyebrow: "قصتنا", storyTitle: "شركة سعودية بطموح راسخ.",
-    storyLead: "تأسست الرفايعة في الرياض عام 1998 بقناعة واضحة: الهندسة الأفضل تخلق نتائج أفضل للجميع.",
+    storyEyebrow: "قصتنا", storyTitle: "شركة أردنية بطموح راسخ.",
+    storyLead: "تأسست الرفايعة في عمان عام 2002 بقناعة واضحة: الهندسة الأفضل تخلق نتائج أفضل للجميع.",
     storyP: "اليوم، نجمع أكثر من 320 متخصصاً في الإنشاء والبنية التحتية والأنظمة الكهروميكانيكية والتشطيبات وإدارة المشاريع. كان نموّنا مدروساً — قائماً على ثقة العملاء والقدرة التقنية والتنفيذ المتسق.",
     meetTeam: "تعرّف على فريقنا",
     visionTitle: "رؤيتنا", visionText: "أن نكون الشريك الهندسي والمقاول الأكثر ثقة في المملكة، معروفين بتشكيل أماكن مرنة ومستدامة.",
@@ -352,7 +352,7 @@ const dictionary = {
     // Timeline
     journeyEyebrow: "مسيرتنا", journeyTitle: "نمو ثابت. وهدف واضح.",
     timeline: [
-      ["1998","تأسيس الشركة في الرياض"],
+      ["2002","تأسيس الشركة في عمان"],
       ["2006","التوسع في البنية التحتية المدنية"],
       ["2014","الحصول على تصنيف الدرجة الأولى"],
       ["2020","إطلاق قسم الأنظمة الكهروميكانيكية المتكاملة"],
@@ -442,7 +442,7 @@ const dictionary = {
     joinTeam: "انضم إلى فريقنا.", tellUsProject: "حدّثنا عن مشروعك.", howCanHelp: "كيف يمكننا المساعدة؟",
     formIntro: "شارك بعض التفاصيل وسيتواصل معك العضو المناسب من فريقنا خلال يومي عمل.",
     callUs: "اتصل بنا", emailUs: "راسلنا", headOffice: "المقر الرئيسي",
-    headOfficeAddress: "طريق الملك فهد، الرياض، المملكة العربية السعودية",
+    headOfficeAddress: "عمان - شارع ام السماق عمارة رقم 10، المملكة الاردنية الهاشمية ",
     thankYou: "شكراً لتواصلك معنا.",
     thankYouText: "تم استلام طلبك. سيتواصل معك فريقنا قريباً.",
     sendAnother: "إرسال طلب آخر",
@@ -467,7 +467,7 @@ const dictionary = {
     quoteText: "شارك متطلبات مشروعك. سيراجعها فريقنا بعناية ويرد بالخطوات التالية المناسبة.",
     contactEyebrow: "اتصل بنا", contactTitle: "نحن مستعدون للاستماع.",
     contactText: "سواء كان لديك مشروع أو فرصة شراكة أو سؤال، يسعدنا التواصل معك.",
-    headOfficeLocation: "المقر الرئيسي للرفايعة", kingFahdRoad: "طريق الملك فهد، الرياض",
+    headOfficeLocation: "المقر الرئيسي لشركه الرفايعة", kingFahdRoad: "عمان - شارع ام السماق عمارة رقم 10",
     // Footer
     footerTagline1: "ثقة هندسية.", footerTagline2: "نبني قيمة تدوم.",
     footerCompany: "الشركة", footerServices: "الخدمات", footerProjects: "المشاريع", footerResources: "المصادر",
@@ -475,8 +475,8 @@ const dictionary = {
     footerServicesLinks: ["الإنشاء","البنية التحتية","الكهروميكانيكية","الهندسة","التشطيبات","الصيانة"],
     footerProjectsLinks: ["جميع المشاريع","مشاريع قيد التنفيذ","المشاريع المكتملة"],
     footerResourcesLinks: ["الملف التعريفي","الأخبار والرؤى","الأسئلة الشائعة","التحميلات"],
-    footerContact: "تواصل معنا", footerAddress: "طريق الملك فهد\nالرياض، المملكة العربية السعودية",
-    copyright: "© 2025 شركة الرفايعة للهندسة والمقاولات",
+    footerContact: "تواصل معنا", footerAddress: "عمان - شارع ام السماق عمارة رقم 10\n، المملكة الاردنية الهاشمية",
+    copyright: "© 2026 شركة الرفايعة للهندسة والمقاولات",
     privacyPolicy: "سياسة الخصوصية", termsConditions: "الشروط والأحكام",
     madeForProgress: "صُنع من أجل التقدم.",
     // Category labels
@@ -485,8 +485,8 @@ const dictionary = {
     catHospitality: "ضيافة", catHealthcare: "رعاية صحية",
     catEducation: "تعليم", catGovernment: "حكومي",
     catCompleted: "مكتمل", catOngoing: "قيد التنفيذ", catUpcoming: "قادم",
-    saudiArabia: "المملكة العربية السعودية", riyadh: "الرياض", jeddah: "جدة",
-    dammam: "الدمام", alKhobar: "الخبر",
+    jordan: "المملكة الاردنية الهاشمية", amman: "عمان",
+    Irbid: "اربد", alKhobar: "الخبر",
     companyProfile: "الملف التعريفي", newsAndInsights: "الأخبار والرؤى",
     ourTeam: "فريقنا", certifications: "الشهادات",
     qualitySafety: "الجودة والسلامة", sustainability: "الاستدامة",
@@ -523,22 +523,22 @@ type Project = {
 
 const projects: Project[] = [
   { name: { en: "Al Waha Business District", ar: "حي الواحة التجاري" },
-    place: { en: "Riyadh", ar: "الرياض" }, type: { en: "Commercial", ar: "تجاري" },
+    place: { en: "Amman", ar: "عمان" }, type: { en: "Commercial", ar: "تجاري" },
     year: "2024", status: { en: "Completed", ar: "مكتمل" }, image: images.commercial },
-  { name: { en: "North Riyadh Residences", ar: "مساكن شمال الرياض" },
-    place: { en: "Riyadh", ar: "الرياض" }, type: { en: "Residential", ar: "سكني" },
+  { name: { en: "North Riyadh Residences", ar: "مساكن شمال عمان" },
+    place: { en: "Amman", ar: "عمان" }, type: { en: "Residential", ar: "سكني" },
     year: "2025", status: { en: "Ongoing", ar: "قيد التنفيذ" }, image: images.residential },
   { name: { en: "Industrial Logistics Hub", ar: "مركز الخدمات اللوجستية الصناعي" },
-    place: { en: "Dammam", ar: "الدمام" }, type: { en: "Industrial", ar: "صناعي" },
+    place: { en: "Irbid", ar: "اربد" }, type: { en: "Industrial", ar: "صناعي" },
     year: "2024", status: { en: "Completed", ar: "مكتمل" }, image: images.concrete },
   { name: { en: "Civic Administration Center", ar: "مركز الإدارة المدنية" },
-    place: { en: "Jeddah", ar: "جدة" }, type: { en: "Government", ar: "حكومي" },
+    place: { en: "Amman", ar: "عمان" }, type: { en: "Government", ar: "حكومي" },
     year: "2025", status: { en: "Ongoing", ar: "قيد التنفيذ" }, image: images.civic },
   { name: { en: "Eastern Utilities Corridor", ar: "ممر المرافق الشرقي" },
     place: { en: "Al Khobar", ar: "الخبر" }, type: { en: "Infrastructure", ar: "بنية تحتية" },
     year: "2023", status: { en: "Completed", ar: "مكتمل" }, image: images.detail },
   { name: { en: "Meridian Medical Campus", ar: "مجمع ميريديان الطبي" },
-    place: { en: "Riyadh", ar: "الرياض" }, type: { en: "Healthcare", ar: "رعاية صحية" },
+    place: { en: "Amman", ar: "عمان" }, type: { en: "Healthcare", ar: "رعاية صحية" },
     year: "2026", status: { en: "Upcoming", ar: "قادم" }, image: images.construction },
 ];
 
@@ -563,8 +563,12 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
     shield: <><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" /><path d="m9 12 2 2 4-5" /></>,
     tools: <><path d="m14 7 3-3 3 3-3 3M14 7l-9 9a2 2 0 0 0 3 3l9-9M5 5l4 4" /></>,
     users: <><circle cx="9" cy="8" r="4" /><path d="M2 21v-2a7 7 0 0 1 14 0v2M17 4a4 4 0 0 1 0 8M19 15a6 6 0 0 1 3 5" /></>,
+    // 👇 الأيقونات الجديدة 👇
+    facebook: <path fill="currentColor" stroke="none" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
+    whatsapp: <path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />,
+    linkedin: <><path fill="currentColor" stroke="none" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect fill="currentColor" stroke="none" x="2" y="9" width="4" height="12" /><circle fill="currentColor" stroke="none" cx="4" cy="4" r="2" /></>,
   };
-  return <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{paths[name]}</svg>;
+  return <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{paths[name]}</svg>;
 }
 
 // ========== LOGO ==========
@@ -621,6 +625,24 @@ function SectionHead({ eyebrow, title, text, center = false }: { eyebrow: string
 function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState("");
+  const [langMenuOpen, setLangMenuOpen] = useState(false); 
+  
+  // 👇 1. تعريف المرجع (Reference) للقائمة 👇
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  // 👇 2. الكود الذي يغلق القائمة عند النقر خارجها 👇
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setLangMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const t = dictionary[lang];
   const nav = [
     ["home", t.home], ["about", t.about], ["services", t.services], ["projects", t.projects],
@@ -637,16 +659,34 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
       ? ["من نحن","فريقنا","الشهادات","الجودة والسلامة","الاستدامة","الوظائف"]
       : ["About Us","Our Team","Certifications","Quality & Safety","Sustainability","Careers"],
   };
+  
   return (
     <>
-      <div className="topbar"><div className="container topbar-inner">
-  <span className="topbar-end">{t.workingHours}</span>
-  <span><Icon name="mail" size={15} /> Alrafaiah_co@hotmail.com</span>
-  <span><Icon name="phone" size={15} /> +962 079 5287728</span>
-</div></div>
+      <div className="topbar">
+        <div
+          className="container topbar-inner"
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '10px 20px',
+            width: '100%',
+            padding: '0 40px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
+            <span><Icon name="mail" size={15} /> Alrafaiah_co@hotmail.com</span>
+            <span><Icon name="phone" size={15} /> +962 079 5287728</span>
+          </div>
+          <span>{t.workingHours}</span>
+        </div>
+      </div>
+
       <header className="navbar">
         <div className="container nav-inner" style={{ direction: "ltr" }}>
           <Logo />
+          
           <nav className="desktop-nav" aria-label="Main navigation" style={{ direction: lang === "ar" ? "rtl" : "ltr" }}>
             {nav.map(([id, label]) => (
               <div className="nav-item" key={id} onMouseEnter={() => setDropdown(id)} onMouseLeave={() => setDropdown("")}>
@@ -657,13 +697,60 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
               </div>
             ))}
           </nav>
-         <div className="nav-actions" style={{ direction: "ltr" }}>
-         <button className="lang" onClick={() => setLang(lang === "en" ? "ar" : "en")}>{lang === "en" ? "العربية" : "English"}</button>
-         <Button onClick={() => go("quote")}>{t.quote}</Button>
-         <button className="menu-btn" aria-label="Open menu" onClick={() => setOpen(true)}><Icon name="menu" size={25} /></button>
-         </div>
+
+          {/* 👇 الحاوية الخاصة بالأزرار (الترجمة + اطلب عرض سعر) 👇 */}
+          <div className="nav-actions" style={{ direction: "ltr", display: "flex", alignItems: "center", gap: "13px" }}>
+            
+            {/* زر الترجمة */}
+            {/* 👇 3. تم إضافة ref={langMenuRef} هنا 👇 */}
+            <div ref={langMenuRef} style={{ position: "relative" , marginRight: "30px" }}>
+              <button
+                onClick={() => setLangMenuOpen(!langMenuOpen)}
+                style={{
+                  display: "flex", alignItems: "center", gap: "8px",
+                  border: "1px solid var(--line)", padding: "8px 16px",
+                  borderRadius: "6px", background: "var(--white)",
+                  fontWeight: "700", color: "var(--forest)", cursor: "pointer",
+                  fontSize: "13px", transition: "0.3s"
+                }}
+              >
+                {lang === "en" ? "English" : "العربية"} 
+                <Icon name="chevron" size={14} />
+              </button>
+              
+              {/* القائمة المنسدلة للترجمة */}
+              {langMenuOpen && (
+                <div style={{
+                  position: "absolute", top: "100%", left: 0, marginTop: "8px",
+                  background: "white", boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+                  borderRadius: "6px", border: "1px solid var(--line)",
+                  width: "100%", zIndex: 100, overflow: "hidden", minWidth: "100px"
+                }}>
+                  <button 
+                    onClick={() => { setLang("ar"); setLangMenuOpen(false); }}
+                    style={{ width: "100%", padding: "10px", border: "none", background: "transparent", cursor: "pointer", textAlign: "center", fontSize: "12px", borderBottom: "1px solid #eee", fontWeight: lang === "ar" ? "bold" : "normal" }}
+                  >
+                    العربية
+                  </button>
+                  <button 
+                    onClick={() => { setLang("en"); setLangMenuOpen(false); }}
+                    style={{ width: "100%", padding: "10px", border: "none", background: "transparent", cursor: "pointer", textAlign: "center", fontSize: "12px", fontWeight: lang === "en" ? "bold" : "normal" }}
+                  >
+                    English
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* زر اطلب عرض سعر */}
+            <Button onClick={() => go("quote")}>{t.quote}</Button>
+            
+            {/* زر القائمة للموبايل */}
+            <button className="menu-btn" aria-label="Open menu" onClick={() => setOpen(true)}><Icon name="menu" size={50} /></button>
+          </div>
         </div>
       </header>
+
       <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
         <div className="mobile-top" style={{ direction: "ltr" }}><Logo /><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
         <div className="mobile-links">{nav.map(([id, label], i) => <button key={id} onClick={() => { go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
@@ -672,6 +759,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
     </>
   );
 }
+
 
 // ========== STATS ==========
 function Stats() {
@@ -692,7 +780,7 @@ function ProjectCard({ project, large = false }: { project: Project; large?: boo
       <div className="project-info">
         <span>{project.type[lang]} · {project.year}</span>
         <h3>{project.name[lang]}</h3>
-        <p><Icon name="map" size={16} /> {project.place[lang]}، {t.saudiArabia}</p>
+        <p><Icon name="map" size={16} /> {project.place[lang]}، {t.jordan}</p>
         <button aria-label={`View ${project.name[lang]}`}><Icon name="arrow" /></button>
       </div>
     </article>
@@ -747,13 +835,16 @@ function Home() {
         </div>
       </section>
 
+      {/* 👇 هنا تم حذف الكروت الستة وإبقاء العنوان الرئيسي فقط 👇 */}
       <section className="section services-section">
         <div className="container">
-          <div className="head-row"><SectionHead eyebrow={t.servicesEyebrow} title={t.servicesTitle} text={t.servicesText} /><span className="section-index">02</span></div>
-          <div className="services-grid">
-            {serviceItems.map((s, i) => <article className="service-card" key={s.name.en}><div className="service-top"><span>0{i + 1}</span><Icon name={s.icon} size={30} /></div><h3>{s.name[lang]}</h3><p>{s.desc[lang]}</p><button onClick={() => go("service-detail")}>{t.viewDetails} <Icon name="arrow" /></button></article>)}
+          <div className="head-row">
+            <SectionHead eyebrow={t.servicesEyebrow} title={t.servicesTitle} text={t.servicesText} />
+            <span className="section-index">02</span>
           </div>
-          <div className="section-link"><Button variant="secondary" onClick={() => go("services")}>{t.exploreAllServices}</Button></div>
+          <div className="section-link">
+            <Button variant="secondary" onClick={() => go("services")}>{t.exploreAllServices}</Button>
+          </div>
         </div>
       </section>
 
@@ -765,17 +856,10 @@ function Home() {
         </div>
       </section>
 
-      <section className="sectors">
-        <div className="container sectors-inner">
-          <div className="sectors-copy"><Eyebrow light>{t.sectorsEyebrow}</Eyebrow><h2>{t.sectorsTitle}</h2><p>{t.sectorsText}</p><Button variant="light" onClick={() => go("sectors")}>{t.exploreAllSectors}</Button></div>
-          <div className="sector-list">{[t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHospitality,t.catHealthcare,t.catEducation,t.catGovernment].map((sector, i) => <button key={sector} onClick={() => go("sectors")}><span>0{i + 1}</span>{sector}<Icon name="arrow" /></button>)}</div>
-        </div>
-      </section>
-
       <section className="section why">
         <div className="container">
           <SectionHead eyebrow={t.whyEyebrow} title={t.whyTitle} text={t.whyText} center />
-          <div className="values-grid">{[
+          <div className="values-grid">{[ 
             [t.why1Big, t.why1Title, t.why1Text],
             [t.why2Big, t.why2Title, t.why2Text],
             [t.why3Big, t.why3Title, t.why3Text],
@@ -784,20 +868,21 @@ function Home() {
         </div>
       </section>
 
-      <Process />
-      <Quality />
-      <Certifications />
       <News />
+      <Quality />
+
+      <section className="sectors">
+        <div className="container sectors-inner">
+          <div className="sectors-copy"><Eyebrow light>{t.sectorsEyebrow}</Eyebrow><h2>{t.sectorsTitle}</h2><p>{t.sectorsText}</p><Button variant="light" onClick={() => go("sectors")}>{t.exploreAllSectors}</Button></div>
+          <div className="sector-list">{[t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHospitality,t.catHealthcare,t.catEducation,t.catGovernment].map((sector, i) => <button key={sector} onClick={() => go("sectors")}><span>0{i + 1}</span>{sector}<Icon name="arrow" /></button>)}</div>
+        </div>
+      </section>
+      
       <FinalCta />
     </main>
   );
 }
 
-// ========== PROCESS ==========
-function Process() {
-  const t = dictionary[useLang()];
-  return <section className="section process"><div className="container"><SectionHead eyebrow={t.processEyebrow} title={t.processTitle} /><div className="process-line">{t.processSteps.map((s, i) => <div className="process-step" key={s}><span>{String(i + 1).padStart(2, "0")}</span><i /><h3>{s}</h3></div>)}</div></div></section>;
-}
 
 // ========== QUALITY ==========
 function Quality() {
@@ -813,19 +898,7 @@ function Quality() {
   );
 }
 
-// ========== CERTIFICATIONS ==========
-function Certifications() {
-  const t = dictionary[useLang()];
-  return (
-    <section className="section certifications"><div className="container">
-      <SectionHead eyebrow={t.certEyebrow} title={t.certTitle} text={t.certText} center />
-      <div className="cert-grid">{[
-        ["ISO","9001:2015",t.cert1],["ISO","45001:2018",t.cert2],["ISO","14001:2015",t.cert3],["CLASS","Grade I",t.cert4]
-      ].map(([mark, code, name]) => <div className="cert" key={code}><strong>{mark}</strong><span>{code}</span><small>{name}</small></div>)}</div>
-      <div className="trusted"><span>{t.trustedBy}</span><div>{["PIF","ROSHN","MODON","SABIC","aramco","MOMRAH"].map((x) => <b key={x}>{x}</b>)}</div></div>
-    </div></section>
-  );
-}
+
 
 // ========== NEWS ==========
 function News() {
@@ -869,14 +942,14 @@ function Timeline() {
 function ServicesPage() {
   const lang = useLang();
   const t = dictionary[lang];
-  return <main><PageHero eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} text={t.servicesPageText} image={images.detail} /><section className="section"><div className="container"><SectionHead eyebrow={t.endToEndEyebrow} title={t.endToEndTitle} text={t.endToEndText} /><div className="service-list">{serviceItems.map((s, i) => <article key={s.name.en}><span>0{i + 1}</span><div className="service-icon"><Icon name={s.icon} size={34} /></div><div><h2>{s.name[lang]}</h2><p>{s.desc[lang]}</p><ul>{(i < 2 ? t.serviceBulletsA : t.serviceBulletsB).map(x => <li key={x}><Icon name="check" size={16} />{x}</li>)}</ul></div><button onClick={() => go("service-detail")}><Icon name="arrow" /></button></article>)}</div></div></section><Process /><FinalCta /></main>;
+  return <main><PageHero eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} text={t.servicesPageText} image={images.detail} /><section className="section"><div className="container"><SectionHead eyebrow={t.endToEndEyebrow} title={t.endToEndTitle} text={t.endToEndText} /><div className="service-list">{serviceItems.map((s, i) => <article key={s.name.en}><span>0{i + 1}</span><div className="service-icon"><Icon name={s.icon} size={34} /></div><div><h2>{s.name[lang]}</h2><p>{s.desc[lang]}</p><ul>{(i < 2 ? t.serviceBulletsA : t.serviceBulletsB).map(x => <li key={x}><Icon name="check" size={16} />{x}</li>)}</ul></div><button onClick={() => go("service-detail")}><Icon name="arrow" /></button></article>)}</div></div></section><FinalCta /></main>;
 }
 
 // ========== SERVICE DETAIL ==========
 function ServiceDetail() {
   const t = dictionary[useLang()];
   return <main><PageHero eyebrow={t.sdEyebrow} title={t.sdTitle} text={t.sdText} image={images.construction} />
-    <section className="section"><div className="container detail-layout"><aside><b>{t.onThisPage}</b>{t.sdToc.map(x => <a href={`#${x}`} key={x}>{x}</a>)}</aside><div><SectionHead eyebrow={t.sdOverviewEyebrow} title={t.sdOverviewTitle} /><p className="lead">{t.sdLead}</p><p>{t.sdP}</p><h2 className="content-title">{t.sdWhatWeDo}</h2><div className="capability-grid">{t.sdCaps.map((x, i) => <div key={x}><span>0{i + 1}</span><h3>{x}</h3><p>{t.sdCapText}</p></div>)}</div></div></div></section><Process /><Quality /><section className="section"><div className="container"><SectionHead eyebrow={t.sdRelatedEyebrow} title={t.sdRelatedTitle} /><div className="project-row">{projects.slice(0, 3).map(p => <ProjectCard key={p.name.en} project={p} />)}</div></div></section><FaqSection /><FinalCta /></main>;
+    <section className="section"><div className="container detail-layout"><aside><b>{t.onThisPage}</b>{t.sdToc.map(x => <a href={`#${x}`} key={x}>{x}</a>)}</aside><div><SectionHead eyebrow={t.sdOverviewEyebrow} title={t.sdOverviewTitle} /><p className="lead">{t.sdLead}</p><p>{t.sdP}</p><h2 className="content-title">{t.sdWhatWeDo}</h2><div className="capability-grid">{t.sdCaps.map((x, i) => <div key={x}><span>0{i + 1}</span><h3>{x}</h3><p>{t.sdCapText}</p></div>)}</div></div></div></section><Quality /><section className="section"><div className="container"><SectionHead eyebrow={t.sdRelatedEyebrow} title={t.sdRelatedTitle} /><div className="project-row">{projects.slice(0, 3).map(p => <ProjectCard key={p.name.en} project={p} />)}</div></div></section><FaqSection /><FinalCta /></main>;
 }
 
 // ========== PROJECTS PAGE ==========
@@ -940,7 +1013,7 @@ function CompanyPage() {
     ["Omar Al-Harbi", t.teamRoles[2]],
     ["Sarah Al-Qahtani", t.teamRoles[3]],
   ];
-  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><Quality /><Certifications /><Downloads /><FinalCta /></main>;
+  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><Quality /><Downloads /><FinalCta /></main>;
 }
 
 // ========== CAREERS PAGE ==========
@@ -1060,7 +1133,16 @@ function Footer() {
     return "company";
   };
   return <footer><div className="container footer-top">
-    <div className="footer-brand"><Logo light /><p>{t.footerTagline1}<br />{t.footerTagline2}</p><div className="socials"><button>in</button><button>ig</button><button>f</button></div></div>
+    <div className="footer-brand"><Logo light /><p>{t.footerTagline1}<br />{t.footerTagline2}</p>
+      
+      {/* 👇 هنا تم استبدال النصوص بالأيقونات 👇 */}
+      <div className="socials">
+        <button aria-label="LinkedIn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="linkedin" size={16} /></button>
+        <button aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="whatsapp" size={16} /></button>
+        <button aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="facebook" size={16} /></button>
+      </div>
+
+    </div>
     {cols.map(([title, links]) => <div className="footer-col" key={title}><b>{title}</b>{links.map(x => <button key={x} onClick={() => go(linkTo(title, x))}>{x}</button>)}</div>)}
     <div className="footer-contact"><b>{t.footerContact}</b><p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p><a href="tel:+962 079 5287728">+962 079 5287728</a><a href="mailto:Alrafaiah_co@hotmail.com">Alrafaiah_co@hotmail.com</a></div>
   </div><div className="container footer-bottom"><span>{t.copyright}</span><div><button>{t.privacyPolicy}</button><button>{t.termsConditions}</button></div><span>{t.madeForProgress}</span></div></footer>;
