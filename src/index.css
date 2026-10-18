@@ -121,9 +121,34 @@ img { display: block; width: 100%; }
 .filter-row { display: flex; gap: 26px; border-bottom: 1px solid var(--line); overflow-x: auto; margin-bottom: 32px; }
 .filter-row button { border: 0; background: none; padding: 0 0 14px; color: #78817e; font-size: 11px; white-space: nowrap; position: relative; }
 .filter-row button.active { color: var(--forest); font-weight: 700; }.filter-row button.active:after { content:""; height: 2px; background: var(--brand); position: absolute; bottom: -1px; left: 0; right: 0; }
-.projects-grid { display: grid; grid-template-columns: 1.25fr .75fr; grid-template-rows: 280px 280px; gap: 16px; }
-.project-card { position: relative; overflow: hidden; color: white; cursor: pointer; min-height: 320px; }
-.project-large { grid-row: span 2; }.project-card > img { height: 100%; object-fit: cover; transition: transform .55s ease; }.project-card:hover > img { transform: scale(1.035); }
+/* جعل الشبكة متساوية (عمودين متساويين) */
+.projects-grid { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 24px; 
+}
+/* تحديد ارتفاع ثابت ومتوسط لجميع الصور لتبدو متساوية */
+.project-card { 
+  position: relative; 
+  overflow: hidden; 
+  color: white; 
+  cursor: pointer; 
+  height: 380px; /* الارتفاع المتوسط للصور */
+  border-radius: 8px; /* حواف ناعمة اختيارية */
+}
+/* إلغاء تأثير الصورة الكبيرة القديم */
+.project-large { 
+  grid-row: span 1; 
+}
+.project-card > img { 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform .55s ease; 
+}
+.project-card:hover > img { 
+  transform: scale(1.035); 
+}
+
 .project-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,28,23,.9), transparent 65%); }
 .project-status { position: absolute; top: 20px; left: 20px; background: var(--white); color: var(--forest); padding: 7px 10px; font-size: 8px; letter-spacing: .1em; font-weight: 800; text-transform: uppercase; }
 [dir="rtl"] .project-status { left: auto; right: 20px; }
@@ -340,3 +365,46 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
 
 
 
+
+
+
+/* تخصيص قائمة الهواتف لتكون جزءاً من الشاشة وليس ملء الشاشة */
+.mobile-menu {
+  inset: auto !important; /* إزالة التمدد الكامل */
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important; /* تثبيت القائمة على اليمين */
+  width: 45vw !important; /* العرض هنا (30% من الشاشة). إذا أردت الربع بالضبط غيرها إلى 25vw */
+  min-width: 250px !important; /* لضمان عدم صغر الكلمات جداً على الشاشات الصغيرة */
+  box-shadow: -10px 0 30px rgba(0,0,0,0.15) !important; /* إضافة ظل ليبدو التصميم احترافياً */
+}
+
+
+
+/* تعديل مسافات القائمة الداخلية لتناسب الحجم الجديد */
+.mobile-links button {
+  font-size: 16px !important; /* تصغير الخط قليلاً ليتناسب مع العرض */
+  padding: 12px 0 !important;
+}
+
+
+
+
+
+
+
+/* ===== الطبقة الشفافة خلف قائمة الهواتف ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0; /* تغطي الشاشة بالكامل */
+  background-color: rgba(0, 0, 0, 0.4); /* لون أسود شفاف */
+  z-index: 90; /* أقل من القائمة (100) وأعلى من الموقع */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}

@@ -475,7 +475,7 @@ const dictionary = {
     footerServicesLinks: ["الإنشاء","البنية التحتية","الكهروميكانيكية","الهندسة","التشطيبات","الصيانة"],
     footerProjectsLinks: ["جميع المشاريع","مشاريع قيد التنفيذ","المشاريع المكتملة"],
     footerResourcesLinks: ["الملف التعريفي","الأخبار والرؤى","الأسئلة الشائعة","التحميلات"],
-    footerContact: "تواصل معنا", footerAddress: "عمان - شارع ام السماق عمارة رقم 10\n، المملكة الاردنية الهاشمية",
+    footerContact: "تواصل معنا", footerAddress: "عمان - شارع ام السماق عمارة رقم 10\n المملكة الاردنية الهاشمية",
     copyright: "© 2026 شركة الرفايعة للهندسة والمقاولات",
     privacyPolicy: "سياسة الخصوصية", termsConditions: "الشروط والأحكام",
     madeForProgress: "صُنع من أجل التقدم.",
@@ -703,12 +703,12 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
             
             {/* زر الترجمة */}
             {/* 👇 3. تم إضافة ref={langMenuRef} هنا 👇 */}
-            <div ref={langMenuRef} style={{ position: "relative" , marginRight: "30px" }}>
+            <div ref={langMenuRef} style={{ position: "relative" , marginRight: "40px" }}>
               <button
                 onClick={() => setLangMenuOpen(!langMenuOpen)}
                 style={{
                   display: "flex", alignItems: "center", gap: "8px",
-                  border: "1px solid var(--line)", padding: "8px 16px",
+                  border: "2px solid var(--line)", padding: "8px 16px",
                   borderRadius: "6px", background: "var(--white)",
                   fontWeight: "700", color: "var(--forest)", cursor: "pointer",
                   fontSize: "13px", transition: "0.3s"
@@ -750,9 +750,15 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
           </div>
         </div>
       </header>
+            {/* 👇 هذه الطبقة الشفافة تغلق القائمة عند الضغط عليها 👇 */}
+      <div 
+        className={`menu-overlay ${open ? "open" : ""}`} 
+        onClick={() => setOpen(false)}
+      ></div>
 
+      <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}></div>   
       <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
-        <div className="mobile-top" style={{ direction: "ltr" }}><Logo /><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
+        <div className="mobile-top" style={{ direction: "ltr", justifyContent: "flex-end" }}><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
         <div className="mobile-links">{nav.map(([id, label], i) => <button key={id} onClick={() => { go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
         <Button onClick={() => { go("quote"); setOpen(false); }}>{t.quote}</Button>
       </div>
@@ -835,24 +841,13 @@ function Home() {
         </div>
       </section>
 
-      {/* 👇 هنا تم حذف الكروت الستة وإبقاء العنوان الرئيسي فقط 👇 */}
-      <section className="section services-section">
-        <div className="container">
-          <div className="head-row">
-            <SectionHead eyebrow={t.servicesEyebrow} title={t.servicesTitle} text={t.servicesText} />
-            <span className="section-index">02</span>
-          </div>
-          <div className="section-link">
-            <Button variant="secondary" onClick={() => go("services")}>{t.exploreAllServices}</Button>
-          </div>
-        </div>
-      </section>
+
 
       <section className="section projects-section">
         <div className="container">
           <div className="head-row"><SectionHead eyebrow={t.projectsEyebrow} title={t.projectsTitle} text={t.projectsText} /><Button variant="secondary" onClick={() => go("projects")}>{t.viewAll}</Button></div>
           <div className="filter-row" role="tablist">{filters.map((item, i) => <button role="tab" aria-selected={filter === i} className={filter === i ? "active" : ""} onClick={() => setFilter(i)} key={item}>{item}</button>)}</div>
-          <div className="projects-grid">{shown.length ? shown.map((p, i) => <ProjectCard project={p} large={i === 0} key={p.name.en} />) : <div className="empty">{t.noProjects}</div>}</div>
+          <div className="projects-grid">{shown.length ? shown.map((p, i) => <ProjectCard project={p} key={p.name.en} />) : <div className="empty">{t.noProjects}</div>}</div>
         </div>
       </section>
 
@@ -868,7 +863,7 @@ function Home() {
         </div>
       </section>
 
-      <News />
+     
       <Quality />
 
       <section className="sectors">
@@ -1127,26 +1122,63 @@ function Footer() {
   ];
   const linkTo = (title: string, x: string) => {
     if (x === "FAQ" || x === "الأسئلة الشائعة") return "faq";
-    if (x === "Downloads" || x === "التحميلات") return "downloads";
     if (title === t.footerServices) return "services";
     if (title === t.footerProjects) return "projects";
     return "company";
   };
-  return <footer><div className="container footer-top">
-    <div className="footer-brand"><Logo light /><p>{t.footerTagline1}<br />{t.footerTagline2}</p>
-      
-      {/* 👇 هنا تم استبدال النصوص بالأيقونات 👇 */}
-      <div className="socials">
-        <button aria-label="LinkedIn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="linkedin" size={16} /></button>
-        <button aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="whatsapp" size={16} /></button>
-        <button aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="facebook" size={16} /></button>
+
+  return (
+    // أضفنا dir="ltr" لجعل التخطيط ثابتاً من اليسار لليمين
+    <footer dir="ltr" style={{ textAlign: "left" }}>
+      <div className="container footer-top">
+        
+        {/* الشعار والنبذة */}
+        <div className="footer-brand" style={{ textAlign: "left" }}>
+          <Logo light />
+          <p>{t.footerTagline1}<br />{t.footerTagline2}</p>
+          
+          {/* الأيقونات الاجتماعية */}
+          <div className="socials" style={{ justifyContent: "flex-start" }}>
+            <button aria-label="LinkedIn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="linkedin" size={16} /></button>
+            <button aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="whatsapp" size={16} /></button>
+            <button aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="facebook" size={16} /></button>
+          </div>
+        </div>
+
+        {/* الأعمدة (الشركة، الخدمات، إلخ) */}
+        {cols.map(([title, links]) => (
+          <div className="footer-col" key={title} style={{ textAlign: "left" }}>
+            <b>{title}</b>
+            {links.map(x => (
+              <button key={x} onClick={() => go(linkTo(title, x))} style={{ textAlign: "left" }}>
+                {x}
+              </button>
+            ))}
+          </div>
+        ))}
+
+        {/* معلومات التواصل */}
+        <div className="footer-contact" style={{ textAlign: "left" }}>
+          <b>{t.footerContact}</b>
+          <p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p>
+          <a href="tel:+962 079 5287728">+962 079 5287728</a>
+          <a href="mailto:Alrafaiah_co@hotmail.com">Alrafaiah_co@hotmail.com</a>
+        </div>
       </div>
 
-    </div>
-    {cols.map(([title, links]) => <div className="footer-col" key={title}><b>{title}</b>{links.map(x => <button key={x} onClick={() => go(linkTo(title, x))}>{x}</button>)}</div>)}
-    <div className="footer-contact"><b>{t.footerContact}</b><p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p><a href="tel:+962 079 5287728">+962 079 5287728</a><a href="mailto:Alrafaiah_co@hotmail.com">Alrafaiah_co@hotmail.com</a></div>
-  </div><div className="container footer-bottom"><span>{t.copyright}</span><div><button>{t.privacyPolicy}</button><button>{t.termsConditions}</button></div><span>{t.madeForProgress}</span></div></footer>;
-}
+      {/* الشريط السفلي (حقوق النشر) */}
+      <div className="container footer-bottom">
+        <span>{t.copyright}</span>
+        <div>
+          <button>{t.privacyPolicy}</button>
+          <button>{t.termsConditions}</button>
+        </div>
+        <span>{t.madeForProgress}</span>
+      </div>
+    </footer>
+  );
+};
+
 
 // ========== APP ==========
 function App() {
