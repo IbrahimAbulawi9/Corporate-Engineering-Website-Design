@@ -235,10 +235,9 @@ const dictionary = {
     contactText: "Whether you have a project, a partnership opportunity, or a question, we would be pleased to hear from you.",
     headOfficeLocation: "Al-Rafaya Head Office", kingFahdRoad: "King Fahd Road, Riyadh",
     // Footer
-    footerTagline1: "Engineering confidence.", footerTagline2: "Building enduring value.",
     footerCompany: "Company", footerServices: "Services", footerProjects: "Projects", footerResources: "Resources",
     footerCompanyLinks: ["About Us","Our Team","Careers","Certifications"],
-    footerServicesLinks: ["Construction","Infrastructure","MEP","Engineering","Finishing","Maintenance"],
+    footerServicesLinks: ["Construction","Infrastructure","MEP","Maintenance"],
     footerProjectsLinks: ["All Projects","Ongoing Projects","Completed Projects"],
     footerResourcesLinks: ["Company Profile","News & Insights","FAQ","Downloads"],
     footerContact: "Contact", footerAddress: "King Fahd Road\nRiyadh, Saudi Arabia",
@@ -469,10 +468,9 @@ const dictionary = {
     contactText: "سواء كان لديك مشروع أو فرصة شراكة أو سؤال، يسعدنا التواصل معك.",
     headOfficeLocation: "المقر الرئيسي لشركه الرفايعة", kingFahdRoad: "عمان - شارع ام السماق عمارة رقم 10",
     // Footer
-    footerTagline1: "ثقة هندسية.", footerTagline2: "نبني قيمة تدوم.",
     footerCompany: "الشركة", footerServices: "الخدمات", footerProjects: "المشاريع", footerResources: "المصادر",
     footerCompanyLinks: ["من نحن","فريقنا","الوظائف","الشهادات"],
-    footerServicesLinks: ["الإنشاء","البنية التحتية","الكهروميكانيكية","الهندسة","التشطيبات","الصيانة"],
+    footerServicesLinks: ["الإنشاء","البنية التحتية","الكهروميكانيكية","الصيانة"],
     footerProjectsLinks: ["جميع المشاريع","مشاريع قيد التنفيذ","المشاريع المكتملة"],
     footerResourcesLinks: ["الملف التعريفي","الأخبار والرؤى","الأسئلة الشائعة","التحميلات"],
     footerContact: "تواصل معنا", footerAddress: "عمان - شارع ام السماق عمارة رقم 10\n المملكة الاردنية الهاشمية",
@@ -703,7 +701,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
             
             {/* زر الترجمة */}
             {/* 👇 3. تم إضافة ref={langMenuRef} هنا 👇 */}
-            <div ref={langMenuRef} style={{ position: "relative" , marginRight: "40px" }}>
+            <div ref={langMenuRef} style={{ position: "relative" }}>
               <button
                 onClick={() => setLangMenuOpen(!langMenuOpen)}
                 style={{
@@ -746,7 +744,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
             <Button onClick={() => go("quote")}>{t.quote}</Button>
             
             {/* زر القائمة للموبايل */}
-            <button className="menu-btn" aria-label="Open menu" onClick={() => setOpen(true)}><Icon name="menu" size={50} /></button>
+            <button className="menu-btn" aria-label="Open menu" onClick={() => setOpen(true)}><Icon name="menu" size={32} /></button>
           </div>
         </div>
       </header>
@@ -851,25 +849,13 @@ function Home() {
         </div>
       </section>
 
-      <section className="section why">
-        <div className="container">
-          <SectionHead eyebrow={t.whyEyebrow} title={t.whyTitle} text={t.whyText} center />
-          <div className="values-grid">{[ 
-            [t.why1Big, t.why1Title, t.why1Text],
-            [t.why2Big, t.why2Title, t.why2Text],
-            [t.why3Big, t.why3Title, t.why3Text],
-            [t.why4Big, t.why4Title, t.why4Text],
-          ].map(([big, title, text]) => <div className="value-card" key={title}><strong>{big}</strong><h3>{title}</h3><p>{text}</p></div>)}</div>
-        </div>
-      </section>
-
      
       <Quality />
 
       <section className="sectors">
         <div className="container sectors-inner">
           <div className="sectors-copy"><Eyebrow light>{t.sectorsEyebrow}</Eyebrow><h2>{t.sectorsTitle}</h2><p>{t.sectorsText}</p><Button variant="light" onClick={() => go("sectors")}>{t.exploreAllSectors}</Button></div>
-          <div className="sector-list">{[t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHospitality,t.catHealthcare,t.catEducation,t.catGovernment].map((sector, i) => <button key={sector} onClick={() => go("sectors")}><span>0{i + 1}</span>{sector}<Icon name="arrow" /></button>)}</div>
+          <div className="sector-list">{[t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHealthcare,t.catEducation,t.catGovernment].map((sector, i) => <button key={sector} onClick={() => go("sectors")}><span>0{i + 1}</span>{sector}<Icon name="arrow" /></button>)}</div>
         </div>
       </section>
       
@@ -995,7 +981,7 @@ function ProjectDetail() {
 // ========== SECTORS PAGE ==========
 function SectorsPage() {
   const t = dictionary[useLang()];
-  const sectors = [t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHospitality,t.catHealthcare,t.catEducation,t.catGovernment];
+  const sectors = [t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHealthcare,t.catEducation,t.catGovernment];
   return <main><PageHero eyebrow={t.sectorsPageEyebrow} title={t.sectorsPageTitle} text={t.sectorsPageText} /><section className="section"><div className="container sectors-page">{sectors.map((x,i) => <article key={x}><img src={[images.residential, images.commercial, images.concrete, images.detail, images.civic, images.construction][i%6]} alt="" /><div><span>0{i+1}</span><h2>{x}</h2><p>{t.sectorDesc}</p><button onClick={() => go("projects")}>{t.exploreProjects} <Icon name="arrow" /></button></div></article>)}</div></section><FinalCta /></main>;
 }
 
@@ -1067,44 +1053,146 @@ function DownloadsPage() {
 }
 
 // ========== FORM ==========
+const WEB3FORMS_ACCESS_KEY = "90393769-6c80-4b7e-8a02-468e2f0322ce";
+
 function FormSection({ type }: { type: "quote" | "contact" | "career" }) {
   const lang = useLang();
   const t = dictionary[lang];
   const [sent, setSent] = useState(false);
-  const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
   const isQuote = type === "quote";
-  return <section className="section form-section" id="application"><div className="container form-layout">
-    <div>
-      <Eyebrow>{type === "career" ? t.applyNow : t.startConversation}</Eyebrow>
-      <h2>{type === "career" ? t.joinTeam : isQuote ? t.tellUsProject : t.howCanHelp}</h2>
-      <p>{t.formIntro}</p>
-      <div className="contact-block">
-        <span><Icon name="phone" /><b>{t.callUs}</b><small>+962 079 5287728</small></span>
-        <span><Icon name="mail" /><b>{t.emailUs}</b><small>Alrafaiah_co@hotmail.com</small></span>
-        <span><Icon name="map" /><b>{t.headOffice}</b><small>{t.headOfficeAddress}</small></span>
+
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    
+    // إضافة مفتاح الوصول الخاص بـ Web3Forms
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    
+    // تحديد عنوان الرسالة
+    const subject = type === "quote" ? "طلب عرض سعر جديد" : type === "career" ? "طلب توظيف جديد" : "رسالة تواصل جديدة";
+    formData.append("subject", subject);
+
+    try {
+      // إرسال البيانات في الخلفية
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSent(true); // إظهار رسالة الشكر
+      } else {
+        alert("حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("تعذر الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت.");
+    }
+  };
+
+  return (
+    <section className="section form-section" id="application">
+      <div className="container form-layout">
+        <div>
+          <Eyebrow>{type === "career" ? t.applyNow : t.startConversation}</Eyebrow>
+          <h2>{type === "career" ? t.joinTeam : isQuote ? t.tellUsProject : t.howCanHelp}</h2>
+          <p>{t.formIntro}</p>
+          <div className="contact-block">
+            <span><Icon name="phone" /><b>{t.callUs}</b><small>+962 079 5287728</small></span>
+            <span><Icon name="mail" /><b>{t.emailUs}</b><small>Alrafaiah_co@hotmail.com</small></span>
+            <span><Icon name="map" /><b>{t.headOffice}</b><small>{t.headOfficeAddress}</small></span>
+          </div>
+        </div>
+        
+        {sent ? (
+          <div className="success">
+            <Icon name="check" size={36} />
+            <h3>{t.thankYou}</h3>
+            <p>{t.thankYouText}</p>
+            <Button onClick={() => setSent(false)}>{t.sendAnother}</Button>
+          </div>
+        ) : (
+          <form onSubmit={submit}>
+            <div className="form-grid">
+              <label>{t.fullName} *<input name="الاسم_الكامل" required placeholder={t.yourFullName} /></label>
+              
+              <label>
+                {type === "career" ? `${t.emailAddress} *` : t.company}
+                <input name="الشركة_أو_البريد" required={type === "career"} placeholder={type === "career" ? "name@email.com" : t.companyName} />
+              </label>
+              
+              <label>{t.emailAddress} *<input name="البريد_الإلكتروني" required type="email" placeholder="name@company.com" /></label>
+              
+              <label>{t.phoneNumber} *<input name="رقم_الجوال" required type="tel" placeholder="+962 079 5287728" /></label>
+              
+              {isQuote && (
+                <>
+                  <label>{t.projectType}
+                    <select name="نوع_المشروع" required defaultValue="">
+                      <option value="" disabled>{t.selectProjectType}</option>
+                      <option>{t.construction}</option>
+                      <option>{t.infrastructure}</option>
+                      <option>{t.mep}</option>
+                      <option>{t.fitOut}</option>
+                    </select>
+                  </label>
+                  
+                  <label>{t.projectLocation}<input name="موقع_المشروع" placeholder={t.cityRegion} /></label>
+                  <label>{t.estimatedArea}<input name="المساحة_التقديرية" placeholder={t.squareMeters} /></label>
+                  
+                  <label>{t.estimatedBudget}
+                    <select name="الميزانية_التقديرية" defaultValue="">
+                      <option value="" disabled>{t.selectBudget}</option>
+                      <option>{t.budget1}</option>
+                      <option>{t.budget2}</option>
+                      <option>{t.budget3}</option>
+                    </select>
+                  </label>
+                </>
+              )}
+              
+              {type === "career" && (
+                <>
+                  <label>{t.position}
+                    <select name="الوظيفة">
+                      <option>{lang === "ar" ? "مهندس مدني" : "Civil Engineer"}</option>
+                      <option>{lang === "ar" ? "مهندس موقع" : "Site Engineer"}</option>
+                      <option>{lang === "ar" ? "مدير مشروع" : "Project Manager"}</option>
+                    </select>
+                  </label>
+                  <label>{t.linkedin}<input name="لينكدإن" placeholder="linkedin.com/in/..." /></label>
+                </>
+              )}
+              
+              <label className="full">
+                {type === "career" ? t.coverLetter : t.projectDesc} *
+                <textarea name="الرسالة_أو_الوصف" required rows={6} placeholder={t.projectPlaceholder} />
+              </label>
+              
+              <label className="upload full">
+                <Icon name="download" />
+                <span>
+                  <b>{type === "career" ? t.uploadCv : t.uploadDocs}</b>
+                  <small>{t.fileTypes}</small>
+                </span>
+                <input type="file" name="الملف_المرفق" />
+              </label>
+            </div>
+            
+            <div className="form-submit">
+              <small>{t.privacyAgree}</small>
+              <Button type="submit">
+                {type === "career" ? t.submitApplication : isQuote ? t.submitRequest : t.sendMessage}
+              </Button>
+            </div>
+          </form>
+        )}
       </div>
-    </div>
-    {sent ? <div className="success"><Icon name="check" size={36} /><h3>{t.thankYou}</h3><p>{t.thankYouText}</p><Button onClick={() => setSent(false)}>{t.sendAnother}</Button></div> :
-    <form onSubmit={submit}><div className="form-grid">
-      <label>{t.fullName} *<input required placeholder={t.yourFullName} /></label>
-      <label>{type === "career" ? `${t.emailAddress} *` : t.company}<input required={type === "career"} placeholder={type === "career" ? "name@email.com" : t.companyName} /></label>
-      <label>{t.emailAddress} *<input required type="email" placeholder="name@company.com" /></label>
-      <label>{t.phoneNumber} *<input required type="tel" placeholder="+962 079 5287728" /></label>
-      {isQuote && <>
-        <label>{t.projectType}<select required defaultValue=""><option value="" disabled>{t.selectProjectType}</option><option>{t.construction}</option><option>{t.infrastructure}</option><option>{t.mep}</option><option>{t.fitOut}</option></select></label>
-        <label>{t.projectLocation}<input placeholder={t.cityRegion} /></label>
-        <label>{t.estimatedArea}<input placeholder={t.squareMeters} /></label>
-        <label>{t.estimatedBudget}<select defaultValue=""><option value="" disabled>{t.selectBudget}</option><option>{t.budget1}</option><option>{t.budget2}</option><option>{t.budget3}</option></select></label>
-      </>}
-      {type === "career" && <>
-        <label>{t.position}<select><option>{lang === "ar" ? "مهندس مدني" : "Civil Engineer"}</option><option>{lang === "ar" ? "مهندس موقع" : "Site Engineer"}</option><option>{lang === "ar" ? "مدير مشروع" : "Project Manager"}</option></select></label>
-        <label>{t.linkedin}<input placeholder="linkedin.com/in/..." /></label>
-      </>}
-      <label className="full">{type === "career" ? t.coverLetter : t.projectDesc} *<textarea required rows={6} placeholder={t.projectPlaceholder} /></label>
-      <label className="upload full"><Icon name="download" /><span><b>{type === "career" ? t.uploadCv : t.uploadDocs}</b><small>{t.fileTypes}</small></span><input type="file" /></label>
-    </div>
-    <div className="form-submit"><small>{t.privacyAgree}</small><Button type="submit">{type === "career" ? t.submitApplication : isQuote ? t.submitRequest : t.sendMessage}</Button></div></form>}
-  </div></section>;
+    </section>
+  );
 }
 
 function QuotePage() { const t = dictionary[useLang()]; return <main><PageHero eyebrow={t.quoteEyebrow} title={t.quoteTitle} text={t.quoteText} image={images.detail} /><FormSection type="quote" /></main>; }
@@ -1114,12 +1202,17 @@ function ContactPage() { const t = dictionary[useLang()]; return <main><PageHero
 function Footer() {
   const lang = useLang();
   const t = dictionary[lang];
-  const cols: [string, string[]][] = [
-    [t.footerCompany, [...t.footerCompanyLinks]],
-    [t.footerServices, [...t.footerServicesLinks]],
-    [t.footerProjects, [...t.footerProjectsLinks]],
-    [t.footerResources, [...t.footerResourcesLinks]],
-  ];
+  
+  // حالة لاكتشاف ما إذا كانت الشاشة صغيرة (هاتف)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const linkTo = (title: string, x: string) => {
     if (x === "FAQ" || x === "الأسئلة الشائعة") return "faq";
     if (title === t.footerServices) return "services";
@@ -1128,42 +1221,89 @@ function Footer() {
   };
 
   return (
-    // أضفنا dir="ltr" لجعل التخطيط ثابتاً من اليسار لليمين
     <footer dir="ltr" style={{ textAlign: "left" }}>
       <div className="container footer-top">
         
-        {/* الشعار والنبذة */}
-        <div className="footer-brand" style={{ textAlign: "left" }}>
-          <Logo light />
-          <p>{t.footerTagline1}<br />{t.footerTagline2}</p>
+        {/* 1. الشعار والنبذة والأيقونات */}
+        <div 
+          className="footer-brand" 
+          style={{ 
+            textAlign: "left", 
+            marginTop: "-10px",
+            gridColumn: isMobile ? "span 2" : "auto", // تأخذ العرض بالكامل في الهاتف
+            width: "100%",
+            marginBottom: isMobile ? "30px" : "0"
+          }}
+        >
+          <div style={{ marginLeft: "-10px", marginBottom: "25px" }}>
+            <Logo light />
+          </div>
           
           {/* الأيقونات الاجتماعية */}
-          <div className="socials" style={{ justifyContent: "flex-start" }}>
-            <button aria-label="LinkedIn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="linkedin" size={16} /></button>
-            <button aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="whatsapp" size={16} /></button>
-            <button aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Icon name="facebook" size={16} /></button>
+          <div className="socials" style={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "flex-start", marginTop: "20px", marginBottom: "25px" }}>
+            <button aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '250px', gap: '12px', fontWeight: 'bold', fontSize: '15px' }}>
+              <Icon name="whatsapp" size={30} /> WhatsApp
+            </button>
+            <button aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '250px', gap: '12px', fontWeight: 'bold', fontSize: '15px' }}>
+              <Icon name="facebook" size={30} /> Facebook
+            </button>
+            <button aria-label="LinkedIn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#0A66C2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '250px', gap: '12px', fontWeight: 'bold', fontSize: '15px' }}>
+              <Icon name="linkedin" size={30} /> LinkedIn
+            </button>
           </div>
+          
+          <p>{t.footerTagline1}<br />{t.footerTagline2}</p>
         </div>
 
-        {/* الأعمدة (الشركة، الخدمات، إلخ) */}
-        {cols.map(([title, links]) => (
-          <div className="footer-col" key={title} style={{ textAlign: "left" }}>
-            <b>{title}</b>
-            {links.map(x => (
-              <button key={x} onClick={() => go(linkTo(title, x))} style={{ textAlign: "left" }}>
+        {/* 2. حاوية الروابط الأربعة (شبكة 2x2 في الهاتف) */}
+        <div style={{
+          display: isMobile ? 'grid' : 'contents', // في الهاتف تصبح شبكة، وفي الكمبيوتر تختفي الحاوية لتبقى الأعمدة منفصلة
+          gridTemplateColumns: isMobile ? '1fr 1fr' : 'none', // عمودين متساويين في الهاتف
+          gap: isMobile ? '30px 20px' : '0',
+          width: '100%',
+          gridColumn: isMobile ? 'span 2' : 'auto'
+        }}>
+          
+          {/* عمود الشركة */}
+          <div className="footer-col" style={{ textAlign: "left" }}>
+            <b>{t.footerCompany}</b>
+            {t.footerCompanyLinks.map(x => (
+              <button key={x} onClick={() => go(linkTo(t.footerCompany, x))} style={{ textAlign: "left" }}>
                 {x}
               </button>
             ))}
           </div>
-        ))}
 
-        {/* معلومات التواصل */}
-        <div className="footer-contact" style={{ textAlign: "left" }}>
-          <b>{t.footerContact}</b>
-          <p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p>
-          <a href="tel:+962 079 5287728">+962 079 5287728</a>
-          <a href="mailto:Alrafaiah_co@hotmail.com">Alrafaiah_co@hotmail.com</a>
+          {/* عمود الخدمات */}
+          <div className="footer-col" style={{ textAlign: "left" }}>
+            <b>{t.footerServices}</b>
+            {t.footerServicesLinks.map(x => (
+              <button key={x} onClick={() => go(linkTo(t.footerServices, x))} style={{ textAlign: "left" }}>
+                {x}
+              </button>
+            ))}
+          </div>
+
+          {/* عمود المشاريع */}
+          <div className="footer-col" style={{ textAlign: "left" }}>
+            <b>{t.footerProjects}</b>
+            {t.footerProjectsLinks.map(x => (
+              <button key={x} onClick={() => go(linkTo(t.footerProjects, x))} style={{ textAlign: "left" }}>
+                {x}
+              </button>
+            ))}
+          </div>
+
+          {/* عمود تواصل معنا */}
+          <div className="footer-contact" style={{ textAlign: "left" }}>
+            <b>{t.footerContact}</b>
+            <p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p>
+            <a href="tel:+962 079 5287728" style={{ display: "block", marginBottom: "5px" }}>+962 079 5287728</a>
+            <a href="mailto:Alrafaiah_co@hotmail.com" style={{ display: "block", wordBreak: "break-all" }}>Alrafaiah_co@hotmail.com</a>
+          </div>
+          
         </div>
+
       </div>
 
       {/* الشريط السفلي (حقوق النشر) */}
