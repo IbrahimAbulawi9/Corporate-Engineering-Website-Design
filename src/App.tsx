@@ -36,7 +36,7 @@ const dictionary = {
     heroTitle: "Building Today. Shaping Tomorrow.",
     heroText: "Integrated engineering, construction, and project delivery built on precision, accountability, and an uncompromising commitment to quality.",
     explore: "Explore Our Projects", trusted: "Trusted engineering partner",
-    since: "Established 1998", scroll: "Discover our work",
+    since: "Established 2002", scroll: "Discover our work",
     heroSide1: "AL–RAFAYA", heroSide2: "ENGINEERING & CONTRACTING",
     // Stats
     statYears: "Years of Experience", statCompleted: "Completed Projects",
@@ -45,7 +45,7 @@ const dictionary = {
     // About (home)
     aboutEyebrow: "Who we are", aboutTitle: "Built on trust. Driven by engineering.",
     aboutLead: "Al-Rafayeh Company is a Jordanian engineering and contracting firm that executes complex, high-value projects throughout the Kingdom.",
-    aboutP: "Since 1998, we have earned the confidence of public and private sector clients by combining technical depth, disciplined execution, and local insight. From first concept to final handover, every project is managed with clarity and care.",
+    aboutP: "Since 2002, we have earned the confidence of public and private sector clients by combining technical depth, disciplined execution, and local insight. From first concept to final handover, every project is managed with clarity and care.",
     principle1Title: "Uncompromised Quality", principle1Text: "ISO-aligned systems at every stage",
     principle2Title: "Expert Teams", principle2Text: "320+ skilled professionals",
     learnMoreAbout: "Learn More About Us",
@@ -103,7 +103,7 @@ const dictionary = {
     aboutPageEyebrow: "About Al-Rafaya", aboutPageTitle: "Engineering progress. Building confidence.",
     aboutPageText: "For more than 26 years, we have helped shape the Kingdom's built environment through responsible, precise, and dependable delivery.",
     storyEyebrow: "Our story", storyTitle: "A Saudi company with an enduring ambition.",
-    storyLead: "Founded in Riyadh in 1998, Al-Rafaya began with a clear conviction: better engineering creates better outcomes for everyone.",
+    storyLead: "Founded in Amman in 2002, Al-Rafaya began with a clear conviction: better engineering creates better outcomes for everyone.",
     storyP: "Today, we bring together more than 320 professionals across construction, infrastructure, MEP, fit-out, and project management. Our growth has been deliberate—built on client trust, technical capability, and consistent delivery.",
     meetTeam: "Meet Our Team",
     visionTitle: "Our Vision", visionText: "To be the Kingdom's most trusted engineering and contracting partner, recognized for shaping resilient, sustainable places.",
@@ -119,7 +119,7 @@ const dictionary = {
     // Timeline
     journeyEyebrow: "Our journey", journeyTitle: "Built steadily. Growing purposefully.",
     timeline: [
-      ["1998","Company established in Riyadh"],
+      ["2002","Company established in Amman"],
       ["2006","Expanded into civil infrastructure"],
       ["2014","Achieved Grade I classification"],
       ["2020","Launched integrated MEP division"],
@@ -277,7 +277,7 @@ const dictionary = {
     // About (home)
     aboutEyebrow: "من نحن", aboutTitle: "بُنيت على الثقة. تقودها الهندسة.",
     aboutLead: "شركة الرفايعة هي شركة أردنية للهندسة والمقاولات، تنفذ مشاريع معقدة وعالية القيمة في جميع أنحاء المملكة.",
-    aboutP: "منذ عام 1998، اكتسبنا ثقة عملائنا من القطاعين العام والخاص من خلال الجمع بين العمق التقني والتنفيذ المنضبط والفهم المحلي العميق. من الفكرة الأولى حتى التسليم النهائي، يُدار كل مشروع بوضوح وعناية.",
+    aboutP: "منذ عام 2002، اكتسبنا ثقة عملائنا من القطاعين العام والخاص من خلال الجمع بين العمق التقني والتنفيذ المنضبط والفهم المحلي العميق. من الفكرة الأولى حتى التسليم النهائي، يُدار كل مشروع بوضوح وعناية.",
     principle1Title: "جودة بلا تنازلات", principle1Text: "أنظمة متوافقة مع ISO في كل مرحلة",
     principle2Title: "فرق خبيرة", principle2Text: "أكثر من 320 متخصصاً ماهراً",
     learnMoreAbout: "اعرف المزيد عنا",
