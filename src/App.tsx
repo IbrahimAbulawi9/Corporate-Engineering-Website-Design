@@ -44,13 +44,13 @@ const dictionary = {
     statSectors: "Sectors Served",
     // About (home)
     aboutEyebrow: "Who we are", aboutTitle: "Built on trust. Driven by engineering.",
-    aboutLead: "Al-Rafaya is a Saudi engineering and contracting company delivering complex, high-value projects across the Kingdom.",
+    aboutLead: "Al-Rafayeh Company is a Jordanian engineering and contracting firm that executes complex, high-value projects throughout the Kingdom.",
     aboutP: "Since 1998, we have earned the confidence of public and private sector clients by combining technical depth, disciplined execution, and local insight. From first concept to final handover, every project is managed with clarity and care.",
     principle1Title: "Uncompromised Quality", principle1Text: "ISO-aligned systems at every stage",
     principle2Title: "Expert Teams", principle2Text: "320+ skilled professionals",
     learnMoreAbout: "Learn More About Us",
     yearsExcellence: "YEARS OF", yearsExcellence2: "EXCELLENCE",
-    imageCaption: "Precision in every detail",
+   
     // Services section
     servicesEyebrow: "Our capabilities",
     servicesTitle: "Integrated expertise. One trusted partner.",
@@ -276,13 +276,13 @@ const dictionary = {
     statSectors: "قطاعات نخدمها",
     // About (home)
     aboutEyebrow: "من نحن", aboutTitle: "بُنيت على الثقة. تقودها الهندسة.",
-    aboutLead: "الرفايعة شركة أردنية للهندسة والمقاولات، تنفذ مشاريع معقدة وعالية القيمة في جميع أنحاء المملكة.",
+    aboutLead: "شركة الرفايعة هي شركة أردنية للهندسة والمقاولات، تنفذ مشاريع معقدة وعالية القيمة في جميع أنحاء المملكة.",
     aboutP: "منذ عام 1998، اكتسبنا ثقة عملائنا من القطاعين العام والخاص من خلال الجمع بين العمق التقني والتنفيذ المنضبط والفهم المحلي العميق. من الفكرة الأولى حتى التسليم النهائي، يُدار كل مشروع بوضوح وعناية.",
     principle1Title: "جودة بلا تنازلات", principle1Text: "أنظمة متوافقة مع ISO في كل مرحلة",
     principle2Title: "فرق خبيرة", principle2Text: "أكثر من 320 متخصصاً ماهراً",
     learnMoreAbout: "اعرف المزيد عنا",
     yearsExcellence: "عاماً من", yearsExcellence2: "التميّز",
-    imageCaption: "الدقة في كل تفصيلة",
+    
     // Services section
     servicesEyebrow: "قدراتنا",
     servicesTitle: "خبرة متكاملة. شريك واحد موثوق.",
@@ -625,10 +625,32 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   const [dropdown, setDropdown] = useState("");
   const [langMenuOpen, setLangMenuOpen] = useState(false); 
   
-  // 👇 1. تعريف المرجع (Reference) للقائمة 👇
+  // 👇 1. الكود الجديد الخاص بإخفاء الهيدر عند النزول 👇
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // إذا نزل المستخدم للأسفل أكثر من 100 بكسل، نخفي الهيدر
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        // إذا صعد للأعلى، نظهر الهيدر
+        setIsHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  // 👆 نهاية الكود الجديد 👆
+  
+  // 👇 2. تعريف المرجع (Reference) للقائمة 👇
   const langMenuRef = useRef<HTMLDivElement>(null);
 
-  // 👇 2. الكود الذي يغلق القائمة عند النقر خارجها 👇
+  // 👇 3. الكود الذي يغلق القائمة عند النقر خارجها 👇
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
@@ -681,7 +703,8 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
         </div>
       </div>
 
-      <header className="navbar">
+      {/* 👇 4. التعديل هنا: إضافة كلاس hide-navbar إذا كان isHidden صحيحاً 👇 */}
+      <header className={`navbar ${isHidden ? "hide-navbar" : ""}`}>
         <div className="container nav-inner" style={{ direction: "ltr" }}>
           <Logo />
           
@@ -700,7 +723,6 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
           <div className="nav-actions" style={{ direction: "ltr", display: "flex", alignItems: "center", gap: "13px" }}>
             
             {/* زر الترجمة */}
-            {/* 👇 3. تم إضافة ref={langMenuRef} هنا 👇 */}
             <div ref={langMenuRef} style={{ position: "relative" }}>
               <button
                 onClick={() => setLangMenuOpen(!langMenuOpen)}
@@ -824,7 +846,7 @@ function Home() {
           <div className="about-visual">
             <img src={images.construction} alt={t.aboutTitle} />
             <div className="experience"><strong>26</strong><span>{t.yearsExcellence}<br />{t.yearsExcellence2}</span></div>
-            <div className="image-caption">{t.imageCaption} <span>01 / 03</span></div>
+            
           </div>
           <div className="about-copy">
             <SectionHead eyebrow={t.aboutEyebrow} title={t.aboutTitle} />
