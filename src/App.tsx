@@ -250,7 +250,7 @@ const dictionary = {
     catHospitality: "Hospitality", catHealthcare: "Healthcare",
     catEducation: "Education", catGovernment: "Government",
     catCompleted: "Completed", catOngoing: "Ongoing", catUpcoming: "Upcoming",
-    saudiArabia: "Saudi Arabia", riyadh: "Riyadh", jeddah: "Jeddah",
+    jordan: "Jordan", saudiArabia: "Saudi Arabia", riyadh: "Riyadh", jeddah: "Jeddah",
     dammam: "Dammam", alKhobar: "Al Khobar",
     companyProfile: "Company Profile", newsAndInsights: "News & Insights",
     ourTeam: "Our Team", certifications: "Certifications",
@@ -992,7 +992,7 @@ function ProjectDetail() {
     [t.completionLabel, lang === "ar" ? "سبتمبر 2024" : "September 2024"],
   ];
   return <main>
-    <section className="project-hero"><img src={images.commercial} alt={p.name[lang]} /><div className="project-shade" /><div className="container"><span className="project-status">{t.completedLabel} · {p.year}</span><h1>{p.name[lang]}</h1><p><Icon name="map" /> {p.place[lang]}، {t.saudiArabia}</p></div></section>
+    <section className="project-hero"><img src={images.commercial} alt={p.name[lang]} /><div className="project-shade" /><div className="container"><span className="project-status">{t.completedLabel} · {p.year}</span><h1>{p.name[lang]}</h1><p><Icon name="map" /> {p.place[lang]}، {t.jordan}</p></div></section>
     <section className="project-facts"><div className="container">{facts.map(([a,b]) => <div key={a}><span>{a}</span><b>{b}</b></div>)}</div></section>
     <section className="section"><div className="container editorial"><Eyebrow>{t.projectOverviewEyebrow}</Eyebrow><h2>{t.projectOverviewTitle}</h2><div><p className="lead">{t.projectOverviewLead}</p><p>{t.projectOverviewP}</p></div></div></section>
     <section className="project-gallery"><img src={images.concrete} alt="" /><img src={images.civic} alt="" /><img src={images.detail} alt="" /></section>
@@ -1274,7 +1274,6 @@ function Footer() {
             </button>
           </div>
           
-          <p>{t.footerTagline1}<br />{t.footerTagline2}</p>
         </div>
 
         {/* 2. حاوية الروابط الأربعة (شبكة 2x2 في الهاتف) */}

@@ -254,13 +254,13 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
     margin-right: 20px !important; /* هذه المسافة ستُبعد الأزرار عن حافة الشاشة اليمنى向左 */
   }
   .nav-inner {
-    gap: 0px; /* تقليل المسافة بين الشعار والأزرار */
+    gap: 15px; /* تقليل المسافة بين الشعار والأزرار */
   }
   .logo img {
-    height: 65px !important; /* 👈 تم تكبير الشعار هنا (كان 48) */
+    height: 60px !important; /* 👈 تم تكبير الشعار هنا (كان 48) */
   }
   .nav-actions {
-    gap: 20px !important; /* تقليل المسافة بين زر الترجمة وزر القائمة */
+    gap: 10px !important; /* تقليل المسافة بين زر الترجمة وزر القائمة */
   }
   
   /* تصغير زر الترجمة قليلاً ليتناسب مع الشاشات الصغيرة */
@@ -268,12 +268,23 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
     padding: 6px 10px !important;
     font-size: 11px !important;
   }
+
+    /* تكبير زر القائمة الجانبية على الهواتف فقط */
+  .menu-btn svg {
+    width: 40px !important;  /* تكبير العرض */
+    height: 60px !important; /* تكبير الطول */
+  }
+  
+  /* زيادة مساحة النقر حول الزر (اختياري) */
+  .menu-btn {
+    padding: 1px !important;
+  }
 }
 
 /* تصغير إضافي للشاشات الصغيرة جداً (مثل الهواتف) */
 @media (max-width: 430px) {
   .logo img {
-    height: 45px !important; /* 👈 تم تكبير الشعار هنا (كان 32) */
+    height: 50px !important; /* 👈 تم تكبير الشعار هنا (كان 32) */
   }
 }
 
