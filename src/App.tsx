@@ -141,7 +141,7 @@ const dictionary = {
     sdCapText: "Integrated planning, execution, coordination, and assurance by experienced specialists.",
     sdRelatedEyebrow: "Related work", sdRelatedTitle: "Construction in practice.",
     // Projects page
-    projectsPageEyebrow: "Our Projects", projectsPageTitle: "A portfolio built to perform.",
+    projectsPageEyebrow: "Our Projects", projectsPageTitle: "Completed Projects.",
     projectsPageText: "Explore selected work across the sectors and communities we serve.",
     searchProjects: "Search projects", sortedByLatest: "Sorted by latest",
     projectsLabel: "PROJECTS", noMatch: "No projects match your current filters.",
@@ -360,7 +360,7 @@ const dictionary = {
     sdCapText: "تخطيط وتنفيذ وتنسيق وضمان متكامل من قِبل متخصصين ذوي خبرة.",
     sdRelatedEyebrow: "أعمال ذات صلة", sdRelatedTitle: "الإنشاء في الواقع.",
     // Projects page
-    projectsPageEyebrow: "مشاريعنا", projectsPageTitle: "محفظة مبنية للأداء.",
+    projectsPageEyebrow: "مشاريعنا", projectsPageTitle: "مشاريع تم انجازها.",
     projectsPageText: "استكشف أعمالاً مختارة عبر القطاعات والمجتمعات التي نخدمها.",
     searchProjects: "ابحث في المشاريع", sortedByLatest: "الترتيب حسب الأحدث",
     projectsLabel: "مشروع", noMatch: "لا توجد مشاريع تطابق عوامل التصفية الحالية.",
@@ -545,7 +545,30 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 }
 
 // ========== LOGO ==========
-function Logo({ light = false }: { light?: boolean }) {
+function Logo({ light = false, clickable = true }: { light?: boolean; clickable?: boolean }) {
+  const imgContent = (
+    <img 
+      src={logoImg} 
+      alt="شركة الرفايعة للهندسة والمقاولات"
+      style={{ 
+        height: "45px", 
+        width: "auto", 
+        objectFit: "contain", 
+        display: "block" 
+      }} 
+    />
+  );
+
+  // إذا كانت الخاصية clickable تساوي false (مثل حالة الفوتر)، نعرض صورة عادية بدون زر
+  if (!clickable) {
+    return (
+      <div className={`logo ${light ? "logo-light" : ""}`} style={{ display: "flex", alignItems: "center", padding: 0, cursor: "default" }}>
+        {imgContent}
+      </div>
+    );
+  }
+
+  // الوضع الافتراضي (مثل حالة الهيدر)، نعرض الزر القابل للضغط
   return (
     <button 
       className={`logo ${light ? "logo-light" : ""}`} 
@@ -560,16 +583,7 @@ function Logo({ light = false }: { light?: boolean }) {
         alignItems: "center"
       }}
     >
-      <img 
-        src={logoImg} 
-        alt="شركة الرفايعة للهندسة والمقاولات"
-        style={{ 
-          height: "45px", 
-          width: "auto", 
-          objectFit: "contain", 
-          display: "block" 
-        }} 
-      />
+      {imgContent}
     </button>
   );
 }
@@ -696,7 +710,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
             </nav>
 
           {/* 👇 الحاوية الخاصة بالأزرار (الترجمة + اطلب عرض سعر) 👇 */}
-          <div className="nav-actions" style={{ direction: "ltr", display: "flex", alignItems: "center", gap: "13px" }}>
+          <div className="nav-actions" style={{ direction: "ltr", display: "flex", alignItems: "center", gap: "35px" }}>
             
             {/* زر الترجمة */}
             <div ref={langMenuRef} style={{ position: "relative" }}>
@@ -755,7 +769,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
       <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}></div>   
       <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
         <div className="mobile-top" style={{ direction: "ltr", justifyContent: "flex-end" }}><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
-        <div className="mobile-links">{nav.map(([id, label], i) => <button key={id} onClick={() => { id === "contact" ? scrollToBottom() : go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
+        <div className="mobile-links">{nav.filter(([id]) => id !== "contact").map(([id, label], i) => <button key={id} onClick={() => { go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
         <Button onClick={() => { scrollToBottom(); setOpen(false); }}>{t.quote}</Button>
       </div>
     </>
@@ -952,22 +966,46 @@ function ProjectsPage() {
   const lang = useLang();
   const t = dictionary[lang];
   const [term, setTerm] = useState("");
-  const [type, setType] = useState("All");
-  const [status, setStatus] = useState("All");
+  const [type, setType] = useState("All"); // حالة نوع المشروع
+  
   const types = ["All","Residential","Commercial","Industrial","Infrastructure","Healthcare","Government"];
   const typeLabels: Record<string,string> = { All: t.catAll, Residential: t.catResidential, Commercial: t.catCommercial, Industrial: t.catIndustrial, Infrastructure: t.catInfrastructure, Healthcare: t.catHealthcare, Government: t.catGovernment };
-  const statusLabels: Record<string,string> = { All: t.catAll, Completed: t.catCompleted, Ongoing: t.catOngoing, Upcoming: t.catUpcoming };
-  const visible = projects.filter(p => (type === "All" || p.type.en === type) && (status === "All" || p.status.en === status) && p.name[lang].toLowerCase().includes(term.toLowerCase()));
-  return <main><PageHero eyebrow={t.projectsPageEyebrow} title={t.projectsPageTitle} text={t.projectsPageText} image={images.commercial} />
-    <section className="section project-listing"><div className="container">
-      <div className="search-bar"><label><Icon name="search" /><input value={term} onChange={e => setTerm(e.target.value)} placeholder={t.searchProjects} /></label>
-        <select value={type} onChange={e => setType(e.target.value)} aria-label={t.projectTypeLabel}>{types.map(x => <option key={x} value={x}>{typeLabels[x]}</option>)}</select>
-        <select value={status} onChange={e => setStatus(e.target.value)} aria-label={t.catCompleted}>{Object.keys(statusLabels).map(x => <option key={x} value={x}>{statusLabels[x]}</option>)}</select>
-      </div>
-      <div className="result-count">{visible.length} {t.projectsLabel} <span>{t.sortedByLatest}</span></div>
-      <div className="listing-grid">{visible.map(p => <ProjectCard key={p.name.en} project={p} />)}</div>
-      {!visible.length && <div className="empty"><Icon name="search" size={32} />{t.noMatch}</div>}
-    </div></section><FinalCta /></main>;
+  
+  // تم حذف متغيرات الحالة (status) من هنا لأننا حذفنا القائمة الخاصة بها
+  
+  // الفلترة تعتمد الآن على البحث بالاسم ونوع المشروع فقط
+  const visible = projects.filter(p => (type === "All" || p.type.en === type) && p.name[lang].toLowerCase().includes(term.toLowerCase()));
+
+  return (
+    <main>
+      <PageHero eyebrow={t.projectsPageEyebrow} title={t.projectsPageTitle} text={t.projectsPageText} image={images.commercial} />
+      
+      <section className="section project-listing">
+        <div className="container">
+          
+          {/* شريط البحث مع قائمة واحدة فقط */}
+          <div className="search-bar">
+            <label>
+              <Icon name="search" />
+              <input value={term} onChange={e => setTerm(e.target.value)} placeholder={t.searchProjects} />
+            </label>
+            <select value={type} onChange={e => setType(e.target.value)} aria-label={t.projectTypeLabel}>
+              {types.map(x => <option key={x} value={x}>{typeLabels[x]}</option>)}
+            </select>
+          </div>
+
+          <div className="result-count">{visible.length} {t.projectsLabel} <span>{t.sortedByLatest}</span></div>
+          
+          <div className="listing-grid">{visible.map(p => <ProjectCard key={p.name.en} project={p} />)}</div>
+          
+          {!visible.length && <div className="empty"><Icon name="search" size={32} />{t.noMatch}</div>}
+          
+        </div>
+      </section>
+      
+      <FinalCta />
+    </main>
+  );
 }
 
 // ========== PROJECT DETAIL ==========
@@ -1221,28 +1259,28 @@ function Footer() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: isMobile ? "70px" : "60px", // مسافة مريحة بين الشعار والأزرار
-            marginBottom: "60px" // 👈 أزلنا الهامش السفلي الكبير
+            gap: isMobile ? "70px" : "70px", // مسافة مريحة بين الشعار والأزرار
+            marginBottom: "100px" // 👈 أزلنا الهامش السفلي الكبير
           }}
         >
           
-          {/* الشعار (مكبر في الفوتر) */}
+                    {/* الشعار (مكبر في الفوتر) */}
           <div className="footer-logo-wrapper">
-            <Logo light />
+            <Logo light clickable={false} />
           </div>
 
           {/* حاوية الأزرار */}
           <div style={{ 
             display: "flex", 
             flexDirection: isMobile ? "column-reverse" : "row", 
-            gap: isMobile ? "40px" : "80px", 
+            gap: isMobile ? "40px" : "90px", 
             flexWrap: "wrap", 
             justifyContent: "center",
             width: "100%"
           }}>
             
             {/* العمود الأول في الكود: فيسبوك وإنستقرام */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "25px", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "30px", alignItems: "center" }}>
               
               <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
                  {lang === "ar" ? "وسائل التواصل" : "Communication channels"}
@@ -1259,7 +1297,7 @@ function Footer() {
             </div>
 
             {/* العمود الثاني في الكود: واتساب وهاتف */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "25px", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "30px", alignItems: "center" }}>
               
               <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
                   {lang === "ar" ? "وسائل الاتصال" : "Means of communication"}
