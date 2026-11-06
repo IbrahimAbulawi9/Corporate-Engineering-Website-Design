@@ -160,7 +160,7 @@ const dictionary = {
     challengesQuote: "\"Integrated planning enabled the team to complete the structural package three weeks ahead of the baseline program.\"",
     
     // Company page
-    companyPageEyebrow: "Our Company", companyPageTitle: "People, standards, and purpose.",
+    companyPageEyebrow: "Our Company", companyPageTitle: "A complete team.",
     companyPageText: "Meet the team and commitments behind every Al-Rafaya project.",
     leadershipEyebrow: "Leadership", leadershipTitle: "Led by experience. United by purpose.",
     leadershipText: "Our leadership team brings deep local knowledge and multidisciplinary project expertise.",
@@ -379,7 +379,7 @@ const dictionary = {
     challengesQuote: "«مكّن التخطيط المتكامل الفريق من إكمال الحزمة الإنشائية قبل ثلاثة أسابيع من البرنامج الأساسي.»",
     
     // Company page
-    companyPageEyebrow: "شركتنا", companyPageTitle: "أشخاص ومعايير وهدف.",
+    companyPageEyebrow: "شركتنا", companyPageTitle: "فريق متكامل.",
     companyPageText: "تعرّف على الفريق والالتزامات وراء كل مشروع من مشاريع الرفايعة.",
     leadershipEyebrow: "القيادة", leadershipTitle: "قيادة بالخبرة. ووحدة بالهدف.",
     leadershipText: "يجمع فريق قيادتنا بين المعرفة المحلية العميقة والخبرة متعددة التخصصات في المشاريع.",
@@ -935,10 +935,38 @@ function PageHero({ eyebrow, title, text, image = images.skyline }: { eyebrow: s
 // ========== ABOUT PAGE ==========
 function AboutPage() {
   const t = dictionary[useLang()];
-  return <main><PageHero eyebrow={t.aboutPageEyebrow} title={t.aboutPageTitle} text={t.aboutPageText} />
-    <section className="section"><div className="container split"><div className="about-copy"><SectionHead eyebrow={t.storyEyebrow} title={t.storyTitle} /><p className="lead">{t.storyLead}</p><p>{t.storyP}</p><Button variant="secondary" onClick={() => go("company")}>{t.meetTeam}</Button></div><div className="about-visual"><img src={images.team} alt={t.storyTitle} /></div></div></section>
-    <section className="vision"><div className="container vision-grid"><div><span>01</span><h2>{t.visionTitle}</h2><p>{t.visionText}</p></div><div><span>02</span><h2>{t.missionTitle}</h2><p>{t.missionText}</p></div></div></section>
-    <Timeline /><section className="section"><div className="container"><SectionHead eyebrow={t.guidesEyebrow} title={t.guidesTitle} center /><div className="values-grid">{t.values.map((v, i) => <div className="value-card" key={v}><strong>0{i + 1}</strong><h3>{v}</h3><p>{t.valuesDesc[i]}</p></div>)}</div></div></section><Stats /><FinalCta /></main>;
+  return <main>
+    <PageHero eyebrow={t.aboutPageEyebrow} title={t.aboutPageTitle} text={t.aboutPageText} />
+    
+    {/* 1. قسم قصتنا */}
+    <section className="section">
+      <div className="container split">
+        <div className="about-copy">
+          <SectionHead eyebrow={t.storyEyebrow} title={t.storyTitle} />
+          <p className="lead">{t.storyLead}</p>
+          <p>{t.storyP}</p>
+          <Button variant="secondary" onClick={() => go("company")}>{t.meetTeam}</Button>
+        </div>
+        <div className="about-visual">
+          <img src={images.team} alt={t.storyTitle} />
+        </div>
+      </div>
+    </section>
+
+    {/* 2. قسم الإحصائيات (تم نقله للأعلى) */}
+    <Stats />
+
+    {/* 3. قسم الرؤية والمهمة (الجزء الأخضر) */}
+    <section className="vision">
+      <div className="container vision-grid">
+        <div><span>01</span><h2>{t.visionTitle}</h2><p>{t.visionText}</p></div>
+        <div><span>02</span><h2>{t.missionTitle}</h2><p>{t.missionText}</p></div>
+      </div>
+    </section>
+
+    {/* 4. قسم التواصل */}
+    <FinalCta />
+  </main>;
 }
 
 // ========== TIMELINE ==========
@@ -1046,7 +1074,7 @@ function CompanyPage() {
     ["Omar Al-Harbi", t.teamRoles[2]],
     ["Sarah Al-Qahtani", t.teamRoles[3]],
   ];
-  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><Quality /><Downloads /><FinalCta /></main>;
+  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><Quality /><FinalCta /></main>;
 }
 
 
@@ -1081,7 +1109,7 @@ function Downloads() {
 }
 function DownloadsPage() {
   const t = dictionary[useLang()];
-  return <main><PageHero eyebrow={t.downloadsPageEyebrow} title={t.downloadsPageTitle} text={t.downloadsPageText} /><Downloads /><FinalCta /></main>;
+  return <main><PageHero eyebrow={t.downloadsPageEyebrow} title={t.downloadsPageTitle} text={t.downloadsPageText} /><FinalCta /></main>;
 }
 
 // ========== FORM ==========
@@ -1260,7 +1288,7 @@ function Footer() {
             alignItems: "center",
             justifyContent: "center",
             gap: isMobile ? "70px" : "70px", // مسافة مريحة بين الشعار والأزرار
-            marginBottom: "100px" // 👈 أزلنا الهامش السفلي الكبير
+            marginBottom: "90px" // 👈 أزلنا الهامش السفلي الكبير
           }}
         >
           
@@ -1273,7 +1301,7 @@ function Footer() {
           <div style={{ 
             display: "flex", 
             flexDirection: isMobile ? "column-reverse" : "row", 
-            gap: isMobile ? "40px" : "90px", 
+            gap: isMobile ? "50px" : "90px", 
             flexWrap: "wrap", 
             justifyContent: "center",
             width: "100%"
