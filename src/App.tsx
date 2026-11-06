@@ -5,7 +5,7 @@ type Lang = "en" | "ar";
 type IconName =
   | "arrow" | "building" | "check" | "chevron" | "close" | "crane" | "download"
   | "engineering" | "hardhat" | "mail" | "map" | "menu" | "phone" | "play"
-  | "search" | "shield" | "tools" | "users" | "facebook" | "whatsapp" | "linkedin";
+  | "search" | "shield" | "tools" | "users" | "facebook" | "whatsapp" | "linkedin" | "instagram"; 
 
 const LangContext = createContext<Lang>("ar");
 const useLang = () => useContext(LangContext);
@@ -27,8 +27,8 @@ const dictionary = {
   en: {
     // Nav
     home: "Home", about: "About Us", services: "Services", projects: "Projects",
-    sectors: "Sectors", company: "Company", news: "News", careers: "Careers",
-    contact: "Contact", quote: "Request a Quote",
+     company: "Company", news: "News",
+        contact: "Contact", quote: "Contact Us",
     // Topbar
     workingHours: "Saturday – Thursday    8:00 AM – 5:00 PM",
     // Hero
@@ -60,11 +60,7 @@ const dictionary = {
     projectsEyebrow: "Selected work", projectsTitle: "Projects that define progress.",
     projectsText: "A portfolio shaped by technical ambition, purposeful design, and enduring value.",
     viewAll: "View All Projects", noProjects: "No featured projects in this category yet.",
-    // Sectors section
-    sectorsEyebrow: "Sectors we serve",
-    sectorsTitle: "Building capability across the industries that matter.",
-    sectorsText: "Our sector expertise helps clients navigate complexity and deliver lasting impact.",
-    exploreAllSectors: "Explore All Sectors",
+    
     // Why section
     whyEyebrow: "The Al-Rafaya standard", whyTitle: "Why clients choose us.",
     whyText: "A delivery culture shaped by accountability, expertise, and a commitment to getting every detail right.",
@@ -98,7 +94,7 @@ const dictionary = {
     ctaEyebrow: "Start a conversation", ctaTitle1: "Have a project in mind?",
     ctaTitle2: "Let's build it together.",
     ctaText: "Tell us about your project and discover what a dependable engineering partner can make possible.",
-    contactUs: "Contact Us",
+        contactUs: "Get in touch",
     // About page
     aboutPageEyebrow: "About Al-Rafaya", aboutPageTitle: "Engineering progress. Building confidence.",
     aboutPageText: "For more than 26 years, we have helped shape the Kingdom's built environment through responsible, precise, and dependable delivery.",
@@ -162,11 +158,7 @@ const dictionary = {
     challengesEyebrow: "Challenges & solutions", challengesTitle: "Solving complexity through coordination.",
     challengesP: "With a constrained urban site and multiple specialist packages, close sequencing was essential. Our team implemented coordinated BIM reviews, just-in-time logistics, and zone-based handovers to protect the program.",
     challengesQuote: "\"Integrated planning enabled the team to complete the structural package three weeks ahead of the baseline program.\"",
-    // Sectors page
-    sectorsPageEyebrow: "Sectors", sectorsPageTitle: "Expertise for every environment.",
-    sectorsPageText: "Deep sector understanding helps us solve the right problems and build assets that perform for decades.",
-    sectorDesc: "Specialized engineering, construction, and delivery expertise aligned to the sector's unique operational needs.",
-    exploreProjects: "Explore projects",
+    
     // Company page
     companyPageEyebrow: "Our Company", companyPageTitle: "People, standards, and purpose.",
     companyPageText: "Meet the team and commitments behind every Al-Rafaya project.",
@@ -174,12 +166,7 @@ const dictionary = {
     leadershipText: "Our leadership team brings deep local knowledge and multidisciplinary project expertise.",
     teamRoles: ["Chairman","Chief Executive Officer","Chief Operations Officer","Director of Engineering"],
     execLeadership: "Executive leadership",
-    // Careers
-    careersEyebrow: "Careers", careersTitle: "Build what matters. Grow with us.",
-    careersText: "Join a team of people who take pride in solving difficult problems and delivering work that lasts.",
-    openPositionsEyebrow: "Open positions", openPositionsTitle: "Find your next opportunity.",
-    openPositionsText: "We are always looking for talented, principled professionals to join our growing team.",
-    fullTime: "Full-time", experience: "experience", viewPosition: "View Position",
+   
     // News page
     newsPageEyebrow: "News & Insights", newsPageTitle: "Ideas, progress, and perspectives.",
     newsPageText: "Updates from our projects, people, and the wider engineering industry.",
@@ -236,7 +223,7 @@ const dictionary = {
     headOfficeLocation: "Al-Rafaya Head Office", kingFahdRoad: "The Hashemite Kingdom of Jordan, Amman - Umm Al-Summaq Street, Building No. 10",
     // Footer
     footerCompany: "Company", footerServices: "Services", footerProjects: "Projects", footerResources: "Resources",
-    footerCompanyLinks: ["About Us","Our Team","Careers","Certifications"],
+    footerCompanyLinks: ["About Us","Our Team","Certifications"],
     footerServicesLinks: ["Construction","Infrastructure","MEP","Maintenance"],
     footerProjectsLinks: ["All Projects","Ongoing Projects","Completed Projects"],
     footerResourcesLinks: ["Company Profile","News & Insights","FAQ","Downloads"],
@@ -259,8 +246,8 @@ const dictionary = {
   ar: {
     // Nav
     home: "الرئيسية", about: "من نحن", services: "خدماتنا", projects: "مشاريعنا",
-    sectors: "القطاعات", company: "الشركة", news: "الأخبار", careers: "الوظائف",
-    contact: "اتصل بنا", quote: "اطلب عرض سعر",
+     company: "الشركة", news: "الأخبار",
+        contact: "تواصل معنا", quote: "تواصل معنا",
     // Topbar
     workingHours: "السبت – الخميس    ٨:٠٠ ص – ٥:٠٠ م",
     // Hero
@@ -273,7 +260,7 @@ const dictionary = {
     // Stats
     statYears: "سنة من الخبرة", statCompleted: "مشروع مكتمل",
     statOngoing: "مشروع قيد التنفيذ", statEngineers: "مهندس ومتخصص",
-    statSectors: "قطاعات نخدمها",
+    statSectors: "عدد القطاعات نخدمها",
     // About (home)
     aboutEyebrow: "من نحن", aboutTitle: "بُنيت على الثقة. تقودها الهندسة.",
     aboutLead: "شركة الرفايعة هي شركة أردنية للهندسة والمقاولات، تنفذ مشاريع معقدة وعالية القيمة في جميع أنحاء المملكة.",
@@ -292,11 +279,7 @@ const dictionary = {
     projectsEyebrow: "أعمال مختارة", projectsTitle: "مشاريع ترسم ملامح التقدم.",
     projectsText: "محفظة أعمال تشكّلت بالطموح التقني والتصميم الهادف والقيمة المستدامة.",
     viewAll: "عرض جميع المشاريع", noProjects: "لا توجد مشاريع مميزة في هذه الفئة حتى الآن.",
-    // Sectors section
-    sectorsEyebrow: "القطاعات التي نخدمها",
-    sectorsTitle: "نبني القدرات عبر القطاعات الحيوية.",
-    sectorsText: "خبرتنا القطاعية تساعد العملاء على تجاوز التعقيدات وتحقيق أثر دائم.",
-    exploreAllSectors: "استكشف جميع القطاعات",
+    
     // Why section
     whyEyebrow: "معيار شركة الرفايعة", whyTitle: "لماذا يختارنا العملاء.",
     whyText: "ثقافة تنفيذ قوامها المسؤولية والخبرة والالتزام بإتقان كل تفصيلة.",
@@ -330,7 +313,7 @@ const dictionary = {
     ctaEyebrow: "ابدأ حواراً", ctaTitle1: "لديك مشروع في ذهنك؟",
     ctaTitle2: "لنبنِه معاً.",
     ctaText: "حدّثنا عن مشروعك واكتشف ما يمكن أن يقدمه شريك هندسي موثوق.",
-    contactUs: "اتصل بنا",
+        contactUs: "تواصل معنا",
     // About page
     aboutPageEyebrow: "عن الرفايعة", aboutPageTitle: "تقدم هندسي. بناء ثقة.",
     aboutPageText: "منذ أكثر من 26 عاماً، نساهم في تشكيل البيئة العمرانية في المملكة من خلال تنفيذ مسؤول ودقيق وموثوق.",
@@ -394,11 +377,7 @@ const dictionary = {
     challengesEyebrow: "التحديات والحلول", challengesTitle: "حل التعقيد عبر التنسيق.",
     challengesP: "مع موقع حضري محدود وحزم متخصصة متعددة، كان التسلسل الدقيق ضرورياً. نفّذ فريقنا مراجعات BIM منسقة ولوجستيات في الوقت المناسب وتسليماً حسب المناطق لحماية البرنامج.",
     challengesQuote: "«مكّن التخطيط المتكامل الفريق من إكمال الحزمة الإنشائية قبل ثلاثة أسابيع من البرنامج الأساسي.»",
-    // Sectors page
-    sectorsPageEyebrow: "القطاعات", sectorsPageTitle: "خبرة لكل بيئة.",
-    sectorsPageText: "الفهم العميق للقطاع يساعدنا على حل المشكلات الصحيحة وبناء أصول تخدم لعقود.",
-    sectorDesc: "خبرة هندسية وإنشائية وتنفيذية متخصصة تتوافق مع الاحتياجات التشغيلية الفريدة للقطاع.",
-    exploreProjects: "استكشف المشاريع",
+    
     // Company page
     companyPageEyebrow: "شركتنا", companyPageTitle: "أشخاص ومعايير وهدف.",
     companyPageText: "تعرّف على الفريق والالتزامات وراء كل مشروع من مشاريع الرفايعة.",
@@ -406,12 +385,7 @@ const dictionary = {
     leadershipText: "يجمع فريق قيادتنا بين المعرفة المحلية العميقة والخبرة متعددة التخصصات في المشاريع.",
     teamRoles: ["رئيس مجلس الإدارة","الرئيس التنفيذي","الرئيس التنفيذي للعمليات","مديرة الهندسة"],
     execLeadership: "القيادة التنفيذية",
-    // Careers
-    careersEyebrow: "الوظائف", careersTitle: "ابنِ ما يهم. وانمُ معنا.",
-    careersText: "انضم إلى فريق يفخر بحل المشكلات الصعبة وتقديم أعمال تدوم.",
-    openPositionsEyebrow: "الوظائف المتاحة", openPositionsTitle: "اعثر على فرصتك القادمة.",
-    openPositionsText: "نبحث دائماً عن محترفين موهوبين وأصحاب مبادئ للانضمام إلى فريقنا المتنامي.",
-    fullTime: "دوام كامل", experience: "خبرة", viewPosition: "عرض الوظيفة",
+    
     // News page
     newsPageEyebrow: "الأخبار والرؤى", newsPageTitle: "أفكار وتقدم ورؤى.",
     newsPageText: "تحديثات من مشاريعنا وفريقنا وقطاع الهندسة الأوسع.",
@@ -440,7 +414,7 @@ const dictionary = {
     applyNow: "قدّم الآن", startConversation: "ابدأ حواراً",
     joinTeam: "انضم إلى فريقنا.", tellUsProject: "حدّثنا عن مشروعك.", howCanHelp: "كيف يمكننا المساعدة؟",
     formIntro: "شارك بعض التفاصيل وسيتواصل معك العضو المناسب من فريقنا خلال يومي عمل.",
-    callUs: "اتصل بنا", emailUs: "راسلنا", headOffice: "المقر الرئيسي",
+    callUs: "تواصل معنا", emailUs: "راسلنا", headOffice: "المقر الرئيسي",
     headOfficeAddress: "المملكة الاردنية الهاشمية عمان - شارع ام السماق عمارة رقم 10",
     thankYou: "شكراً لتواصلك معنا.",
     thankYouText: "تم استلام طلبك. سيتواصل معك فريقنا قريباً.",
@@ -464,12 +438,12 @@ const dictionary = {
     // Quote/Contact
     quoteEyebrow: "طلب عرض سعر", quoteTitle: "لنحوّل مشروعك إلى واقع.",
     quoteText: "شارك متطلبات مشروعك. سيراجعها فريقنا بعناية ويرد بالخطوات التالية المناسبة.",
-    contactEyebrow: "اتصل بنا", contactTitle: "نحن مستعدون للاستماع.",
+    contactEyebrow: "تواصل معنا", contactTitle: "نحن مستعدون للاستماع.",
     contactText: "سواء كان لديك مشروع أو فرصة شراكة أو سؤال، يسعدنا التواصل معك.",
     headOfficeLocation: "المقر الرئيسي لشركه الرفايعة", kingFahdRoad: "عمان - شارع ام السماق عمارة رقم 10",
     // Footer
     footerCompany: "الشركة", footerServices: "الخدمات", footerProjects: "المشاريع", footerResources: "المصادر",
-    footerCompanyLinks: ["من نحن","فريقنا","الوظائف","الشهادات"],
+    footerCompanyLinks: ["من نحن","فريقنا","الشهادات"],
     footerServicesLinks: ["الإنشاء","البنية التحتية","الكهروميكانيكية","الصيانة"],
     footerProjectsLinks: ["جميع المشاريع","مشاريع قيد التنفيذ","المشاريع المكتملة"],
     footerResourcesLinks: ["الملف التعريفي","الأخبار والرؤى","الأسئلة الشائعة","التحميلات"],
@@ -563,6 +537,7 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
     users: <><circle cx="9" cy="8" r="4" /><path d="M2 21v-2a7 7 0 0 1 14 0v2M17 4a4 4 0 0 1 0 8M19 15a6 6 0 0 1 3 5" /></>,
     // 👇 الأيقونات الجديدة 👇
     facebook: <path fill="currentColor" stroke="none" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
+    instagram: <path fill="currentColor" stroke="none" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />,
     whatsapp: <path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />,
     linkedin: <><path fill="currentColor" stroke="none" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect fill="currentColor" stroke="none" x="2" y="9" width="4" height="12" /><circle fill="currentColor" stroke="none" cx="4" cy="4" r="2" /></>,
   };
@@ -604,11 +579,15 @@ function go(page: string) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function Button({ children, variant = "primary", onClick, icon = true, type = "button" }: {
+function scrollToBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+
+function Button({ children, variant = "primary", onClick, icon = true, type = "button", style }: {
   children: ReactNode; variant?: "primary" | "secondary" | "light" | "outline";
-  onClick?: () => void; icon?: boolean; type?: "button" | "submit";
+  onClick?: () => void; icon?: boolean; type?: "button" | "submit"; style?: React.CSSProperties;
 }) {
-  return <button type={type} className={`btn btn-${variant}`} onClick={onClick}>{children}{icon && <Icon name="arrow" />}</button>;
+  return <button type={type} className={`btn btn-${variant}`} onClick={onClick} style={style}>{children}{icon && <Icon name="arrow" />}</button>;
 }
 
 function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
@@ -622,7 +601,7 @@ function SectionHead({ eyebrow, title, text, center = false }: { eyebrow: string
 // ========== NAVBAR ==========
 function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState("");
+  
   const [langMenuOpen, setLangMenuOpen] = useState(false); 
   
   // 👇 1. الكود الجديد الخاص بإخفاء الهيدر عند النزول 👇
@@ -664,9 +643,9 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   }, []);
 
   const t = dictionary[lang];
-  const nav = [
-    ["home", t.home], ["about", t.about], ["services", t.services], ["projects", t.projects],
-    ["sectors", t.sectors], ["company", t.company], ["careers", t.careers], ["contact", t.contact],
+    const nav = [
+    ["home", t.home], ["services", t.services], ["projects", t.projects],
+     ["company", t.company], ["about", t.about], ["contact", t.contact], 
   ];
   const submenus: Record<string, string[]> = {
     services: lang === "ar"
@@ -676,8 +655,8 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
       ? ["جميع المشاريع","مشاريع قيد التنفيذ","المشاريع المكتملة"]
       : ["All Projects","Ongoing Projects","Completed Projects"],
     company: lang === "ar"
-      ? ["من نحن","فريقنا","الشهادات","الجودة والسلامة","الاستدامة","الوظائف"]
-      : ["About Us","Our Team","Certifications","Quality & Safety","Sustainability","Careers"],
+      ? ["من نحن","فريقنا","الشهادات","الجودة والسلامة","الاستدامة"]
+      : ["About Us","Our Team","Certifications","Quality & Safety","Sustainability"],
   };
   
   return (
@@ -710,14 +689,11 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
           
           <nav className="desktop-nav" aria-label="Main navigation" style={{ direction: lang === "ar" ? "rtl" : "ltr" }}>
             {nav.map(([id, label]) => (
-              <div className="nav-item" key={id} onMouseEnter={() => setDropdown(id)} onMouseLeave={() => setDropdown("")}>
-                <button className={location.hash.slice(1) === id || (!location.hash && id === "home") ? "active" : ""} onClick={() => go(id)}>
-                  {label}{submenus[id] && <Icon name="chevron" size={14} />}
+              <div className="nav-item" key={id}>
+                <button className={location.hash.slice(1) === id || (!location.hash && id === "home") ? "active" : ""} onClick={() => id === "contact" ? scrollToBottom() : go(id)}>{label}
                 </button>
-                {submenus[id] && dropdown === id && <div className="dropdown">{submenus[id].map((item) => <button key={item} onClick={() => go(id === "company" && (item === "Careers" || item === "الوظائف") ? "careers" : id)}>{item}<Icon name="arrow" size={15} /></button>)}</div>}
-              </div>
-            ))}
-          </nav>
+              </div> ))}
+            </nav>
 
           {/* 👇 الحاوية الخاصة بالأزرار (الترجمة + اطلب عرض سعر) 👇 */}
           <div className="nav-actions" style={{ direction: "ltr", display: "flex", alignItems: "center", gap: "13px" }}>
@@ -763,7 +739,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
             </div>
 
             {/* زر اطلب عرض سعر */}
-            <Button onClick={() => go("quote")}>{t.quote}</Button>
+            <Button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}>{t.quote}</Button>
             
             {/* زر القائمة للموبايل */}
             <button className="menu-btn" aria-label="Open menu" onClick={() => setOpen(true)}><Icon name="menu" size={32} /></button>
@@ -779,8 +755,8 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
       <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}></div>   
       <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
         <div className="mobile-top" style={{ direction: "ltr", justifyContent: "flex-end" }}><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
-        <div className="mobile-links">{nav.map(([id, label], i) => <button key={id} onClick={() => { go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
-        <Button onClick={() => { go("quote"); setOpen(false); }}>{t.quote}</Button>
+        <div className="mobile-links">{nav.map(([id, label], i) => <button key={id} onClick={() => { id === "contact" ? scrollToBottom() : go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
+        <Button onClick={() => { scrollToBottom(); setOpen(false); }}>{t.quote}</Button>
       </div>
     </>
   );
@@ -790,7 +766,13 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
 // ========== STATS ==========
 function Stats() {
   const t = dictionary[useLang()];
-  const stats = [["26+", t.statYears],["180+", t.statCompleted],["14", t.statOngoing],["320+", t.statEngineers],["08", t.statSectors]];
+  // 👇 حذفنا المربع الخامس، وغيرنا المربع الثالث ليكون القطاعات
+  const stats = [
+    ["26+", t.statYears],
+    ["180+", t.statCompleted],
+    ["08", t.statSectors], 
+    ["320+", t.statEngineers]
+  ];
   return <section className="stats"><div className="container stats-grid">{stats.map(([n, l]) => <div className="stat" key={l}><strong>{n}</strong><span>{l}</span></div>)}</div></section>;
 }
 
@@ -832,9 +814,14 @@ function Home() {
           <h1>{t.heroTitle}</h1>
           <p>{t.heroText}</p>
           <div className="hero-actions">
-            <Button variant="light" onClick={() => go("quote")}>{t.quote}</Button>
-            <Button variant="outline" onClick={() => go("projects")}>{t.explore}</Button>
-          </div>
+  <Button 
+    variant="light" 
+    onClick={() => go("projects")} 
+    style={{ minWidth: "300px", padding: "20px 40px", fontSize: "16px" }}
+  >
+    {t.explore}
+  </Button>
+</div>
         </div>
         <div className="hero-side">{t.heroSide1} <span /> {t.heroSide2}</div>
         <button className="hero-scroll" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}><span />{t.scroll}</button>
@@ -856,7 +843,7 @@ function Home() {
               <div><Icon name="shield" /><span><b>{t.principle1Title}</b><small>{t.principle1Text}</small></span></div>
               <div><Icon name="users" /><span><b>{t.principle2Title}</b><small>{t.principle2Text}</small></span></div>
             </div>
-            <Button variant="secondary" onClick={() => go("about")}>{t.learnMoreAbout}</Button>
+           
           </div>
         </div>
       </section>
@@ -874,12 +861,7 @@ function Home() {
      
       <Quality />
 
-      <section className="sectors">
-        <div className="container sectors-inner">
-          <div className="sectors-copy"><Eyebrow light>{t.sectorsEyebrow}</Eyebrow><h2>{t.sectorsTitle}</h2><p>{t.sectorsText}</p><Button variant="light" onClick={() => go("sectors")}>{t.exploreAllSectors}</Button></div>
-          <div className="sector-list">{[t.catResidential,t.catCommercial,t.catIndustrial,t.catInfrastructure,t.catHealthcare,t.catEducation,t.catGovernment].map((sector, i) => <button key={sector} onClick={() => go("sectors")}><span>0{i + 1}</span>{sector}<Icon name="arrow" /></button>)}</div>
-        </div>
-      </section>
+      
       
       <FinalCta />
     </main>
@@ -892,10 +874,9 @@ function Quality() {
   const t = dictionary[useLang()];
   return (
     <section className="quality">
-      <div className="quality-image"><img src={images.team} alt={t.qualityImageTitle} /><div><b>{t.qualityImageTitle}</b><span>{t.qualityImageText}</span></div></div>
       <div className="quality-content"><Eyebrow light>{t.qualityEyebrow}</Eyebrow><h2>{t.qualityTitle}</h2>
         <div className="quality-list">{[["01", t.quality1Title, t.quality1Text],["02", t.quality2Title, t.quality2Text],["03", t.quality3Title, t.quality3Text]].map(([n, title, text]) => <div key={title}><span>{n}</span><h3>{title}</h3><p>{text}</p></div>)}</div>
-        <Button variant="light" onClick={() => go("company")}>{t.qualityBtn}</Button>
+        
       </div>
     </section>
   );
@@ -917,7 +898,18 @@ function News() {
 // ========== FINAL CTA ==========
 function FinalCta() {
   const t = dictionary[useLang()];
-  return <section className="final-cta"><div className="container"><div><Eyebrow light>{t.ctaEyebrow}</Eyebrow><h2>{t.ctaTitle1}<br />{t.ctaTitle2}</h2></div><div><p>{t.ctaText}</p><span><Button variant="light" onClick={() => go("quote")}>{t.quote}</Button><Button variant="outline" onClick={() => go("contact")}>{t.contactUs}</Button></span></div></div></section>;
+  return <section className="final-cta"><div className="container"><div><Eyebrow light>{t.ctaEyebrow}</Eyebrow><h2>{t.ctaTitle1}<br />{t.ctaTitle2}</h2></div><div><p>{t.ctaText}</p><span>
+    
+    {/* 👇 الزر المعدل 👇 */}
+    <Button 
+     variant="light" 
+     onClick={scrollToBottom} // 👈 استخدمنا الدالة هنا
+     style={{ minWidth: "280px", padding: "16px 100px", fontSize: "16px" }}
+     >
+       {t.contactUs}
+    </Button>
+
+  </span></div></div></section>;
 }
 
 // ========== PAGE HERO ==========
@@ -1019,27 +1011,7 @@ function CompanyPage() {
   return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><Quality /><Downloads /><FinalCta /></main>;
 }
 
-// ========== CAREERS PAGE ==========
-function CareersPage() {
-  const lang = useLang();
-  const t = dictionary[lang];
-  const jobs: [string,string,string,string][] = lang === "ar" ? [
-    ["مهندس مدني","الهندسة","الرياض","+5 سنوات"],
-    ["مهندس موقع","الإنشاء","جدة","+3 سنوات"],
-    ["مدير مشروع","إدارة المشاريع","الرياض","+10 سنوات"],
-    ["معماري","التصميم","الرياض","+5 سنوات"],
-    ["مساح كميات","تجاري","الدمام","+5 سنوات"],
-    ["مهندس كهرباء","الكهروميكانيكية","جدة","+4 سنوات"],
-  ] : [
-    ["Civil Engineer","Engineering","Riyadh","5+ years"],
-    ["Site Engineer","Construction","Jeddah","3+ years"],
-    ["Project Manager","Project Management","Riyadh","10+ years"],
-    ["Architect","Design","Riyadh","5+ years"],
-    ["Quantity Surveyor","Commercial","Dammam","5+ years"],
-    ["Electrical Engineer","MEP","Jeddah","4+ years"],
-  ];
-  return <main><PageHero eyebrow={t.careersEyebrow} title={t.careersTitle} text={t.careersText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.openPositionsEyebrow} title={t.openPositionsTitle} text={t.openPositionsText} /><div className="jobs">{jobs.map(([name,dep,place,exp]) => <article key={name}><div><span>{dep}</span><h3>{name}</h3></div><p><Icon name="map" />{place} · {t.fullTime}</p><p>{exp} {t.experience}</p><button onClick={() => document.getElementById("application")?.scrollIntoView({behavior:"smooth"})}>{t.viewPosition} <Icon name="arrow" /></button></article>)}</div></div></section><FormSection type="career" /><FinalCta /></main>;
-}
+
 
 // ========== NEWS PAGE ==========
 function NewsPage() {
@@ -1217,15 +1189,13 @@ function FormSection({ type }: { type: "quote" | "contact" | "career" }) {
   );
 }
 
-function QuotePage() { const t = dictionary[useLang()]; return <main><PageHero eyebrow={t.quoteEyebrow} title={t.quoteTitle} text={t.quoteText} image={images.detail} /><FormSection type="quote" /></main>; }
-function ContactPage() { const t = dictionary[useLang()]; return <main><PageHero eyebrow={t.contactEyebrow} title={t.contactTitle} text={t.contactText} /><FormSection type="contact" /><section className="map-placeholder"><div><Icon name="map" size={36} /><b>{t.headOfficeLocation}</b><span>{t.kingFahdRoad}</span></div></section></main>; }
+
 
 // ========== FOOTER ==========
 function Footer() {
   const lang = useLang();
   const t = dictionary[lang];
   
-  // حالة لاكتشاف ما إذا كانت الشاشة صغيرة (هاتف)
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -1235,102 +1205,85 @@ function Footer() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const linkTo = (title: string, x: string) => {
-    if (x === "FAQ" || x === "الأسئلة الشائعة") return "faq";
-    if (title === t.footerServices) return "services";
-    if (title === t.footerProjects) return "projects";
-    return "company";
-  };
-
   return (
     <footer dir="ltr" style={{ textAlign: "left" }}>
-      <div className="container footer-top">
+      
+      {/* 👇 قللنا المسافات العلوية والسفلية هنا 👇 */}
+      <div className="container footer-top" style={{ paddingBottom: "30px", paddingTop: "20px" }}>
         
-        {/* 1. الشعار والنبذة والأيقونات */}
+        {/* 1. الشعار والأيقونات في المنتصف */}
         <div 
           className="footer-brand" 
           style={{ 
-            textAlign: "left", 
-            marginTop: "-10px",
-            gridColumn: isMobile ? "span 2" : "auto", // تأخذ العرض بالكامل في الهاتف
+            textAlign: "center", 
             width: "100%",
-            marginBottom: isMobile ? "30px" : "0"
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: isMobile ? "70px" : "60px", // مسافة مريحة بين الشعار والأزرار
+            marginBottom: "60px" // 👈 أزلنا الهامش السفلي الكبير
           }}
         >
-          <div style={{ marginLeft: "-10px", marginBottom: "25px" }}>
+          
+          {/* الشعار (مكبر في الفوتر) */}
+          <div className="footer-logo-wrapper">
             <Logo light />
           </div>
-          
-          {/* الأيقونات الاجتماعية */}
-          <div className="socials" style={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "flex-start", marginTop: "20px", marginBottom: "25px" }}>
-            <button aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '250px', gap: '12px', fontWeight: 'bold', fontSize: '15px' }}>
-              <Icon name="whatsapp" size={30} /> WhatsApp
-            </button>
-            <button aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '250px', gap: '12px', fontWeight: 'bold', fontSize: '15px' }}>
-              <Icon name="facebook" size={30} /> Facebook
-            </button>
-            <button aria-label="LinkedIn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#0A66C2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '250px', gap: '12px', fontWeight: 'bold', fontSize: '15px' }}>
-              <Icon name="linkedin" size={30} /> LinkedIn
-            </button>
+
+          {/* حاوية الأزرار */}
+          <div style={{ 
+            display: "flex", 
+            flexDirection: isMobile ? "column-reverse" : "row", 
+            gap: isMobile ? "40px" : "80px", 
+            flexWrap: "wrap", 
+            justifyContent: "center",
+            width: "100%"
+          }}>
+            
+            {/* العمود الأول في الكود: فيسبوك وإنستقرام */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "25px", alignItems: "center" }}>
+              
+              <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
+                 {lang === "ar" ? "وسائل التواصل" : "Communication channels"}
+              </h4>
+
+              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+                <Icon name="facebook" size={24} /> Facebook
+              </a>
+
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+                <Icon name="instagram" size={24} /> Instagram
+              </a>
+
+            </div>
+
+            {/* العمود الثاني في الكود: واتساب وهاتف */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "25px", alignItems: "center" }}>
+              
+              <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
+                  {lang === "ar" ? "وسائل الاتصال" : "Means of communication"}
+              </h4>
+
+              <a href="https://wa.me/962795287728" target="_blank" rel="noreferrer" aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+                <Icon name="whatsapp" size={24} /> WhatsApp
+              </a>
+
+              <a href="tel:+9620795287728" aria-label="Call Us" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#20c997', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+                <Icon name="phone" size={24} /> +962 079 5287728
+              </a>
+
+            </div>
+
           </div>
-          
         </div>
-
-        {/* 2. حاوية الروابط الأربعة (شبكة 2x2 في الهاتف) */}
-        <div style={{
-          display: isMobile ? 'grid' : 'contents', // في الهاتف تصبح شبكة، وفي الكمبيوتر تختفي الحاوية لتبقى الأعمدة منفصلة
-          gridTemplateColumns: isMobile ? '1fr 1fr' : 'none', // عمودين متساويين في الهاتف
-          gap: isMobile ? '30px 20px' : '0',
-          width: '100%',
-          gridColumn: isMobile ? 'span 2' : 'auto'
-        }}>
-          
-          {/* عمود الشركة */}
-          <div className="footer-col" style={{ textAlign: "left" }}>
-            <b>{t.footerCompany}</b>
-            {t.footerCompanyLinks.map(x => (
-              <button key={x} onClick={() => go(linkTo(t.footerCompany, x))} style={{ textAlign: "left" }}>
-                {x}
-              </button>
-            ))}
-          </div>
-
-          {/* عمود الخدمات */}
-          <div className="footer-col" style={{ textAlign: "left" }}>
-            <b>{t.footerServices}</b>
-            {t.footerServicesLinks.map(x => (
-              <button key={x} onClick={() => go(linkTo(t.footerServices, x))} style={{ textAlign: "left" }}>
-                {x}
-              </button>
-            ))}
-          </div>
-
-          {/* عمود المشاريع */}
-          <div className="footer-col" style={{ textAlign: "left" }}>
-            <b>{t.footerProjects}</b>
-            {t.footerProjectsLinks.map(x => (
-              <button key={x} onClick={() => go(linkTo(t.footerProjects, x))} style={{ textAlign: "left" }}>
-                {x}
-              </button>
-            ))}
-          </div>
-
-          {/* عمود تواصل معنا */}
-          <div className="footer-contact" style={{ textAlign: "left" }}>
-            <b>{t.footerContact}</b>
-            <p>{t.footerAddress.split("\n").map((line, i) => <span key={i}>{line}<br /></span>)}</p>
-            <a href="tel:+962 079 5287728" style={{ display: "block", marginBottom: "5px" }}>+962 079 5287728</a>
-            <a href="mailto:Alrafaiah_co@hotmail.com" style={{ display: "block", wordBreak: "break-all" }}>Alrafaiah_co@hotmail.com</a>
-          </div>
-          
-        </div>
-
+        
       </div>
 
       {/* الشريط السفلي (حقوق النشر) */}
-      <div className="container footer-bottom">
+      <div className="container footer-bottom" style={{ flexDirection: isMobile ? "column" : "row", textAlign: "center" }}>
         <span>{t.copyright}</span>
-        <div>
+        <div style={{ justifyContent: "center" }}>
           <button>{t.privacyPolicy}</button>
           <button>{t.termsConditions}</button>
         </div>
@@ -1338,7 +1291,7 @@ function Footer() {
       </div>
     </footer>
   );
-};
+}
 
 
 // ========== APP ==========
@@ -1356,8 +1309,8 @@ function App() {
   }, [lang]);
   const pages: Record<string, ReactNode> = {
     home: <Home />, about: <AboutPage />, services: <ServicesPage />, "service-detail": <ServiceDetail />,
-    projects: <ProjectsPage />, "project-detail": <ProjectDetail />, sectors: <SectorsPage />, company: <CompanyPage />,
-    careers: <CareersPage />, news: <NewsPage />, quote: <QuotePage />, contact: <ContactPage />,
+    projects: <ProjectsPage />, "project-detail": <ProjectDetail />, company: <CompanyPage />,
+     news: <NewsPage />,
     faq: <FaqPage />, downloads: <DownloadsPage />,
   };
   return (
