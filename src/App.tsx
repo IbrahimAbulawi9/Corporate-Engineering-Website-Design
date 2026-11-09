@@ -761,13 +761,13 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
         </div>
       </header>
             {/* 👇 هذه الطبقة الشفافة تغلق القائمة عند الضغط عليها 👇 */}
-      <div 
+            <div 
         className={`menu-overlay ${open ? "open" : ""}`} 
         onClick={() => setOpen(false)}
       ></div>
 
-      <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}></div>   
-      <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
+            {/* 👇 تم التعديل ليصبح العرض 50% 👇 */}
+        <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
         <div className="mobile-top" style={{ direction: "ltr", justifyContent: "flex-end" }}><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
         <div className="mobile-links">{nav.filter(([id]) => id !== "contact").map(([id, label], i) => <button key={id} onClick={() => { go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
         <Button onClick={() => { scrollToBottom(); setOpen(false); }}>{t.quote}</Button>
@@ -800,7 +800,8 @@ function ProjectCard({ project, large = false }: { project: Project; large?: boo
       <div className="project-shade" />
       <div className="project-status">{project.status[lang]}</div>
       <div className="project-info">
-        <span>{project.type[lang]} · {project.year}</span>
+        {/* 👇 هنا تم حذف السنة 👇 */}
+        <span>{project.type[lang]}</span> 
         <h3>{project.name[lang]}</h3>
         <p><Icon name="map" size={16} /> {project.place[lang]}، {t.jordan}</p>
         <button aria-label={`View ${project.name[lang]}`}><Icon name="arrow" /></button>
@@ -1293,7 +1294,7 @@ function Footer() {
       {/* ... باقي محتوى الفوتر ... */}
       
         
-        {/* 1. الشعار والأيقونات في المنتصف */}
+                {/* 1. الشعار والأيقونات في المنتصف */}
         <div 
           className="footer-brand" 
           style={{ 
@@ -1303,34 +1304,34 @@ function Footer() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: isMobile ? "70px" : "70px", // مسافة مريحة بين الشعار والأزرار
-            marginBottom: "90px" // 👈 أزلنا الهامش السفلي الكبير
+            gap: isMobile ? "60px" : "70px", // 👈 قللنا المسافة بين اللوقو والأزرار قليلاً في الهواتف
+            marginBottom: "90px" 
           }}
         >
           
-                    {/* الشعار (مكبر في الفوتر) */}
-          <div className="footer-logo-wrapper">
+          {/* 👇 الشعار: أضفنا marginTop لرفعه للأعلى في الهواتف فقط 👇 */}
+          <div className="footer-logo-wrapper" style={{ marginTop: isMobile ? "-30px" : "0", transition: "0.3s" }}>
             <Logo light clickable={false} />
           </div>
 
           {/* حاوية الأزرار */}
-          <div style={{ 
-            display: "flex", 
-            flexDirection: isMobile ? "column-reverse" : "row", 
-            gap: isMobile ? "50px" : "90px", 
-            flexWrap: "wrap", 
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column-reverse" : "row",
+            gap: isMobile ? "60px" : "90px", // 👈 هذه المسافة بين مجموعة (فيسبوك/انستقرام) ومجموعة (واتساب/هاتف)
+            flexWrap: "wrap",
             justifyContent: "center",
             width: "100%"
           }}>
             
             {/* العمود الأول في الكود: فيسبوك وإنستقرام */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "30px", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "40px" : "30px", alignItems: "center" }}>
               
               <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
                  {lang === "ar" ? "وسائل التواصل" : "Communication channels"}
               </h4>
 
-              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+              <a href="https://www.facebook.com/profile.php?id=61595917270706" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
                 <Icon name="facebook" size={24} /> Facebook
               </a>
 
@@ -1341,7 +1342,7 @@ function Footer() {
             </div>
 
             {/* العمود الثاني في الكود: واتساب وهاتف */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "30px", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "40px" : "30px", alignItems: "center" }}>
               
               <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
                   {lang === "ar" ? "وسائل الاتصال" : "Means of communication"}
