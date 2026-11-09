@@ -813,10 +813,13 @@ function ProjectCard({ project, large = false }: { project: Project; large?: boo
 function Home() {
   const lang = useLang();
   const t = dictionary[lang];
-  const [filter, setFilter] = useState(0);
-  const filters = [t.catAll, t.catResidential, t.catCommercial, t.catIndustrial, t.catInfrastructure, t.catHospitality, t.catGovernment];
-  const filterValues = ["All","Residential","Commercial","Industrial","Infrastructure","Hospitality","Government"];
-  const shown = filter === 0 ? projects.slice(0, 4) : projects.filter((p) => p.type.en === filterValues[filter]).slice(0, 4);
+    const [filter, setFilter] = useState(0);
+  // 👇 تم حذف t.catAll و "All" من المصفوفات 👇
+  const filters = [t.catResidential, t.catCommercial, t.catIndustrial, t.catInfrastructure, t.catHospitality, t.catGovernment];
+  const filterValues = ["Residential","Commercial","Industrial","Infrastructure","Hospitality","Government"];
+  // 👇 تم تعديل منطق العرض ليعتمد على الفلتر المختار مباشرة 👇
+  const shown = projects.filter((p) => p.type.en === filterValues[filter]).slice(0, 4);
+  
   return (
     <main>
       <section className="hero">
@@ -828,26 +831,27 @@ function Home() {
           <h1>{t.heroTitle}</h1>
           <p>{t.heroText}</p>
           <div className="hero-actions">
-  <Button 
-    variant="light" 
-    onClick={() => go("projects")} 
-    style={{ minWidth: "300px", padding: "20px 40px", fontSize: "16px" }}
-  >
-    {t.explore}
-  </Button>
-</div>
+            <Button 
+              variant="light" 
+              onClick={() => go("projects")} 
+              style={{ minWidth: "300px", padding: "15px 40px", fontSize: "16px" }}
+            >
+              {t.explore}
+            </Button>
+          </div>
         </div>
         <div className="hero-side">{t.heroSide1} <span /> {t.heroSide2}</div>
         <button className="hero-scroll" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}><span />{t.scroll}</button>
       </section>
+      
       <Stats />
 
+      {/* قسم من نحن */}
       <section className="section about-section" id="about">
         <div className="container split">
           <div className="about-visual">
             <img src={images.construction} alt={t.aboutTitle} />
             <div className="experience"><strong>26</strong><span>{t.yearsExcellence}<br />{t.yearsExcellence2}</span></div>
-            
           </div>
           <div className="about-copy">
             <SectionHead eyebrow={t.aboutEyebrow} title={t.aboutTitle} />
@@ -857,26 +861,22 @@ function Home() {
               <div><Icon name="shield" /><span><b>{t.principle1Title}</b><small>{t.principle1Text}</small></span></div>
               <div><Icon name="users" /><span><b>{t.principle2Title}</b><small>{t.principle2Text}</small></span></div>
             </div>
-           
           </div>
         </div>
       </section>
 
-
-
-      <section className="section projects-section">
+      {/* 👇 هنا تم إضافة الخط الأسود أعلى قسم المشاريع 👇 */}
+      <section className="section projects-section" style={{ borderTop: "1px solid var(--line)" }}>
         <div className="container">
-          <div className="head-row"><SectionHead eyebrow={t.projectsEyebrow} title={t.projectsTitle} text={t.projectsText} /><Button variant="secondary" onClick={() => go("projects")}>{t.viewAll}</Button></div>
+          <div className="head-row"><SectionHead eyebrow={t.projectsEyebrow} title={t.projectsTitle} text={t.projectsText} /></div>
           <div className="filter-row" role="tablist">{filters.map((item, i) => <button role="tab" aria-selected={filter === i} className={filter === i ? "active" : ""} onClick={() => setFilter(i)} key={item}>{item}</button>)}</div>
           <div className="projects-grid">{shown.length ? shown.map((p, i) => <ProjectCard project={p} key={p.name.en} />) : <div className="empty">{t.noProjects}</div>}</div>
         </div>
       </section>
 
-     
-      <Quality />
-
       
       
+      {/* قسم التواصل الأخير */}
       <FinalCta />
     </main>
   );
@@ -912,18 +912,32 @@ function News() {
 // ========== FINAL CTA ==========
 function FinalCta() {
   const t = dictionary[useLang()];
-  return <section className="final-cta"><div className="container"><div><Eyebrow light>{t.ctaEyebrow}</Eyebrow><h2>{t.ctaTitle1}<br />{t.ctaTitle2}</h2></div><div><p>{t.ctaText}</p><span>
-    
-    {/* 👇 الزر المعدل 👇 */}
-    <Button 
-     variant="light" 
-     onClick={scrollToBottom} // 👈 استخدمنا الدالة هنا
-     style={{ minWidth: "280px", padding: "16px 100px", fontSize: "16px" }}
-     >
-       {t.contactUs}
-    </Button>
-
-  </span></div></div></section>;
+  return (
+    <section className="final-cta" style={{ backgroundColor: "#102d25", borderBottom: "1px solid rgba(255, 255, 255, .12)" }}>
+      <div className="container">
+        <div>
+          <Eyebrow light>{t.ctaEyebrow}</Eyebrow>
+          {/* 👇 تم تغيير لون العنوان إلى الأبيض هنا 👇 */}
+          <h2 style={{ color: "#ffffff" }}>
+            {t.ctaTitle1}<br />{t.ctaTitle2}
+          </h2>
+        </div>
+        <div>
+          {/* 👇 تم تغيير لون النص إلى الأبيض هنا 👇 */}
+          <p style={{ color: "#ffffff" }}>{t.ctaText}</p>
+          <span>
+            <Button 
+             variant="primary" 
+             onClick={scrollToBottom}
+             style={{ minWidth: "280px", padding: "16px 100px", fontSize: "16px" }}
+             >
+               {t.contactUs}
+            </Button>
+          </span>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 // ========== PAGE HERO ==========
@@ -953,18 +967,8 @@ function AboutPage() {
       </div>
     </section>
 
-    {/* 2. قسم الإحصائيات (تم نقله للأعلى) */}
-    <Stats />
 
-    {/* 3. قسم الرؤية والمهمة (الجزء الأخضر) */}
-    <section className="vision">
-      <div className="container vision-grid">
-        <div><span>01</span><h2>{t.visionTitle}</h2><p>{t.visionText}</p></div>
-        <div><span>02</span><h2>{t.missionTitle}</h2><p>{t.missionText}</p></div>
-      </div>
-    </section>
-
-    {/* 4. قسم التواصل */}
+    {/* 3. قسم التواصل */}
     <FinalCta />
   </main>;
 }
@@ -979,7 +983,7 @@ function Timeline() {
 function ServicesPage() {
   const lang = useLang();
   const t = dictionary[lang];
-  return <main><PageHero eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} text={t.servicesPageText} image={images.detail} /><section className="section"><div className="container"><SectionHead eyebrow={t.endToEndEyebrow} title={t.endToEndTitle} text={t.endToEndText} /><div className="service-list">{serviceItems.map((s, i) => <article key={s.name.en}><span>0{i + 1}</span><div className="service-icon"><Icon name={s.icon} size={34} /></div><div><h2>{s.name[lang]}</h2><p>{s.desc[lang]}</p><ul>{(i < 2 ? t.serviceBulletsA : t.serviceBulletsB).map(x => <li key={x}><Icon name="check" size={16} />{x}</li>)}</ul></div><button onClick={() => go("service-detail")}><Icon name="arrow" /></button></article>)}</div></div></section><FinalCta /></main>;
+  return <main><PageHero eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} text={t.servicesPageText} image={images.detail} /><section className="section"><div className="container"><SectionHead eyebrow={t.endToEndEyebrow} title={t.endToEndTitle} text={t.endToEndText} /><div className="service-list">{serviceItems.map((s, i) => <article key={s.name.en}><span>0{i + 1}</span><div className="service-icon"><Icon name={s.icon} size={34} /></div><div><h2>{s.name[lang]}</h2><p>{s.desc[lang]}</p><ul>{(i < 2 ? t.serviceBulletsA : t.serviceBulletsB).map(x => <li key={x}><Icon name="check" size={16} />{x}</li>)}</ul></div><button><Icon name="arrow" /></button></article>)}</div></div></section><FinalCta /></main>;
 }
 
 // ========== SERVICE DETAIL ==========
@@ -994,13 +998,12 @@ function ProjectsPage() {
   const lang = useLang();
   const t = dictionary[lang];
   const [term, setTerm] = useState("");
-  const [type, setType] = useState("All"); // حالة نوع المشروع
+  const [type, setType] = useState("All"); 
   
-  const types = ["All","Residential","Commercial","Industrial","Infrastructure","Healthcare","Government"];
-  const typeLabels: Record<string,string> = { All: t.catAll, Residential: t.catResidential, Commercial: t.catCommercial, Industrial: t.catIndustrial, Infrastructure: t.catInfrastructure, Healthcare: t.catHealthcare, Government: t.catGovernment };
-  
-  // تم حذف متغيرات الحالة (status) من هنا لأننا حذفنا القائمة الخاصة بها
-  
+  // 👇 الأزرار التي طلبتها بالضبط (مع إضافة "الكل" لتسهيل التصفح) 👇
+  const filters = [t.catAll, t.catResidential, t.catCommercial, t.catIndustrial, t.catInfrastructure, t.catHospitality, t.catGovernment];
+  const filterValues = ["All", "Residential", "Commercial", "Industrial", "Infrastructure", "Hospitality", "Government"];
+
   // الفلترة تعتمد الآن على البحث بالاسم ونوع المشروع فقط
   const visible = projects.filter(p => (type === "All" || p.type.en === type) && p.name[lang].toLowerCase().includes(term.toLowerCase()));
 
@@ -1011,15 +1014,27 @@ function ProjectsPage() {
       <section className="section project-listing">
         <div className="container">
           
-          {/* شريط البحث مع قائمة واحدة فقط */}
-          <div className="search-bar">
-            <label>
+          {/* 👇 شريط البحث (تم حذف القائمة المنسدلة من هنا) 👇 */}
+          <div className="search-bar" style={{ marginBottom: "20px" }}>
+            <label style={{ width: "100%" }}>
               <Icon name="search" />
               <input value={term} onChange={e => setTerm(e.target.value)} placeholder={t.searchProjects} />
             </label>
-            <select value={type} onChange={e => setType(e.target.value)} aria-label={t.projectTypeLabel}>
-              {types.map(x => <option key={x} value={x}>{typeLabels[x]}</option>)}
-            </select>
+          </div>
+
+          {/* 👇 الأزرار الجديدة تحت شريط البحث 👇 */}
+          <div className="filter-row" role="tablist">
+            {filters.map((item, i) => (
+              <button 
+                role="tab" 
+                aria-selected={type === filterValues[i]} 
+                className={type === filterValues[i] ? "active" : ""} 
+                onClick={() => setType(filterValues[i])} 
+                key={item}
+              >
+                {item}
+              </button>
+            ))}
           </div>
 
           <div className="result-count">{visible.length} {t.projectsLabel} <span>{t.sortedByLatest}</span></div>
@@ -1074,7 +1089,7 @@ function CompanyPage() {
     ["Omar Al-Harbi", t.teamRoles[2]],
     ["Sarah Al-Qahtani", t.teamRoles[3]],
   ];
-  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><Quality /><FinalCta /></main>;
+  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><FinalCta /></main>;
 }
 
 
@@ -1272,10 +1287,11 @@ function Footer() {
   }, []);
 
   return (
-    <footer dir="ltr" style={{ textAlign: "left" }}>
+
+  <footer dir="ltr" style={{ textAlign: "left", backgroundColor: "#102d25", borderTop: "1px solid rgba(255, 255, 255, .12)" }}>
+    <div className="container footer-top" style={{ paddingBottom: "30px", paddingTop: "20px" }}>
+      {/* ... باقي محتوى الفوتر ... */}
       
-      {/* 👇 قللنا المسافات العلوية والسفلية هنا 👇 */}
-      <div className="container footer-top" style={{ paddingBottom: "30px", paddingTop: "20px" }}>
         
         {/* 1. الشعار والأيقونات في المنتصف */}
         <div 
@@ -1346,10 +1362,20 @@ function Footer() {
         
       </div>
 
-      {/* الشريط السفلي (حقوق النشر) */}
-      <div className="container footer-bottom" style={{ flexDirection: isMobile ? "column" : "row", textAlign: "center" }}>
+            {/* الشريط السفلي (حقوق النشر) */}
+      <div 
+        className="container footer-bottom" 
+        style={{ 
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row", 
+          textAlign: "center",
+          alignItems: "center", // 👈 هذا السطر يوسط الكلمات في الهاتف
+          justifyContent: isMobile ? "center" : "space-between",
+          gap: isMobile ? "20px" : "0px" // 👈 مسافة بين السطور في الهاتف
+        }}
+      >
         <span>{t.copyright}</span>
-        <div style={{ justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "15px" }}>
           <button>{t.privacyPolicy}</button>
           <button>{t.termsConditions}</button>
         </div>
@@ -1374,7 +1400,7 @@ function App() {
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
   const pages: Record<string, ReactNode> = {
-    home: <Home />, about: <AboutPage />, services: <ServicesPage />, "service-detail": <ServiceDetail />,
+    home: <Home />, about: <AboutPage />, services: <ServicesPage />, 
     projects: <ProjectsPage />, "project-detail": <ProjectDetail />, company: <CompanyPage />,
      news: <NewsPage />,
     faq: <FaqPage />, downloads: <DownloadsPage />,
