@@ -304,10 +304,13 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
     height: 60px !important; /* تكبير الطول */
   }
   
-  /* زيادة مساحة النقر حول الزر (اختياري) */
+    /* زيادة مساحة النقر حول الزر ليكون مريحاً */
   .menu-btn {
-    padding: 1px !important;
-    
+    padding: 2px !important; /* 👈 زدنا الهامش الداخلي من 1px إلى 12px */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: -2px !important; /* لتعويض الهامش الإضافي وعدم تحريك الأيقونة عن مكانها */
   }
 }
 
