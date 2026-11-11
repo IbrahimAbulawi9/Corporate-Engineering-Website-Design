@@ -315,7 +315,7 @@ const dictionary = {
     ctaText: "حدّثنا عن مشروعك واكتشف ما يمكن أن يقدمه شريك هندسي موثوق.",
         contactUs: "تواصل معنا",
     // About page
-    aboutPageEyebrow: "عن الرفايعة", aboutPageTitle: "تقدم هندسي. بناء ثقة.",
+    aboutPageEyebrow: "شركة الرفايعة", aboutPageTitle: "تقدم هندسي. بناء ثقة.",
     aboutPageText: "منذ أكثر من 26 عاماً، نساهم في تشكيل البيئة العمرانية في المملكة من خلال تنفيذ مسؤول ودقيق وموثوق.",
     storyEyebrow: "قصتنا", storyTitle: "شركة أردنية بطموح راسخ.",
     storyLead: "تأسست الرفايعة في عمان عام 2002 بقناعة واضحة: الهندسة الأفضل تخلق نتائج أفضل للجميع.",
@@ -768,7 +768,12 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
 
             {/* 👇 تم التعديل ليصبح العرض 50% 👇 */}
         <div className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}>
-        <div className="mobile-top" style={{ direction: "ltr", justifyContent: "flex-end" }}><button aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" /></button></div>
+        <div className="mobile-top" style={{ direction: "ltr", justifyContent: "flex-end" }}>
+        <button aria-label="Close menu" onClick={() => setOpen(false)}>
+       {/* 👇 أضفنا size={32} هنا 👇 */}
+       <Icon name="close" size={32} /> 
+       </button>
+       </div>
         <div className="mobile-links">{nav.filter(([id]) => id !== "contact").map(([id, label], i) => <button key={id} onClick={() => { go(id); setOpen(false); }}><span>0{i + 1}</span>{label}<Icon name="arrow" /></button>)}</div>
         <Button onClick={() => { scrollToBottom(); setOpen(false); }}>{t.quote}</Button>
       </div>
@@ -867,7 +872,7 @@ function Home() {
       </section>
 
       {/* 👇 هنا تم إضافة الخط الأسود أعلى قسم المشاريع 👇 */}
-      <section className="section projects-section" style={{ borderTop: "1px solid var(--line)" }}>
+      <section className="section projects-section" style={{ borderTop: "4px solid var(--line)" }}>
         <div className="container">
           <div className="head-row"><SectionHead eyebrow={t.projectsEyebrow} title={t.projectsTitle} text={t.projectsText} /></div>
           <div className="filter-row" role="tablist">{filters.map((item, i) => <button role="tab" aria-selected={filter === i} className={filter === i ? "active" : ""} onClick={() => setFilter(i)} key={item}>{item}</button>)}</div>
@@ -944,7 +949,7 @@ function FinalCta() {
 // ========== PAGE HERO ==========
 function PageHero({ eyebrow, title, text, image = images.skyline }: { eyebrow: string; title: string; text: string; image?: string }) {
   const t = dictionary[useLang()];
-  return <section className="page-hero"><img src={image} alt="" /><div className="page-hero-overlay" /><div className="container"><div className="breadcrumbs"><button onClick={() => go("home")}>{t.home}</button><span>/</span><b>{eyebrow}</b></div><Eyebrow light>{eyebrow}</Eyebrow><h1>{title}</h1><p>{text}</p></div></section>;
+  return <section className="page-hero"><img src={image} alt="" /><div className="page-hero-overlay" /><div className="container"><Eyebrow light>{eyebrow}</Eyebrow><h1>{title}</h1><p>{text}</p></div></section>;
 }
 
 // ========== ABOUT PAGE ==========
@@ -1288,13 +1293,10 @@ function Footer() {
   }, []);
 
   return (
-
-  <footer dir="ltr" style={{ textAlign: "left", backgroundColor: "#102d25", borderTop: "1px solid rgba(255, 255, 255, .12)" }}>
-    <div className="container footer-top" style={{ paddingBottom: "30px", paddingTop: "20px" }}>
-      {/* ... باقي محتوى الفوتر ... */}
+    <footer dir="ltr" style={{ textAlign: "left", backgroundColor: "#102d25", borderTop: "1px solid rgba(255, 255, 255, .12)" }}>
       
+      <div className="container footer-top" style={{ paddingBottom: "30px", paddingTop: "20px" }}>
         
-                {/* 1. الشعار والأيقونات في المنتصف */}
         <div 
           className="footer-brand" 
           style={{ 
@@ -1304,34 +1306,39 @@ function Footer() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: isMobile ? "60px" : "70px", // 👈 قللنا المسافة بين اللوقو والأزرار قليلاً في الهواتف
-            marginBottom: "90px" 
+            gap: isMobile ? "70px" : "70px",
+            marginBottom: "90px"
           }}
         >
           
-          {/* 👇 الشعار: أضفنا marginTop لرفعه للأعلى في الهواتف فقط 👇 */}
-          <div className="footer-logo-wrapper" style={{ marginTop: isMobile ? "-30px" : "0", transition: "0.3s" }}>
+          <div className="footer-logo-wrapper">
             <Logo light clickable={false} />
           </div>
 
-          {/* حاوية الأزرار */}
-          <div style={{
-            display: "flex",
-            flexDirection: isMobile ? "column-reverse" : "row",
-            gap: isMobile ? "60px" : "90px", // 👈 هذه المسافة بين مجموعة (فيسبوك/انستقرام) ومجموعة (واتساب/هاتف)
-            flexWrap: "wrap",
+          <div style={{ 
+            display: "flex", 
+            flexDirection: isMobile ? "column-reverse" : "row", 
+            /* 👇 هنا قمنا بزيادة المسافة الأفقية للكمبيوتر من 90px إلى 180px 👇 */
+            gap: isMobile ? "50px" : "150px", 
+            flexWrap: "wrap", 
             justifyContent: "center",
             width: "100%"
           }}>
             
-            {/* العمود الأول في الكود: فيسبوك وإنستقرام */}
-            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "40px" : "30px", alignItems: "center" }}>
+            {/* العمود الأول: فيسبوك وإنستقرام */}
+            <div style={{ 
+              display: "flex", 
+              flexDirection: "column", 
+              /* 👇 هنا قمنا بزيادة المسافة العمودية للكمبيوتر من 30px إلى 50px 👇 */
+              gap: isMobile ? "40px" : "50px", 
+              alignItems: "center" 
+            }}>
               
               <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
                  {lang === "ar" ? "وسائل التواصل" : "Communication channels"}
               </h4>
 
-              <a href="https://www.facebook.com/profile.php?id=61595917270706" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
                 <Icon name="facebook" size={24} /> Facebook
               </a>
 
@@ -1341,8 +1348,14 @@ function Footer() {
 
             </div>
 
-            {/* العمود الثاني في الكود: واتساب وهاتف */}
-            <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "40px" : "30px", alignItems: "center" }}>
+            {/* العمود الثاني: واتساب وهاتف */}
+            <div style={{ 
+              display: "flex", 
+              flexDirection: "column", 
+              /* 👇 هنا قمنا بزيادة المسافة العمودية للكمبيوتر من 30px إلى 50px 👇 */
+              gap: isMobile ? "40px" : "50px", 
+              alignItems: "center" 
+            }}>
               
               <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
                   {lang === "ar" ? "وسائل الاتصال" : "Means of communication"}
@@ -1363,16 +1376,16 @@ function Footer() {
         
       </div>
 
-            {/* الشريط السفلي (حقوق النشر) */}
+      {/* الشريط السفلي (حقوق النشر) */}
       <div 
         className="container footer-bottom" 
         style={{ 
           display: "flex",
           flexDirection: isMobile ? "column" : "row", 
           textAlign: "center",
-          alignItems: "center", // 👈 هذا السطر يوسط الكلمات في الهاتف
+          alignItems: "center",
           justifyContent: isMobile ? "center" : "space-between",
-          gap: isMobile ? "20px" : "0px" // 👈 مسافة بين السطور في الهاتف
+          gap: isMobile ? "20px" : "0px"
         }}
       >
         <span>{t.copyright}</span>

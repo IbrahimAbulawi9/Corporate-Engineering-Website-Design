@@ -118,7 +118,7 @@ img { display: block; width: 100%; }
 .section-head p { color: var(--ink-2); line-height: 1.7; margin: 20px 0 0; font-size: 14px; }
 .about-copy .lead, .lead { font-size: 19px; line-height: 1.6; color: var(--ink); margin: 28px 0 17px; }
 .about-copy > p:not(.lead) { color: var(--ink-2); font-size: 14px; line-height: 1.75; }
-.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid var(--line); margin: 32px 0; padding-top: 25px; }
+.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 4px solid var(--line); margin: 32px 0; padding-top: 25px; }
 .principles > div { display: flex; gap: 12px; color: var(--brand); }.principles span { display: flex; flex-direction: column; color: var(--ink); }.principles b { font-size: 12px; }.principles small { font-size: 9px; color: var(--ink-2); margin-top: 5px; }
 .services-section { background: var(--sand-2); }
 .head-row { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 56px; }
@@ -307,6 +307,7 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
   /* زيادة مساحة النقر حول الزر (اختياري) */
   .menu-btn {
     padding: 1px !important;
+    
   }
 }
 
@@ -441,8 +442,8 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
 
 /* تعديل مسافات القائمة الداخلية لتناسب الحجم الجديد */
 .mobile-links button {
-  font-size: 16px !important; /* تصغير الخط قليلاً ليتناسب مع العرض */
-  padding: 12px 0 !important;
+  font-size: 20px !important; /* تصغير الخط قليلاً ليتناسب مع العرض */
+  padding: 25px 0 !important;
 }
 
 
@@ -580,6 +581,12 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
   .footer-logo-wrapper img {
     height: 75px !important; /* 👈 الحجم على الهواتف */
   }
+
+
+
+
+
+  
 }
 
 
@@ -641,4 +648,104 @@ footer {
 /* إجبار صفحة الخدمات على أخذ خلفية بيضاء */
 main, .section, .service-list {
   background-color: var(--white) !important;
+}
+
+
+
+
+
+/* تكبير زر الإغلاق في القائمة الجانبية للهواتف */
+.mobile-top > button svg {
+  width: 36px !important;  /* 👈 عرض الأيقونة */
+  height: 36px !important; /* 👈 طول الأيقونة */
+  color: var(--forest-deep) !important; /* لون الأيقونة (يمكنك تغييره) */
+}
+
+/* إضافة مساحة نقر مريحة حول الزر */
+.mobile-top > button {
+  padding: 8px !important;
+  cursor: pointer;
+}
+
+
+
+
+/* =========================================
+   تكبير وتلوين عنوان الصفحات الداخلية (Eyebrow)
+   ========================================= */
+
+/* 1. تكبير الخط وتغيير لونه إلى #b26a2d */
+.page-hero .eyebrow,
+.page-hero .eyebrow-light {
+  font-size: 26px !important;      /* تكبير الخط */
+  font-weight: 800 !important;     /* زيادة سماكة الخط */
+  letter-spacing: 0.1em !important;
+  color: #d48948 !important;       /* 👈 تغيير لون الكلمة هنا */
+  margin-bottom: 30px !important;
+  gap: 15px !important; 
+}
+
+/* 2. تكبير الخط الذهبي الصغير وتغيير لونه */
+.page-hero .eyebrow span,
+.page-hero .eyebrow-light span {
+  width: 60px !important;          /* تكبير طول الخط */
+  height: 3px !important;          /* تكبير سماكة الخط */
+  background-color: #d48948 !important; /* 👈 تغيير لون الخط هنا ليتطابق مع الكلمة */
+}
+
+
+
+
+
+/* =========================================
+   تكبير النص التعريفي أسفل العناوين في جميع الصفحات
+   ========================================= */
+
+.page-hero p {
+  font-size: 20px !important;      /* 👈 كبرنا حجم الخط (كان 14px) */
+  line-height: 1.8 !important;     /* تحسين تباعد الأسطر ليكون مريحاً للقراءة */
+  max-width: 800px !important;     /* زيادة العرض قليلاً ليتناسب مع الخط الكبير */
+  color: #e2e8e5 !important;       /* لون أبيض مائل للرمادي ليكون مريحاً للعين */
+  font-weight: 400 !important;
+  margin-top: 30px !important;     /* مسافة بسيطة بينه وبين العنوان */
+}
+
+
+
+
+
+
+
+/* =========================================
+   تكبير النصوص الصغيرة في أعلى الصفحة الرئيسية (Hero)
+   ========================================= */
+
+/* 1. تكبير كلمتي "شريككم الهندسي الموثوق" و "تأسست عام 2002" */
+.hero-cred span {
+  font-size: 14px !important;     /* 👈 كبرنا حجم الخط (كان 10px) */
+  padding: 9px 16px !important;   /* 👈 كبرنا المساحة الداخلية ليتناسب مع الحجم الجديد */
+  letter-spacing: 0.04em !important; 
+}
+
+/* 2. تكبير كلمة "تميّز هندسي مبني ليدوم" والخط البرتقالي */
+.hero-content .eyebrow {
+  font-size: 15px !important;     /* 👈 كبرنا حجم الخط (كان 11px) */
+  letter-spacing: 0.1em !important;
+}
+
+
+
+
+
+/* =========================================
+   تكبير النص التعريفي في القسم الرئيسي (Hero)
+   ========================================= */
+
+.hero-content > p {
+  font-size: 22px !important;      /* 👈 كبرنا حجم الخط (كان 16px) */
+  line-height: 1.8 !important;     /* تحسين المسافة بين السطور ليكون مريحاً للقراءة */
+  max-width: 800px !important;     /* زيادة العرض قليلاً ليتناسب مع الخط الأكبر */
+
+  margin-top: 35px !important;     /* مسافة بينه وبين العنوان الرئيسي */
+  font-weight: 500 !important;     /* زيادة سماكة الخط قليلاً */
 }
