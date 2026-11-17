@@ -1432,6 +1432,11 @@ function App() {
   const queryParams = new URLSearchParams(queryString);
   const filterParam = queryParams.get("filter");
 
+  // 👇 أضف هذا الـ useEffect لضمان التمرير للأعلى عند كل تغيير في الرابط 👇
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [hash]);
+
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
