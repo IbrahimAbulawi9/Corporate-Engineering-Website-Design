@@ -704,7 +704,7 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
           <nav className="desktop-nav" aria-label="Main navigation" style={{ direction: lang === "ar" ? "rtl" : "ltr" }}>
             {nav.map(([id, label]) => (
               <div className="nav-item" key={id}>
-                <button className={location.hash.slice(1) === id || (!location.hash && id === "home") ? "active" : ""} onClick={() => id === "contact" ? scrollToBottom() : go(id)}>{label}
+                <button className={(location.hash.slice(1).split('?')[0] || "home") === id ? "active" : ""} onClick={() => id === "contact" ? scrollToBottom() : go(id)}>{label}
                 </button>
               </div> ))}
             </nav>
@@ -796,16 +796,15 @@ function Stats() {
 }
 
 // ========== PROJECT CARD ==========
-function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
+function ProjectCard({ project, large = false, onClickOverride }: { project: Project; large?: boolean; onClickOverride?: () => void }) {
   const lang = useLang();
   const t = dictionary[lang];
   return (
-    <article className={`project-card ${large ? "project-large" : ""}`} onClick={() => go("project-detail")}>
+    <article className={`project-card ${large ? "project-large" : ""}`} onClick={onClickOverride || (() => go("project-detail"))}>
       <img src={project.image} alt={project.name[lang]} />
       <div className="project-shade" />
       <div className="project-status">{project.status[lang]}</div>
       <div className="project-info">
-        {/* 👇 هنا تم حذف السنة 👇 */}
         <span>{project.type[lang]}</span> 
         <h3>{project.name[lang]}</h3>
         <p><Icon name="map" size={16} /> {project.place[lang]}، {t.jordan}</p>
@@ -876,7 +875,15 @@ function Home() {
         <div className="container">
           <div className="head-row"><SectionHead eyebrow={t.projectsEyebrow} title={t.projectsTitle} text={t.projectsText} /></div>
           <div className="filter-row" role="tablist">{filters.map((item, i) => <button role="tab" aria-selected={filter === i} className={filter === i ? "active" : ""} onClick={() => setFilter(i)} key={item}>{item}</button>)}</div>
-          <div className="projects-grid">{shown.length ? shown.map((p, i) => <ProjectCard project={p} key={p.name.en} />) : <div className="empty">{t.noProjects}</div>}</div>
+                    <div className="projects-grid">
+            {shown.length ? shown.map((p, i) => (
+              <ProjectCard 
+                project={p} 
+                key={p.name.en} 
+                onClickOverride={() => go(`projects?filter=${p.type.en}`)} 
+              />
+            )) : <div className="empty">{t.noProjects}</div>}
+          </div>
         </div>
       </section>
 
@@ -1000,18 +1007,29 @@ function ServiceDetail() {
 }
 
 // ========== PROJECTS PAGE ==========
-function ProjectsPage() {
+function ProjectsPage({ initialFilter }: { initialFilter?: string | null }) {
   const lang = useLang();
   const t = dictionary[lang];
   const [term, setTerm] = useState("");
-  const [type, setType] = useState("All"); 
   
-  // 👇 الأزرار التي طلبتها بالضبط (مع إضافة "الكل" لتسهيل التصفح) 👇
-  const filters = [t.catAll, t.catResidential, t.catCommercial, t.catIndustrial, t.catInfrastructure, t.catHospitality, t.catGovernment];
-  const filterValues = ["All", "Residential", "Commercial", "Industrial", "Infrastructure", "Hospitality", "Government"];
+  const filters = [t.catResidential, t.catCommercial, t.catIndustrial, t.catInfrastructure, t.catHospitality, t.catGovernment];
+  const filterValues = ["Residential", "Commercial", "Industrial", "Infrastructure", "Hospitality", "Government"];
 
-  // الفلترة تعتمد الآن على البحث بالاسم ونوع المشروع فقط
-  const visible = projects.filter(p => (type === "All" || p.type.en === type) && p.name[lang].toLowerCase().includes(term.toLowerCase()));
+  // تعيين الفلتر الافتراضي بناءً على الرابط أو "سكني"
+  const [type, setType] = useState(
+    initialFilter && filterValues.includes(initialFilter) ? initialFilter : "Residential"
+  );
+
+  // تحديث الفلتر إذا تغير الرابط
+  useEffect(() => {
+    if (initialFilter && filterValues.includes(initialFilter)) {
+      setType(initialFilter);
+    } else if (!initialFilter) {
+      setType("Residential");
+    }
+  }, [initialFilter]);
+
+  const visible = projects.filter(p => p.type.en === type && p.name[lang].toLowerCase().includes(term.toLowerCase()));
 
   return (
     <main>
@@ -1020,7 +1038,6 @@ function ProjectsPage() {
       <section className="section project-listing">
         <div className="container">
           
-          {/* 👇 شريط البحث (تم حذف القائمة المنسدلة من هنا) 👇 */}
           <div className="search-bar" style={{ marginBottom: "20px" }}>
             <label style={{ width: "100%" }}>
               <Icon name="search" />
@@ -1028,7 +1045,6 @@ function ProjectsPage() {
             </label>
           </div>
 
-          {/* 👇 الأزرار الجديدة تحت شريط البحث 👇 */}
           <div className="filter-row" role="tablist">
             {filters.map((item, i) => (
               <button 
@@ -1338,7 +1354,7 @@ function Footer() {
                  {lang === "ar" ? "وسائل التواصل" : "Communication channels"}
               </h4>
 
-              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
+              <a href="https://web.facebook.com/profile.php?id=61595917270706" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
                 <Icon name="facebook" size={24} /> Facebook
               </a>
 
@@ -1403,22 +1419,36 @@ function Footer() {
 // ========== APP ==========
 function App() {
   const [lang, setLang] = useState<Lang>("ar");
-  const [page, setPage] = useState(location.hash.slice(1) || "home");
+  const [hash, setHash] = useState(location.hash.slice(1) || "home");
+  
   useEffect(() => {
-    const update = () => setPage(location.hash.slice(1) || "home");
+    const update = () => setHash(location.hash.slice(1) || "home");
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
+
+  // استخراج اسم الصفحة والفلتر من الرابط
+  const [page, queryString] = hash.split("?");
+  const queryParams = new URLSearchParams(queryString);
+  const filterParam = queryParams.get("filter");
+
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
+
   const pages: Record<string, ReactNode> = {
-    home: <Home />, about: <AboutPage />, services: <ServicesPage />, 
-    projects: <ProjectsPage />, "project-detail": <ProjectDetail />, company: <CompanyPage />,
-     news: <NewsPage />,
-    faq: <FaqPage />, downloads: <DownloadsPage />,
+    home: <Home />, 
+    about: <AboutPage />, 
+    services: <ServicesPage />, 
+    projects: <ProjectsPage initialFilter={filterParam} />, // تمرير الفلتر هنا
+    "project-detail": <ProjectDetail />, 
+    company: <CompanyPage />,
+    news: <NewsPage />,
+    faq: <FaqPage />, 
+    downloads: <DownloadsPage />,
   };
+  
   return (
     <LangContext.Provider value={lang}>
       <div dir={lang === "ar" ? "rtl" : "ltr"} className={lang === "ar" ? "arabic" : ""}>

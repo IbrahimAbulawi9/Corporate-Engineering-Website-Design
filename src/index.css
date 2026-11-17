@@ -547,16 +547,11 @@ footer { background: var(--forest-deep); color: white; padding-top: 80px; }.foot
    إخفاء الهيدر عند النزول للأسفل
    ========================================= */
 .navbar {
-  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out !important;
+  transition: transform 1s ease-in-out, background-color 1s ease-in-out !important;
 }
 .hide-navbar {
   transform: translateY(-100%) !important;
-}
-
-
-
-
-
+  }
 
 
 /* =========================================
@@ -774,3 +769,94 @@ main, .section, .service-list {
   bottom: -3px !important; /* لضبط مكانه ليكون فوق الخط الرمادي بالضبط */
   background-color: #b26a2d !important; /* تأكيد اللون الذهبي */
 }
+
+
+
+
+
+
+
+
+
+/* =========================================
+   توضيح وتكبير نصوص قسم المشاريع (الوصف وأزرار التصفية)
+   ========================================= */
+
+/* 1. توضيح لون النص الوصفي (محفظة أعمال تشكّلت...) على جميع الأجهزة */
+
+
+/* 2. توضيح لون أزرار التصفية (سكني، تجاري...) على جميع الأجهزة */
+.filter-row button {
+   /* لون غامق وواضح */
+  font-weight: 700 !important; /* جعل الخط عريضاً */
+}
+
+/* لون الزر النشط (الذي يتم اختياره) */
+.filter-row button.active {
+  color: #173d32 !important; /* أخضر غامق ليتميز */
+}
+
+/* =========================================
+   تكبير الخطوط على شاشات الكمبيوتر فقط
+   ========================================= */
+@media (min-width: 769px) {
+  
+  /* تكبير النص الوصفي (محفظة أعمال...) على الكمبيوتر */
+  .section-head p {
+    font-size: 22px !important; /* حجم خط كبير وواضح */
+  }
+
+  /* تكبير أزرار التصفية (سكني، تجاري...) على الكمبيوتر */
+  .filter-row button {
+    font-size: 18px !important; 
+    padding-bottom: 18px !important; /* زيادة المسافة تحت الزر */
+  }
+}
+
+
+
+
+
+
+
+/* =========================================
+   إخفاء شريط التمرير (الأسهم) من أزرار التصفية
+   ========================================= */
+
+/* إخفاء شريط التمرير في متصفحات Chrome, Safari, Opera */
+.filter-row::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* إخفاء شريط التمرير في Firefox */
+.filter-row {
+  scrollbar-width: none !important;
+}
+
+/* إخفاء شريط التمرير في Internet Explorer و Edge */
+.filter-row {
+  -ms-overflow-style: none !important;
+}
+
+
+
+
+
+
+
+/* =========================================
+   إلغاء خاصية التمرير (Scroll) نهائياً من أزرار التصفية
+   ========================================= */
+
+.filter-row {
+  overflow: visible !important; /* 👈 إلغاء التمرير نهائياً */
+  flex-wrap: wrap !important;   /* 👈 السماح للأزرار بالنزول لسطر جديد إذا لم تكفِ الشاشة */
+  padding-bottom: 1px !important; /* مسافة بسيطة أسفل الأزرار */
+}
+
+/* إزالة أي شريط تمرير مخفي قد يكون موجوداً */
+.filter-row::-webkit-scrollbar {
+  display: none !important;
+  }
