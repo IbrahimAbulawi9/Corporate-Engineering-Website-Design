@@ -162,10 +162,10 @@ const dictionary = {
     // Company page
     companyPageEyebrow: "Our Company", companyPageTitle: "A complete team.",
     companyPageText: "Meet the team and commitments behind every Al-Rafaya project.",
-    leadershipEyebrow: "Leadership", leadershipTitle: "Led by experience. United by purpose.",
+    leadershipEyebrow: "Team", leadershipTitle: "Led by experience. United by purpose.",
     leadershipText: "Our leadership team brings deep local knowledge and multidisciplinary project expertise.",
-    teamRoles: ["Chairman","Chief Executive Officer","Chief Operations Officer","Director of Engineering"],
-    execLeadership: "Executive leadership",
+    teamRoles: ["Chief Executive Officer", "Executive Engineer", "Company Accountant", "Assistant Manager"],
+    execLeadership: "Executive Team",
    
     // News page
     newsPageEyebrow: "News & Insights", newsPageTitle: "Ideas, progress, and perspectives.",
@@ -276,7 +276,7 @@ const dictionary = {
     servicesText: "من الأعمال المدنية المعقدة إلى التشطيبات الدقيقة، تقدّم فرقنا متعددة التخصصات يقيناً كاملاً في المشروع.",
     viewDetails: "عرض التفاصيل", exploreAllServices: "استكشف جميع الخدمات",
     // Projects section
-    projectsEyebrow: "أعمال مختارة", projectsTitle: "مشاريع ترسم ملامح التقدم.",
+    projectsEyebrow: "مشاريعنا", projectsTitle: "مشاريع ترسم ملامح التقدم.",
     projectsText: "محفظة أعمال تشكّلت بالطموح التقني والتصميم الهادف والقيمة المستدامة.",
     viewAll: "عرض جميع المشاريع", noProjects: "لا توجد مشاريع مميزة في هذه الفئة حتى الآن.",
     
@@ -381,10 +381,10 @@ const dictionary = {
     // Company page
     companyPageEyebrow: "شركتنا", companyPageTitle: "فريق متكامل.",
     companyPageText: "تعرّف على الفريق والالتزامات وراء كل مشروع من مشاريع الرفايعة.",
-    leadershipEyebrow: "القيادة", leadershipTitle: "قيادة بالخبرة. ووحدة بالهدف.",
+    leadershipEyebrow: "الفريق", leadershipTitle: "قيادة بالخبرة. ووحدة بالهدف.",
     leadershipText: "يجمع فريق قيادتنا بين المعرفة المحلية العميقة والخبرة متعددة التخصصات في المشاريع.",
-    teamRoles: ["رئيس مجلس الإدارة","الرئيس التنفيذي","الرئيس التنفيذي للعمليات","مديرة الهندسة"],
-    execLeadership: "القيادة التنفيذية",
+    teamRoles: ["المدير التنفيذي الشركة","المهندس التنفيذي","محاسب الشركة","مساعد المدير"],
+    execLeadership: "الفريق التنفيذي",
     
     // News page
     newsPageEyebrow: "الأخبار والرؤى", newsPageTitle: "أفكار وتقدم ورؤى.",
@@ -796,19 +796,36 @@ function Stats() {
 }
 
 // ========== PROJECT CARD ==========
-function ProjectCard({ project, large = false, onClickOverride }: { project: Project; large?: boolean; onClickOverride?: () => void }) {
+function ProjectCard({ project, large = false, onClickOverride, isListingPage = false }: { project: Project; large?: boolean; onClickOverride?: () => void; isListingPage?: boolean }) {
   const lang = useLang();
   const t = dictionary[lang];
+  
   return (
-    <article className={`project-card ${large ? "project-large" : ""}`} onClick={onClickOverride || (() => go("project-detail"))}>
+    <article 
+      className={`project-card ${large ? "project-large" : ""}`} 
+      onClick={isListingPage ? undefined : (onClickOverride || (() => go("project-detail")))}
+      style={isListingPage ? { cursor: "default" } : {}}
+    >
       <img src={project.image} alt={project.name[lang]} />
       <div className="project-shade" />
-      <div className="project-status">{project.status[lang]}</div>
+      
+      {/* 👇 تغيير كلمة الحالة إلى "مكتمل" في الصفحة الرئيسية فقط 👇 */}
+      {!isListingPage && <div className="project-status">{t.catCompleted}</div>}
+      
       <div className="project-info">
         <span>{project.type[lang]}</span> 
         <h3>{project.name[lang]}</h3>
         <p><Icon name="map" size={16} /> {project.place[lang]}، {t.jordan}</p>
-        <button aria-label={`View ${project.name[lang]}`}><Icon name="arrow" /></button>
+        
+        {/* 👇 تكبير السهم في الصفحة الرئيسية فقط 👇 */}
+        {!isListingPage && (
+          <button 
+            aria-label={`View ${project.name[lang]}`} 
+            style={{ width: '50px', height: '50px' }} /* 👈 تكبير حجم الزر نفسه */
+          >
+            <Icon name="arrow" size={28} /> {/* 👈 تكبير حجم السهم بداخله */}
+          </button>
+        )}
       </div>
     </article>
   );
@@ -972,7 +989,7 @@ function AboutPage() {
           <SectionHead eyebrow={t.storyEyebrow} title={t.storyTitle} />
           <p className="lead">{t.storyLead}</p>
           <p>{t.storyP}</p>
-          <Button variant="secondary" onClick={() => go("company")}>{t.meetTeam}</Button>
+          <Button variant="secondary" onClick={() => go("company")} style={{ marginTop: "35px" }}>{t.meetTeam}</Button>
         </div>
         <div className="about-visual">
           <img src={images.team} alt={t.storyTitle} />
@@ -996,7 +1013,50 @@ function Timeline() {
 function ServicesPage() {
   const lang = useLang();
   const t = dictionary[lang];
-  return <main><PageHero eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} text={t.servicesPageText} image={images.detail} /><section className="section"><div className="container"><SectionHead eyebrow={t.endToEndEyebrow} title={t.endToEndTitle} text={t.endToEndText} /><div className="service-list">{serviceItems.map((s, i) => <article key={s.name.en}><span>0{i + 1}</span><div className="service-icon"><Icon name={s.icon} size={34} /></div><div><h2>{s.name[lang]}</h2><p>{s.desc[lang]}</p><ul>{(i < 2 ? t.serviceBulletsA : t.serviceBulletsB).map(x => <li key={x}><Icon name="check" size={16} />{x}</li>)}</ul></div><button><Icon name="arrow" /></button></article>)}</div></div></section><FinalCta /></main>;
+  return (
+    <main>
+      <PageHero eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} text={t.servicesPageText} image={images.detail} />
+      <section className="section">
+        <div className="container">
+          <SectionHead eyebrow={t.endToEndEyebrow} title={t.endToEndTitle} text={t.endToEndText} />
+          
+          <div className="service-list">
+            {serviceItems.map((s, i) => (
+              <article key={s.name.en}>
+                <span>0{i + 1}</span>
+                
+                {/* 👇 كبرنا الأيقونة الرئيسية من 34 إلى 48 👇 */}
+                <div className="service-icon">
+                  <Icon name={s.icon} size={48} />
+                </div>
+                
+                <div>
+                  <h2>{s.name[lang]}</h2>
+                  <p>{s.desc[lang]}</p>
+                  <ul>
+                    {/* 👇 كبرنا أيقونة الصح من 16 إلى 22 👇 */}
+                    {(i < 2 ? t.serviceBulletsA : t.serviceBulletsB).map(x => (
+                      <li key={x}>
+                        <Icon name="check" size={22} />
+                        {x}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 👇 استبدلنا <button> بـ <div> ليكون مجرد شكل، وكبرنا السهم 👇 */}
+                <div className="service-decorative-arrow">
+                  <Icon name="arrow" size={32} />
+                </div>
+              </article>
+            ))}
+          </div>
+          
+        </div>
+      </section>
+      <FinalCta />
+    </main>
+  );
 }
 
 // ========== SERVICE DETAIL ==========
@@ -1061,7 +1121,7 @@ function ProjectsPage({ initialFilter }: { initialFilter?: string | null }) {
 
           <div className="result-count">{visible.length} {t.projectsLabel} <span>{t.sortedByLatest}</span></div>
           
-          <div className="listing-grid">{visible.map(p => <ProjectCard key={p.name.en} project={p} />)}</div>
+          <div className="listing-grid">{visible.map(p => <ProjectCard key={p.name.en} project={p} isListingPage={true} />)}</div>
           
           {!visible.length && <div className="empty"><Icon name="search" size={32} />{t.noMatch}</div>}
           
@@ -1104,14 +1164,41 @@ function SectorsPage() {
 
 // ========== COMPANY PAGE ==========
 function CompanyPage() {
-  const t = dictionary[useLang()];
-  const team: [string,string][] = [
-    ["Fahad Al-Rafaya", t.teamRoles[0]],
-    ["Khalid Al-Mansour", t.teamRoles[1]],
-    ["Omar Al-Harbi", t.teamRoles[2]],
-    ["Sarah Al-Qahtani", t.teamRoles[3]],
-  ];
-  return <main><PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} /><section className="section"><div className="container"><SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} /><div className="team-grid">{team.map(([name, role],i) => <article key={name}><div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div><h3>{name}</h3><p>{role}</p><span>{t.execLeadership}</span></article>)}</div></div></section><FinalCta /></main>;
+  const lang = useLang();
+  const t = dictionary[lang];
+  
+  // تعريف الأشخاص مع أدوارهم
+  const maher: [string, string] = ["Maher Al-Rafaya", t.teamRoles[0]];
+  const sarah: [string, string] = ["Samer Abulawi", t.teamRoles[3]];
+  const khalid: [string, string] = ["Khalid Al-Mansour", t.teamRoles[1]];
+  const omar: [string, string] = ["Omar Al-Harbi", t.teamRoles[2]];
+
+  // 👇 الترتيب الثابت: من اليسار إلى اليمين (ماهر -> سارة -> خالد -> عمر) 👇
+  // في الإنجليزية نضعهم بالترتيب العادي، وفي العربية نعكس المصفوفة لتبدو بنفس الشكل
+    // 👇 الترتيب ثابت دائماً في كل الأجهزة واللغات 👇
+  const team: [string, string][] = [maher, sarah, khalid, omar];
+
+  return (
+    <main>
+      <PageHero eyebrow={t.companyPageEyebrow} title={t.companyPageTitle} text={t.companyPageText} image={images.team} />
+      <section className="section">
+        <div className="container">
+          <SectionHead eyebrow={t.leadershipEyebrow} title={t.leadershipTitle} text={t.leadershipText} />
+          <div className="team-grid">
+            {team.map(([name, role], i) => (
+              <article key={name}>
+                <div className={`portrait portrait-${i}`}><Icon name="users" size={48} /></div>
+                <h3>{name}</h3>
+                <p>{role}</p>
+                <span>{t.execLeadership}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <FinalCta />
+    </main>
+  );
 }
 
 
@@ -1309,7 +1396,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer dir="ltr" style={{ textAlign: "left", backgroundColor: "#102d25", borderTop: "1px solid rgba(255, 255, 255, .12)" }}>
+    <footer dir="ltr" style={{ textAlign: "left", backgroundColor: "#102d25", borderTop: "4px solid rgba(255, 255, 255, .12)" }}>
       
       <div className="container footer-top" style={{ paddingBottom: "30px", paddingTop: "20px" }}>
         
