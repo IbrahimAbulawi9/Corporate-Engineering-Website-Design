@@ -242,6 +242,12 @@ const dictionary = {
     companyProfile: "Company Profile", newsAndInsights: "News & Insights",
     ourTeam: "Our Team", certifications: "Certifications",
     qualitySafety: "Quality & Safety", sustainability: "Sustainability",
+        // Sectors page
+    sectorsPageEyebrow: "Sectors",
+    sectorsPageTitle: "Industries we serve.",
+    sectorsPageText: "Explore our expertise across diverse sectors.",
+    sectorDesc: "Comprehensive engineering and construction solutions tailored to the specific needs of this sector.",
+    exploreProjects: "Explore Projects",
   },
   ar: {
     // Nav
@@ -287,6 +293,14 @@ const dictionary = {
     why2Big: "صفر تنازلات", why2Title: "السلامة أولاً", why2Text: "إدارة استباقية للمخاطر تحمي أفرادنا وشركاءنا ومجتمعاتنا.",
     why3Big: "+320 خبيراً", why3Title: "فريق احترافي", why3Text: "كفاءات متعددة التخصصات تجمعها معايير عالية وهدف مشترك.",
     why4Big: "96%", why4Title: "التسليم في الموعد", why4Text: "تخطيط منضبط وضوابط شفافة تُبقي المشاريع في مسارها.",
+    
+    // Sectors page
+    sectorsPageEyebrow: "القطاعات",
+    sectorsPageTitle: "القطاعات التي نخدمها.",
+    sectorsPageText: "استكشف خبراتنا عبر قطاعات متنوعة.",
+    sectorDesc: "حلول هندسية وإنشائية متكاملة مصممة لتلبية الاحتياجات المحددة لهذا القطاع.",
+    exploreProjects: "استكشف المشاريع",
+    
     // Process
     processEyebrow: "كيف نعمل", processTitle: "مسار واضح من الرؤية إلى الواقع.",
     processSteps: ["الاستشارة","التخطيط","التصميم والهندسة","المشتريات","الإنشاء","الجودة والسلامة","التسليم"],
