@@ -989,7 +989,7 @@ function AboutPage() {
           <SectionHead eyebrow={t.storyEyebrow} title={t.storyTitle} />
           <p className="lead">{t.storyLead}</p>
           <p>{t.storyP}</p>
-          <Button variant="secondary" onClick={() => go("company")} style={{ marginTop: "35px" }}>{t.meetTeam}</Button>
+          <Button variant="secondary" onClick={() => go("company")} style={{ marginTop: "40px" }}>{t.meetTeam}</Button>
         </div>
         <div className="about-visual">
           <img src={images.team} alt={t.storyTitle} />
