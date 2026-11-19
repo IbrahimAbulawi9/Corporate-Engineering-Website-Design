@@ -37,7 +37,7 @@ const dictionary = {
     heroText: "Integrated engineering, construction, and project delivery built on precision, accountability, and an uncompromising commitment to quality.",
     explore: "Explore Our Projects", trusted: "Trusted engineering partner",
     since: "Established 2002", scroll: "Discover our work",
-    heroSide1: "AL–RAFAYA", heroSide2: "ENGINEERING & CONTRACTING",
+    heroSide1: "AL–Rafaiah", heroSide2: "ENGINEERING & CONTRACTING",
     // Stats
     statYears: "Years of Experience", statCompleted: "Completed Projects",
     statOngoing: "Ongoing Projects", statEngineers: "Engineers & Professionals",
@@ -62,7 +62,7 @@ const dictionary = {
     viewAll: "View All Projects", noProjects: "No featured projects in this category yet.",
     
     // Why section
-    whyEyebrow: "The Al-Rafaya standard", whyTitle: "Why clients choose us.",
+    whyEyebrow: "The Al-Rafaiah standard", whyTitle: "Why clients choose us.",
     whyText: "A delivery culture shaped by accountability, expertise, and a commitment to getting every detail right.",
     why1Big: "26+ Years", why1Title: "Proven Experience", why1Text: "Decades of successful delivery across diverse and demanding projects.",
     why2Big: "Zero Compromise", why2Title: "Safety First", why2Text: "Proactive risk management protects our people, partners, and communities.",
@@ -85,9 +85,9 @@ const dictionary = {
     cert3: "Environmental Management", cert4: "Contractor Classification",
     trustedBy: "TRUSTED BY LEADING ORGANIZATIONS",
     // News
-    newsEyebrow: "News & insights", newsTitle: "What's happening at Al-Rafaya.",
+    newsEyebrow: "News & insights", newsTitle: "What's happening at Al-Rafaiah.",
     viewAllNews: "View All News", readStory: "Read Story",
-    news1Cat: "Company News", news1Date: "18 NOV 2025", news1Title: "Al-Rafaya awarded major Riyadh infrastructure contract",
+    news1Cat: "Company News", news1Date: "18 NOV 2025", news1Title: "Al-Rafaiah awarded major Riyadh infrastructure contract",
     news2Cat: "Project Milestone", news2Date: "02 OCT 2025", news2Title: "Structural works completed at Al Waha Business District",
     news3Cat: "Sustainability", news3Date: "14 SEP 2025", news3Title: "Advancing responsible construction across our operations",
     // Final CTA
@@ -96,10 +96,10 @@ const dictionary = {
     ctaText: "Tell us about your project and discover what a dependable engineering partner can make possible.",
         contactUs: "Get in touch",
     // About page
-    aboutPageEyebrow: "About Al-Rafaya", aboutPageTitle: "Engineering progress. Building confidence.",
+    aboutPageEyebrow: "About Al-Rafaiah", aboutPageTitle: "Engineering progress. Building confidence.",
     aboutPageText: "For more than 26 years, we have helped shape the Kingdom's built environment through responsible, precise, and dependable delivery.",
     storyEyebrow: "Our story", storyTitle: "A Saudi company with an enduring ambition.",
-    storyLead: "Founded in Amman in 2002, Al-Rafaya began with a clear conviction: better engineering creates better outcomes for everyone.",
+    storyLead: "Founded in Amman in 2002, Al-Rafaiah began with a clear conviction: better engineering creates better outcomes for everyone.",
     storyP: "Today, we bring together more than 320 professionals across construction, infrastructure, MEP, fit-out, and project management. Our growth has been deliberate—built on client trust, technical capability, and consistent delivery.",
     meetTeam: "Meet Our Team",
     visionTitle: "Our Vision", visionText: "To be the Kingdom's most trusted engineering and contracting partner, recognized for shaping resilient, sustainable places.",
@@ -152,7 +152,7 @@ const dictionary = {
     projectOverviewEyebrow: "Project overview",
     projectOverviewTitle: "A workplace destination engineered for a new era.",
     projectOverviewLead: "Al Waha Business District is a high-performance mixed-use campus that brings together Grade A office space, retail, and landscaped public areas.",
-    projectOverviewP: "Al-Rafaya led complete construction delivery, coordinating a complex structural system, advanced MEP infrastructure, premium finishes, and external works. The completed development creates an efficient and distinctive commercial address for Riyadh.",
+    projectOverviewP: "Al-Rafaiah led complete construction delivery, coordinating a complex structural system, advanced MEP infrastructure, premium finishes, and external works. The completed development creates an efficient and distinctive commercial address for Riyadh.",
     scopeEyebrow: "Scope of work", scopeTitle: "Comprehensive delivery.",
     scopeItems: ["Civil & Structural Works","Mechanical, Electrical & Plumbing","Interior & Exterior Finishes","Landscape & Public Realm","Testing & Commissioning"],
     challengesEyebrow: "Challenges & solutions", challengesTitle: "Solving complexity through coordination.",
@@ -161,7 +161,7 @@ const dictionary = {
     
     // Company page
     companyPageEyebrow: "Our Company", companyPageTitle: "A complete team.",
-    companyPageText: "Meet the team and commitments behind every Al-Rafaya project.",
+    companyPageText: "Meet the team and commitments behind every Al-Rafaiah project.",
     leadershipEyebrow: "Team", leadershipTitle: "Led by experience. United by purpose.",
     leadershipText: "Our leadership team brings deep local knowledge and multidisciplinary project expertise.",
     teamRoles: ["Chief Executive Officer", "Executive Engineer", "Company Accountant", "Assistant Manager"],
@@ -179,13 +179,13 @@ const dictionary = {
     // FAQ
     faqEyebrow: "Frequently asked questions", faqTitle: "What would you like to know?",
     faqQuestions: [
-      ["What types of projects does Al-Rafaya deliver?","We deliver residential, commercial, industrial, infrastructure, hospitality, healthcare, education, and government projects across Saudi Arabia."],
+      ["What types of projects does Al-Rafaiah deliver?","We deliver residential, commercial, industrial, infrastructure, hospitality, healthcare, education, and government projects across Saudi Arabia."],
       ["Can you provide design-and-build services?","Yes. Our integrated teams can manage design coordination, engineering, procurement, construction, commissioning, and handover under one contract."],
       ["How do I request a project quotation?","Use our Request a Quote form and share the available project details. Our business development team will respond within two working days."],
       ["Do you undertake maintenance and renovation work?","Yes. We provide planned and reactive maintenance, facility management, rehabilitation, fit-out, and renovation services."],
     ] as [string,string][],
     faqPageEyebrow: "FAQ", faqPageTitle: "Clear answers. Better decisions.",
-    faqPageText: "Answers to common questions about our services, delivery approach, and working with Al-Rafaya.",
+    faqPageText: "Answers to common questions about our services, delivery approach, and working with Al-Rafaiah.",
     // Downloads
     downloadsEyebrow: "Resources", downloadsTitle: "Documents & downloads.",
     downloadItems: ["Company Profile 2025","Corporate Brochure","Certifications & Accreditations","Prequalification Document","Quality Policy","Health & Safety Policy"],
@@ -220,7 +220,7 @@ const dictionary = {
     quoteText: "Share your project requirements. Our team will review them carefully and respond with the right next steps.",
     contactEyebrow: "Contact Us", contactTitle: "We're ready to listen.",
     contactText: "Whether you have a project, a partnership opportunity, or a question, we would be pleased to hear from you.",
-    headOfficeLocation: "Al-Rafaya Head Office", kingFahdRoad: "The Hashemite Kingdom of Jordan, Amman - Umm Al-Summaq Street, Building No. 10",
+    headOfficeLocation: "Al-Rafaiah Head Office", kingFahdRoad: "The Hashemite Kingdom of Jordan, Amman - Umm Al-Summaq Street, Building No. 10",
     // Footer
     footerCompany: "Company", footerServices: "Services", footerProjects: "Projects", footerResources: "Resources",
     footerCompanyLinks: ["About Us","Our Team","Certifications"],
@@ -228,7 +228,7 @@ const dictionary = {
     footerProjectsLinks: ["All Projects","Ongoing Projects","Completed Projects"],
     footerResourcesLinks: ["Company Profile","News & Insights","FAQ","Downloads"],
     footerContact: "Contact", footerAddress: "The Hashemite Kingdom of Jordan, Amman - Umm Al-Summaq Street, Building No. 10",
-    copyright: "© 2025 Al-Rafaya Engineering & Contracting Co.",
+    copyright: "© 2025 Al-Rafaiah Engineering & Contracting Co.",
     privacyPolicy: "Privacy Policy", termsConditions: "Terms & Conditions",
     madeForProgress: "Made for progress.",
     // Category labels
@@ -587,7 +587,7 @@ function Logo({ light = false, clickable = true }: { light?: boolean; clickable?
     <button 
       className={`logo ${light ? "logo-light" : ""}`} 
       onClick={() => go("home")} 
-      aria-label="Al-Rafaya home"
+      aria-label="Al-Rafaiah home"
       style={{
         background: "transparent",
         border: "none",
@@ -1182,7 +1182,7 @@ function CompanyPage() {
   const t = dictionary[lang];
   
   // تعريف الأشخاص مع أدوارهم
-  const maher: [string, string] = ["Maher Al-Rafaya", t.teamRoles[0]];
+  const maher: [string, string] = ["Maher Al-Rafaiah", t.teamRoles[0]];
   const sarah: [string, string] = ["Samer Abulawi", t.teamRoles[3]];
   const khalid: [string, string] = ["Khalid Al-Mansour", t.teamRoles[1]];
   const omar: [string, string] = ["Omar Al-Harbi", t.teamRoles[2]];
