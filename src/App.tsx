@@ -1,5 +1,5 @@
 import { FormEvent, ReactNode, createContext, useContext, useEffect, useState, useRef } from "react";
-import logoImg from "./images/logo-new.jpeg";
+import logoImg from "./images/logo-new.png";
 
 type Lang = "en" | "ar";
 type IconName =
