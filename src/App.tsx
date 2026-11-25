@@ -1455,11 +1455,11 @@ function Footer() {
               </h4>
 
               <a href="https://web.facebook.com/profile.php?id=61595917270706" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="facebook" size={25} /> Facebook
+                <Icon name="facebook" size={24} /> Facebook
               </a>
 
               <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="instagram" size={25} /> Instagram
+                <Icon name="instagram" size={24} /> Instagram
               </a>
 
             </div>
@@ -1477,11 +1477,11 @@ function Footer() {
               </h4>
 
               <a href="https://wa.me/962795287728" target="_blank" rel="noreferrer" aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="whatsapp" size={25} /> WhatsApp
+                <Icon name="whatsapp" size={24} /> WhatsApp
               </a>
 
               <a href="tel:+9620795287728" aria-label="Call Us" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#20c997', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="phone" size={25} /> +962 079 5287728
+                <Icon name="phone" size={24} /> +962 079 5287728
               </a>
 
             </div>
@@ -1524,7 +1524,7 @@ function Footer() {
                 textDecoration: 'none',
               }}
             >
-              <Icon name="map" size={25} />
+              <Icon name="map" size={24} />
               Maps
             </a>
           </div>
