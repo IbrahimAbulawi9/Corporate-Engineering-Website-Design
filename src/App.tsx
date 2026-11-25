@@ -703,8 +703,8 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
-            <span><Icon name="mail" size={15} /> Alrafaiah_co@hotmail.com</span>
-            <span><Icon name="phone" size={15} /> +962 079 5287728</span>
+            <span><Icon name="mail" size={15} /> Eng.maher@rafaiahco.com</span>
+            <span><Icon name="phone" size={15} /> (06) 552 5584</span>
           </div>
           <span>{t.workingHours}</span>
         </div>
@@ -1423,8 +1423,8 @@ function Footer() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: isMobile ? "70px" : "70px",
-            marginBottom: "90px"
+            gap: isMobile ? "50px" : "60px",
+            marginBottom: "20px" 
           }}
         >
           
@@ -1432,11 +1432,11 @@ function Footer() {
             <Logo light clickable={false} />
           </div>
 
+          {/* صف الأزرار (عمودين فقط الآن) */}
           <div style={{ 
             display: "flex", 
-            flexDirection: isMobile ? "column-reverse" : "row", 
-            /* 👇 هنا قمنا بزيادة المسافة الأفقية للكمبيوتر من 90px إلى 180px 👇 */
-            gap: isMobile ? "50px" : "150px", 
+            flexDirection: isMobile ? "column" : "row", 
+            gap: isMobile ? "40px" : "150px", // زيادة المسافة بين العمودين ليتناسب مع التوسيط
             flexWrap: "wrap", 
             justifyContent: "center",
             width: "100%"
@@ -1446,8 +1446,7 @@ function Footer() {
             <div style={{ 
               display: "flex", 
               flexDirection: "column", 
-              /* 👇 هنا قمنا بزيادة المسافة العمودية للكمبيوتر من 30px إلى 50px 👇 */
-              gap: isMobile ? "40px" : "50px", 
+              gap: isMobile ? "30px" : "40px", 
               alignItems: "center" 
             }}>
               
@@ -1456,11 +1455,11 @@ function Footer() {
               </h4>
 
               <a href="https://web.facebook.com/profile.php?id=61595917270706" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1877F2', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="facebook" size={24} /> Facebook
+                <Icon name="facebook" size={25} /> Facebook
               </a>
 
               <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="instagram" size={24} /> Instagram
+                <Icon name="instagram" size={25} /> Instagram
               </a>
 
             </div>
@@ -1469,8 +1468,7 @@ function Footer() {
             <div style={{ 
               display: "flex", 
               flexDirection: "column", 
-              /* 👇 هنا قمنا بزيادة المسافة العمودية للكمبيوتر من 30px إلى 50px 👇 */
-              gap: isMobile ? "40px" : "50px", 
+              gap: isMobile ? "30px" : "40px", 
               alignItems: "center" 
             }}>
               
@@ -1479,19 +1477,61 @@ function Footer() {
               </h4>
 
               <a href="https://wa.me/962795287728" target="_blank" rel="noreferrer" aria-label="WhatsApp" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="whatsapp" size={24} /> WhatsApp
+                <Icon name="whatsapp" size={25} /> WhatsApp
               </a>
 
               <a href="tel:+9620795287728" aria-label="Call Us" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#20c997', color: 'white', border: 'none', borderRadius: '50px', padding: '10px 25px', cursor: 'pointer', width: '220px', gap: '12px', fontWeight: 'bold', fontSize: '15px', textDecoration: 'none' }}>
-                <Icon name="phone" size={24} /> +962 079 5287728
+                <Icon name="phone" size={25} /> +962 079 5287728
               </a>
 
             </div>
 
+          </div> {/* إغلاق صف الأزرار */}
+
+                   {/* قسم الخريطة (تحت الأزرار في المنتصف) */}
+          <div style={{ 
+            display: "flex", 
+            flexDirection: "column", 
+            alignItems: "center",
+            gap: isMobile ? "30px" : "20px", // 👈 نفس الـ gap الموجود في الأعمدة الأخرى
+            marginTop: isMobile ? "20px" : "10px" // مسافة بسيطة لتفصيل القسم عن الأزرار العلوية
+          }}>
+            
+            {/* 👈 نفس الـ margin الموجود في عناوين الأعمدة الأخرى */}
+            <h4 style={{ color: "#d89d67", fontSize: "18px", fontWeight: "bold", margin: "0 0 5px 0", textAlign: "center" }}>
+              {lang === "ar" ? "موقعنا على الخريطة" : "Our Location on Map"}
+            </h4>
+
+            <a 
+              href="https://maps.app.goo.gl/c3625mLumQZg5YDA9?g_st=afm" 
+              target="_blank" 
+              rel="noreferrer"
+              aria-label="Maps"
+              style={{
+                display: 'flex', 
+                alignItems: 'center',
+                justifyContent: 'flex-start', // 👈 تم التغيير ليتطابق مع محاذاة أيقونة ونص باقي الأزرار
+                backgroundColor: 'var(--brand)', 
+                color: 'white',
+                border: 'none',
+                borderRadius: '50px', 
+                padding: '10px 25px', 
+                cursor: 'pointer',
+                width: '220px',       
+                gap: '12px',           // 👈 تم التغيير ليتطابق مع المسافة بين الأيقونة والنص في باقي الأزرار
+                fontWeight: 'bold',
+                fontSize: '15px',     
+                textDecoration: 'none',
+              }}
+            >
+              <Icon name="map" size={25} />
+              Maps
+            </a>
           </div>
-        </div>
-        
-      </div>
+
+        </div> {/* إغلاق footer-brand */}
+
+      </div> {/* إغلاق container footer-top */}
 
       {/* الشريط السفلي (حقوق النشر) */}
       <div 
@@ -1502,7 +1542,8 @@ function Footer() {
           textAlign: "center",
           alignItems: "center",
           justifyContent: isMobile ? "center" : "space-between",
-          gap: isMobile ? "20px" : "0px"
+          gap: isMobile ? "20px" : "0px",
+          marginTop: "30px" // إضافة مسافة لفصله عن زر الخريطة
         }}
       >
         <span>{t.copyright}</span>
